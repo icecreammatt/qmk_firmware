@@ -26,5 +26,10 @@
     "python.formatting.provider": "yapf",
     "[json]": {
 	    "editor.formatOnSave": false
+    },
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#07342A",
+        "titleBar.activeBackground": "#0A493A",
+        "titleBar.activeForeground": "#EEFDFA"
     }
 }
