@@ -105,12 +105,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,        KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_TRNS,  KC_TRNS, KC_GRV,   KC_NO,           LCAG(KC_LEFT),  LAG(KC_C),    LCAG(KC_RIGHT), KC_ENT
   ),
 
-//   [FN] = LAYOUT( /* FN #6 */
-//     KC_EXLM,        KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,                     KC_CIRC,   KC_AMPR,    KC_ASTR,  KC_LPRN,  KC_RPRN,
-//     KC_NO,          KC_NO,      KC_LBRC,    KC_RBRC,    KC_NO,                       KC_LEFT,   KC_DOWN,    KC_UP,    KC_RIGHT, KC_ENT,
-//     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_NO,     KC_END,     KC_END,   KC_NO,    KC_NO,
-//     KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_LGUI,    KC_TRNS,  KC_TRNS, KC_TRNS,  KC_DEL,    KC_NO,      KC_NO,    KC_NO,    KC_NO
-//   ),
+  // BLANK
+  [6] = LAYOUT(
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,    KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO
+  ),
 
   [POK3R] = LAYOUT( /* POK3R 7 */
     KC_MRWD,        KC_MPRV,    KC_MPLY,    KC_MNXT,    KC_MFFD,                     KC_INS,    KC_PGUP,    KC_HOME,  KC_PGDN,  KC_DEL,
@@ -126,6 +127,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,  LGUI(KC_R), KC_NO,      KC_ACL0,    KC_ACL1,    KC_ACL2
   ),
 
+  // BLANK
+  [9] = LAYOUT(
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,    KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO
+  ),
+
   [FKEYS] = LAYOUT( /* FKEYS 10 */
     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_PSCR,    KC_F7,    KC_F8,    KC_F9,    KC_F13,
     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_SLCK,    KC_F4,    KC_F5,    KC_F6,    KC_F14,
@@ -133,12 +142,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,  KC_CAPS,    KC_F10,   KC_F11,   KC_F12,   KC_F16
   ),
 
+  // BLANK
+  [11] = LAYOUT(
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,    KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO
+  ),
+
+  // BLANK
+  [12] = LAYOUT(
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,    KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO
+  ),
+
   //TODO
   [GAMING] = LAYOUT( /* GAMING 13 */
-    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,    KC_NO,        TO(PROGRAM),
-    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,    KC_NO,        KC_NO,
-    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,    KC_NO,        KC_NO,
-    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,  TO(_QW), TO(COLEMAK),  KC_NO,    KC_NO,    DF(_QW),  DF(COLEMAK),  TO(GAMING)
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
+    KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,    KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO
   ),
 
   [PROGRAM] = LAYOUT( /* PROGRAM MODE 14 */
