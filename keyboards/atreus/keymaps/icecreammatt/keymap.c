@@ -66,14 +66,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QW] = LAYOUT( /* 0 Qwerty */
     LT(MODE_SWITCH, KC_Q), LT(WINDOW, KC_W),      LT(SPECIAL, KC_E), LT(NUMERIC,KC_R),      LT(MOUSE, KC_T),                                 KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,
     CTL_A,                 ALT_S,                 GUI_D,             SFT_F,                 LT(FKEYS, KC_G),                                 KC_H,    SFT_J,  GUI_K,   ALT_L,   CTL_SCLN,
-    LSFT_T(KC_Z),          KC_X,                  KC_C,              LT(NUM_SPECIAL,KC_V),  KC_B,                                            KC_N,    LT(WINDOW, KC_M),   KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),
+    LSFT_T(KC_Z),          KC_X,                  KC_C,              LT(NUM_SPECIAL,KC_V),  KC_B,                                            KC_N,    KC_M,   KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),
     LT(POK3R, KC_ESC),     KC_NO,                 KC_NO,             KC_LSFT,               KC_SPC,          LCTL_T(KC_TAB), LALT_T(KC_ESC), KC_BSPC, MO(POK3R), KC_MINS, KC_QUOT, KC_ENT
   ),
 
   [COLEMAK] = LAYOUT( /* 1 Colemak */
     LT(MODE_SWITCH, KC_Q),  LT(WINDOW, KC_W),     LT(SPECIAL, KC_F), LT(NUMERIC, KC_P),      LT(MOUSE, KC_B),                                KC_J,    KC_L,   KC_U,    KC_Y,    KC_SCLN,
     HOME_A,                 HOME_R,               HOME_S,            HOME_T,                 LT(FKEYS, KC_G),                                KC_M,    HOME_N, HOME_E,  HOME_I,  HOME_O,
-    LSFT_T(KC_Z),           KC_X,                 KC_C,              LT(NUM_SPECIAL, KC_D),  KC_V,                                           KC_K,    LT(WINDOW, KC_H),   KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),
+    LSFT_T(KC_Z),           KC_X,                 KC_C,              LT(NUM_SPECIAL, KC_D),  KC_V,                                           KC_K,    KC_H,   KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),
     LT(POK3R, KC_ESC),      KC_NO,                KC_NO,             KC_LSFT,                KC_SPC,         LCTL_T(KC_TAB), LALT_T(KC_ESC), KC_BSPC, MO(POK3R), KC_MINS, KC_QUOT, KC_ENT
   ),
 
