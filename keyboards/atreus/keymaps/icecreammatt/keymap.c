@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [WINDOW] = LAYOUT( /* WINDOW 5 */
-    KC_NO,          KC_NO,      KC_NO,        KC_NO,       LSFT(KC_GRV),                LCTL(KC_LEFT),   LCTL(KC_DOWN),  LCTL(KC_UP),  LCTL(KC_RIGHT), KC_NO,
+    KC_NO,          KC_NO,      KC_NO,        KC_NO,       KC_NO,                       LCTL(KC_LEFT),   LCTL(KC_DOWN),  LCTL(KC_UP),  LCTL(KC_RIGHT), KC_NO,
     KC_TRNS,        KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_NO,                       LAG(KC_LEFT),    LAG(KC_DOWN),   LAG(KC_UP),   LAG(KC_RIGHT),  KC_NO,
     KC_NO,          KC_NO,      LAG(KC_C),    LAG(KC_F),   KC_NO,                       KC_NO,           KC_NO,          KC_NO,        KC_NO,          KC_NO,
     KC_TRNS,        KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_TRNS,  KC_TRNS, KC_GRV,   KC_NO,           LCAG(KC_LEFT),  LAG(KC_C),    LCAG(KC_RIGHT), KC_ENT
@@ -114,9 +114,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [POK3R] = LAYOUT( /* POK3R 7 */
     KC_MRWD,        KC_MPRV,    KC_MPLY,    KC_MNXT,    KC_MFFD,                     KC_INS,    KC_PGUP,    KC_HOME,  KC_PGDN,  KC_DEL,
-    KC_NO,          KC_NO,      KC_VOLD,    KC_VOLU,    KC_MUTE,                     KC_LEFT,   KC_DOWN,    KC_UP,    KC_RIGHT, KC_ENT,
+    KC_TRNS,        KC_TRNS,    KC_VOLD,    KC_VOLU,    KC_MUTE,                     KC_LEFT,   KC_DOWN,    KC_UP,    KC_RIGHT, KC_ENT,
     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_NO,     KC_END,     KC_END,   KC_NO,    KC_PAUS,
-    KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_LGUI,    KC_TRNS,  KC_TRNS, KC_TRNS,  KC_DEL,    KC_TRNS,    KC_NO,    KC_NO,    KC_NO
+    KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,  KC_DEL,    KC_TRNS,    KC_NO,    KC_NO,    KC_NO
   ),
 
   [MOUSE] = LAYOUT( /* MOUSE 8 */
