@@ -65,7 +65,7 @@
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
-#define _QW 0
+#define QWERTY 0
 #define COLEMAK 1
 #define NUMERIC 2 // 10 Key
 #define NUM_SPECIAL 3 // 10 key special
@@ -80,7 +80,7 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  [_QW] = LAYOUT( /* 0 Qwerty */
+  [QWERTY] = LAYOUT( /* 0 Qwerty */
     LT(MODE_SWITCH, KC_Q), LT(WINDOW, KC_W),      LT(SPECIAL, KC_E), LT(NUMERIC,KC_R),      LT(MOUSE, KC_T),                                 KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,
     CTL_A,                 ALT_S,                 GUI_D,             SFT_F,                 LT(FKEYS, KC_G),                                 KC_H,    SFT_J,  GUI_K,   ALT_L,   CTL_SCLN,
     LSFT_T(KC_Z),          KC_X,                  KC_C,              LT(NUM_SPECIAL,KC_V),  KC_B,                                            KC_N,    KC_M,   KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),
@@ -187,14 +187,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LT(MODE_SWITCH, KC_D),   KC_E,       KC_B,      KC_U,      KC_G,                          KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
     KC_NO,                   KC_NO,      KC_NO,     KC_NO,     KC_NO,                         KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT,KC_NO,
     KC_NO,                   KC_NO,      KC_NO,     KC_NO,     KC_NO,                         KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
-    KC_NO,                   KC_NO,      KC_NO,     KC_NO,     KC_NO,  TO(_QW), KC_ENT,       KC_BSPC,  KC_NO,    EEP_RST,  DEBUG,   RESET
+    KC_NO,                   KC_NO,      KC_NO,     KC_NO,     KC_NO, TO(QWERTY), KC_ENT,     KC_BSPC,  KC_NO,    EEP_RST,  DEBUG,   RESET
   ),
 
   [MODE_SWITCH] = LAYOUT( /* MODE SWITCH 15 */
-    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        TO(PROGRAM),
-    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
-    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                         KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO,
-    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,  TO(_QW), TO(COLEMAK),  KC_NO,    DF(GAMING),DF(_QW),   DF(COLEMAK),  KC_NO
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                            KC_NO,    KC_NO,      KC_NO,        KC_NO,        TO(PROGRAM),
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                            KC_NO,    KC_NO,      KC_NO,        KC_NO,        KC_NO,
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                            KC_NO,    KC_NO,      KC_NO,        KC_NO,        KC_NO,
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,  TO(QWERTY), TO(COLEMAK),  KC_NO,    DF(GAMING), DF(QWERTY),   DF(COLEMAK),  KC_NO
   ),
 
 
@@ -220,5 +220,5 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //   KC_INS,  KC_HOME, KC_UP,   KC_END,  KC_PGUP,                   KC_UP,   KC_F7,   KC_F8,   KC_F9,   KC_F10  ,
   //   KC_DEL,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGDN,                   KC_DOWN, KC_F4,   KC_F5,   KC_F6,   KC_F11  ,
   //   KC_NO,   KC_VOLU, KC_NO,   KC_NO,   RESET,                     KC_NO,   KC_F1,   KC_F2,   KC_F3,   KC_F12  ,
-  //   KC_NO,   KC_VOLD, KC_LGUI, KC_LSFT, KC_BSPC, KC_LCTL, KC_LALT, KC_SPC,  TO(_QW), KC_PSCR, KC_SLCK, KC_PAUS )
+  //   KC_NO,   KC_VOLD, KC_LGUI, KC_LSFT, KC_BSPC, KC_LCTL, KC_LALT, KC_SPC,  TO(QWERTY), KC_PSCR, KC_SLCK, KC_PAUS )
 };
