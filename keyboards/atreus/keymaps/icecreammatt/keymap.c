@@ -49,11 +49,8 @@
 #define COLEMAK 1
 #define NUMERIC 2 // 10 Key
 #define NUM_SPECIAL 3 // 10 key special
-// #define _LW 3
 #define SPECIAL 4 // Programming itesm
 #define WINDOW 5  // Window Tiling Mode
-// #define FN 6
-// #define _RS 6
 #define POK3R 7 // Media keys
 #define MOUSE 8
 #define FKEYS 10
