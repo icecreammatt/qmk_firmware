@@ -14,6 +14,7 @@
 // Apply the modifier on keys that are tapped during a short hold of a modtap
 #define PERMISSIVE_HOLD
 
+// These are for the qwerty layer
 // Left-hand home row mods
 #define CTL_A LCTL_T(KC_A)
 #define ALT_S LALT_T(KC_S)
