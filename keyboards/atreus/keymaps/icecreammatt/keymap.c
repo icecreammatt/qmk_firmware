@@ -42,6 +42,24 @@
 #define HOME_O RCTL_T(KC_O)
 
 
+// --- Aliases for special layer select keys QWERTY
+#define Q_QWERTY LT(MODE_SWITCH, KC_Q)
+#define W_QWERTY LT(WINDOW, KC_W)
+#define E_QWERTY LT(SPECIAL, KC_E)
+#define R_QWERTY LT(NUMERIC, KC_R)
+#define T_QWERTY LT(MOUSE, KC_T)
+#define G_QWERTY LT(FKEYS, KC_G)
+#define V_QWERTY LT(NUM_SPECIAL, KC_V)
+
+// --- Aliases for special layer select keys COLEMAK
+#define Q_COLEMAK LT(MODE_SWITCH, KC_Q)
+#define W_COLEMAK LT(WINDOW, KC_W)
+#define F_COLEMAK LT(SPECIAL, KC_F)
+#define P_COLEMAK LT(NUMERIC, KC_P)
+#define B_COLEMAK LT(MOUSE, KC_B)
+#define G_COLEMAK LT(FKEYS, KC_G)
+#define D_COLEMAK LT(NUM_SPECIAL, KC_D)
+
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
