@@ -92,10 +92,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [SPECIAL] = LAYOUT( /* 4 PROGRAM SPECIAL */
-    KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_PSLS,    KC_LBRC,    KC_RBRC,    KC_BSLS,   KC_PMNS,
-    KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_DQUO,    KC_LCBR,    KC_RCBR,    KC_QUOT,   KC_PPLS,
-    KC_LSFT,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_UNDS,    KC_LPRN,    KC_RPRN,    KC_GRV,    KC_EQL,
-    KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,  KC_BSPC,    KC_NO,      KC_NO,      KC_TILD,   KC_PIPE
+    KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_PIPE,    KC_DQUO,    KC_LBRC,    KC_RBRC,   KC_PMNS,
+    KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_NO,      KC_QUOT,    KC_LCBR,    KC_RCBR,   KC_PPLS,
+    KC_LSFT,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_NO,      KC_GRV,     KC_LPRN,    KC_RPRN,   KC_BSLS,
+    KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,  KC_BSPC,    KC_NO,      KC_EQL,     KC_TILD,   KC_UNDS
   ),
 
   [WINDOW] = LAYOUT( /* WINDOW 5 */
