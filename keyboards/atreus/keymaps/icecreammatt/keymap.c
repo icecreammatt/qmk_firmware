@@ -52,7 +52,7 @@
 // #define _LW 3
 #define SPECIAL 4 // Programming itesm
 #define WINDOW 5  // Window Tiling Mode
-#define FN 6
+// #define FN 6
 // #define _RS 6
 #define POK3R 7 // Media keys
 #define MOUSE 8
@@ -67,14 +67,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LT(MODE_SWITCH, KC_Q), LT(NUM_SPECIAL, KC_W), LT(NUMERIC, KC_E), LT(SPECIAL,KC_R),  LT(MOUSE, KC_T),                                 KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,
     CTL_A,                 ALT_S,                 GUI_D,             SFT_F,             LT(FKEYS, KC_G),                                 KC_H,    SFT_J,  GUI_K,   ALT_L,   CTL_SCLN,
     LSFT_T(KC_Z),          KC_X,                  KC_C,              LT(WINDOW, KC_V),  KC_B,                                            KC_N,    LT(WINDOW, KC_M),   KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),
-    LT(POK3R, KC_ESC),     KC_TAB,                KC_NO,             KC_LSFT,           KC_SPC,          LCTL_T(KC_SPC), LALT_T(KC_ESC), KC_BSPC, MO(FN), KC_MINS, KC_QUOT, KC_ENT
+    LT(POK3R, KC_ESC),     KC_NO,                 KC_NO,             KC_LSFT,               KC_SPC,          LCTL_T(KC_TAB), LALT_T(KC_ESC), KC_BSPC, MO(POK3R), KC_MINS, KC_QUOT, KC_ENT
   ),
 
   [COLEMAK] = LAYOUT( /* 1 Colemak */
     LT(MODE_SWITCH, KC_Q),  LT(NUM_SPECIAL, KC_W), LT(NUMERIC, KC_F), LT(SPECIAL, KC_P), LT(MOUSE, KC_B),                                KC_J,    KC_L,   KC_U,    KC_Y,    KC_SCLN,
     HOME_A,                 HOME_R,                HOME_S,            HOME_T,            LT(FKEYS, KC_G),                                KC_M,    HOME_N, HOME_E,  HOME_I,  HOME_O,
     LSFT_T(KC_Z),           KC_X,                  KC_C,              LT(WINDOW, KC_D),  KC_V,                                           KC_K,    LT(WINDOW, KC_H),   KC_COMM, KC_DOT,  RSFT_T(KC_SLSH),
-    LT(POK3R, KC_ESC),      KC_TAB,                KC_NO,             KC_LSFT,           KC_SPC,         LCTL_T(KC_SPC), LALT_T(KC_ESC), KC_BSPC, MO(FN), KC_MINS, KC_QUOT, KC_ENT
+    LT(POK3R, KC_ESC),      KC_NO,                KC_NO,             KC_LSFT,                KC_SPC,         LCTL_T(KC_TAB), LALT_T(KC_ESC), KC_BSPC, MO(POK3R), KC_MINS, KC_QUOT, KC_ENT
   ),
 
   [NUMERIC] = LAYOUT( /* 2 NUMERIC */
@@ -105,12 +105,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,        KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_TRNS,  KC_TRNS, KC_TRNS,  KC_NO,           LCAG(KC_LEFT),  LAG(KC_C),    LCAG(KC_RIGHT), KC_ENT
   ),
 
-  [FN] = LAYOUT( /* FN #6 */
-    KC_EXLM,        KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,                     KC_CIRC,   KC_AMPR,    KC_ASTR,  KC_LPRN,  KC_RPRN,
-    KC_NO,          KC_NO,      KC_LBRC,    KC_RBRC,    KC_NO,                       KC_LEFT,   KC_DOWN,    KC_UP,    KC_RIGHT, KC_ENT,
-    KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_NO,     KC_END,     KC_END,   KC_NO,    KC_NO,
-    KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_LGUI,    KC_TRNS,  KC_TRNS, KC_TRNS,  KC_DEL,    KC_NO,      KC_NO,    KC_NO,    KC_NO
-  ),
+//   [FN] = LAYOUT( /* FN #6 */
+//     KC_EXLM,        KC_AT,      KC_HASH,    KC_DLR,     KC_PERC,                     KC_CIRC,   KC_AMPR,    KC_ASTR,  KC_LPRN,  KC_RPRN,
+//     KC_NO,          KC_NO,      KC_LBRC,    KC_RBRC,    KC_NO,                       KC_LEFT,   KC_DOWN,    KC_UP,    KC_RIGHT, KC_ENT,
+//     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_NO,     KC_END,     KC_END,   KC_NO,    KC_NO,
+//     KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_LGUI,    KC_TRNS,  KC_TRNS, KC_TRNS,  KC_DEL,    KC_NO,      KC_NO,    KC_NO,    KC_NO
+//   ),
 
   [POK3R] = LAYOUT( /* POK3R 7 */
     KC_MRWD,        KC_MPRV,    KC_MPLY,    KC_MNXT,    KC_MFFD,                     KC_INS,    KC_PGUP,    KC_HOME,  KC_PGDN,  KC_DEL,
