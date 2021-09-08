@@ -72,10 +72,10 @@
 #define NUMERIC 4 // 10 Key
 #define NUM_SPECIAL 5 // 10 key special
 #define SPECIAL 6 // Programming itesm
-#define WINDOW 7  // Window Tiling Mode
-#define POK3R 8 // Media keys
-#define MOUSE 9
-#define FKEYS 10
+#define POK3R 7 // Media keys
+#define FKEYS 8
+#define WINDOW 9  // Window Tiling Mode
+#define MOUSE 10
 #define BLANK_11 11
 #define BLANK_12 12
 #define GAMING 13
@@ -114,53 +114,53 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,     TO(COLEMAK),KC_TRNS,  MO(POK3R), KC_TRNS,  KC_TRNS, KC_TRNS,   KC_TRNS, MO(POK3R),KC_TRNS,   KC_TRNS,     KC_TRNS
   ),
 
-  [NUMERIC] = LAYOUT( /* 4 NUMERIC */
+  [NUMERIC] = LAYOUT( /* NUMERIC */
     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_PSLS,    KC_7,    KC_8,     KC_9,    KC_PMNS,
     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_PAST,    KC_4,    KC_5,     KC_6,    KC_PPLS,
     KC_LSFT,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_ENT,     KC_1,    KC_2,     KC_3,    KC_EQL,
     KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,  KC_BSPC,    KC_0,    KC_0,     KC_PDOT, KC_ENT
   ),
 
-  [NUM_SPECIAL] = LAYOUT( /* 5 NUM_SPECIAL */
+  [NUM_SPECIAL] = LAYOUT( /* NUM_SPECIAL */
     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_PSLS,    KC_AMPR,    KC_ASTR,     KC_BSLS,    KC_PMNS,
     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_PAST,    KC_DLR,     KC_PERC,     KC_CIRC,    KC_PPLS,
     KC_LSFT,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_ENT,     KC_EXLM,    KC_AT,       KC_HASH,    KC_EQL,
     KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,  KC_BSPC,    KC_NO,      KC_NO,       KC_PDOT,    KC_ENT
   ),
 
-  [SPECIAL] = LAYOUT( /* 6 PROGRAM SPECIAL */
+  [SPECIAL] = LAYOUT( /* PROGRAM SPECIAL */
     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_PIPE,    KC_DQUO,    KC_LBRC,    KC_RBRC,   KC_PMNS,
     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_NO,      KC_QUOT,    KC_LCBR,    KC_RCBR,   KC_PPLS,
     KC_LSFT,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_NO,      KC_GRV,     KC_LPRN,    KC_RPRN,   KC_BSLS,
     KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,  KC_BSPC,    KC_NO,      KC_EQL,     KC_TILD,   KC_UNDS
   ),
 
-  [WINDOW] = LAYOUT( /* WINDOW 7 */
-    KC_NO,          KC_NO,      KC_NO,        KC_NO,       KC_NO,                       LCTL(KC_LEFT),   LCTL(KC_DOWN),  LCTL(KC_UP),  LCTL(KC_RIGHT), KC_NO,
-    KC_TRNS,        KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_NO,                       LAG(KC_LEFT),    LAG(KC_DOWN),   LAG(KC_UP),   LAG(KC_RIGHT),  KC_NO,
-    KC_NO,          KC_NO,      LAG(KC_C),    LAG(KC_F),   KC_NO,                       KC_NO,           KC_NO,          KC_NO,        KC_NO,          KC_NO,
-    KC_TRNS,        KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_TRNS,  KC_TRNS, KC_GRV,   LAG(KC_F),       LCAG(KC_LEFT),  LAG(KC_C),    LCAG(KC_RIGHT), KC_ENT
-  ),
-
-  [POK3R] = LAYOUT( /* POK3R 8 */
+  [POK3R] = LAYOUT( /* POK3R */
     KC_MRWD,        KC_MPRV,    KC_MPLY,    KC_MNXT,    KC_MFFD,                     KC_INS,    KC_PGUP,    KC_HOME,  KC_PGDN,  KC_DEL,
     KC_TRNS,        KC_TRNS,    KC_VOLD,    KC_VOLU,    KC_MUTE,                     KC_LEFT,   KC_DOWN,    KC_UP,    KC_RIGHT, KC_ENT,
     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_NO,     KC_END,     KC_END,   KC_PAUS,  KC_BSLS,
     KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,  KC_DEL,    KC_TRNS,    KC_NO,    KC_NO,    KC_NO
   ),
 
-  [MOUSE] = LAYOUT( /* MOUSE 9 */
-    KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_WH_U,    KC_BTN1,    KC_BTN3,    KC_BTN2,    KC_WH_D,
-    KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_MS_L,    KC_MS_D,    KC_MS_U,    KC_MS_R,    KC_NO,
-    KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_WH_L,    KC_BTN4,    KC_BTN5,    KC_NO,      KC_WH_R,
-    KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,  LGUI(KC_R), KC_NO,      KC_ACL0,    KC_ACL1,    KC_ACL2
-  ),
-
-  [FKEYS] = LAYOUT( /* FKEYS 10 */
+  [FKEYS] = LAYOUT( /* FKEYS */
     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_PSCR,    KC_F7,    KC_F8,    KC_F9,    KC_F13,
     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_SLCK,    KC_F4,    KC_F5,    KC_F6,    KC_F14,
     KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_PAUS,    KC_F1,    KC_F2,    KC_F3,    KC_F15,
     KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,  KC_CAPS,    KC_F10,   KC_F11,   KC_F12,   KC_F16
+  ),
+
+  [WINDOW] = LAYOUT( /* WINDOW */
+    KC_NO,          KC_NO,      KC_NO,        KC_NO,       KC_NO,                       LCTL(KC_LEFT),   LCTL(KC_DOWN),  LCTL(KC_UP),  LCTL(KC_RIGHT), KC_NO,
+    KC_TRNS,        KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_NO,                       LAG(KC_LEFT),    LAG(KC_DOWN),   LAG(KC_UP),   LAG(KC_RIGHT),  KC_NO,
+    KC_NO,          KC_NO,      LAG(KC_C),    LAG(KC_F),   KC_NO,                       KC_NO,           KC_NO,          KC_NO,        KC_NO,          KC_NO,
+    KC_TRNS,        KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_TRNS,  KC_TRNS, KC_GRV,   LAG(KC_F),       LCAG(KC_LEFT),  LAG(KC_C),    LCAG(KC_RIGHT), KC_ENT
+  ),
+
+  [MOUSE] = LAYOUT( /* MOUSE */
+    KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_WH_U,    KC_BTN1,    KC_BTN3,    KC_BTN2,    KC_WH_D,
+    KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_MS_L,    KC_MS_D,    KC_MS_U,    KC_MS_R,    KC_NO,
+    KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO,                       KC_WH_L,    KC_BTN4,    KC_BTN5,    KC_NO,      KC_WH_R,
+    KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,  LGUI(KC_R), KC_NO,      KC_ACL0,    KC_ACL1,    KC_ACL2
   ),
 
   // BLANK
@@ -179,21 +179,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,      KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,  KC_TRNS, KC_TRNS,    KC_NO,    KC_NO,    KC_NO,      KC_NO,        KC_NO
   ),
 
-  [GAMING] = LAYOUT( /* GAMING 13 */
+  [GAMING] = LAYOUT( /* GAMING */
     KC_GRV,  KC_1,     KC_2,      KC_3,      KC_4,                    KC_5,     KC_6,         KC_7,    KC_8,      KC_9,
     KC_TAB,  KC_Q,     KC_W,      KC_E,      KC_R,                    KC_T,     KC_Y,         KC_U,    KC_I,      KC_O,
     KC_LCTL, KC_A,     KC_S,      KC_D,      KC_F,                    KC_G,     KC_H,         KC_J,    KC_UP,     KC_0,
     KC_LSFT ,KC_Z,     KC_X,      KC_C,      KC_V,  KC_SPC , KC_ESC,  KC_B,     LT(15,KC_N),  KC_LEFT, KC_DOWN,   KC_RIGHT
   ),
 
-  [PROGRAM] = LAYOUT( /* PROGRAM MODE 14 */
+  [PROGRAM] = LAYOUT( /* PROGRAM MODE */
     LT(MODE_SWITCH, KC_D),   KC_E,       KC_B,      KC_U,      KC_G,                          KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
     KC_NO,                   KC_NO,      KC_NO,     KC_NO,     KC_NO,                         KC_LEFT,  KC_DOWN,  KC_UP,    KC_RIGHT,KC_NO,
     KC_NO,                   KC_NO,      KC_NO,     KC_NO,     KC_NO,                         KC_NO,    KC_NO,    KC_NO,    KC_NO,   KC_NO,
     KC_NO,                   KC_NO,      KC_NO,     KC_NO,     KC_NO, TO(QWERTY), KC_ENT,     KC_BSPC,  KC_NO,    EEP_RST,  DEBUG,   RESET
   ),
 
-  [MODE_SWITCH] = LAYOUT( /* MODE SWITCH 15 */
+  [MODE_SWITCH] = LAYOUT( /* MODE SWITCH */
     KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                            KC_NO,    KC_NO,      KC_NO,        KC_NO,        TO(PROGRAM),
     KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                            KC_NO,    KC_NO,      KC_NO,        KC_NO,        KC_NO,
     KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                            KC_NO,    KC_NO,      KC_NO,        KC_NO,        KC_NO,
