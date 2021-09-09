@@ -150,10 +150,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [WINDOW] = LAYOUT( /* WINDOW */
-    KC_NO,          KC_NO,      KC_NO,        KC_NO,       KC_NO,                       LCTL(KC_LEFT),   LCTL(KC_DOWN),  LCTL(KC_UP),  LCTL(KC_RIGHT), KC_NO,
-    KC_TRNS,        KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_NO,                       LAG(KC_LEFT),    LAG(KC_DOWN),   LAG(KC_UP),   LAG(KC_RIGHT),  KC_NO,
-    KC_NO,          KC_NO,      LAG(KC_C),    LAG(KC_F),   KC_NO,                       KC_NO,           KC_NO,          KC_NO,        KC_NO,          KC_NO,
-    KC_TRNS,        KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_TRNS,  KC_TRNS, KC_GRV,   LAG(KC_F),       LCAG(KC_LEFT),  LAG(KC_C),    LCAG(KC_RIGHT), KC_ENT
+    LCTL(KC_UP),    KC_NO,      LCTL(KC_DOWN),KC_NO,       KC_NO,                       LCA(KC_D),     LCA(KC_E),     LCA(KC_F),     LCA(KC_T),      LCA(KC_G),
+    KC_TRNS,        KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_NO,                       LCA(KC_LEFT),  LCA(KC_DOWN),  LCA(KC_UP),    LCA(KC_RIGHT),  LGUI(KC_GRV),
+    KC_NO,          KC_NO,      LCA(KC_C),    LCA(KC_ENT), KC_NO,                       LCA(KC_U),     LCA(KC_J),     LCA(KC_K),     LCA(KC_I),      SGUI(KC_GRV),
+    KC_TRNS,        KC_TRNS,    KC_TRNS,      KC_TRNS,     KC_TRNS,  KC_TRNS, KC_GRV,   SGUI(KC_TAB),  LGUI(KC_TAB),  LCAG(KC_LEFT), LCAG(KC_RIGHT), KC_NO
   ),
 
   [MOUSE] = LAYOUT( /* MOUSE */
