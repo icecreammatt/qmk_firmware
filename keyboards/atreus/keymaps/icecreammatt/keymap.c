@@ -194,10 +194,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [MODE_SWITCH] = LAYOUT( /* MODE SWITCH */
-    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                            KC_NO,    KC_NO,      KC_NO,        KC_NO,        TO(PROGRAM),
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      TO(GAMING),                       KC_NO,    KC_NO,      KC_NO,        KC_NO,        TO(PROGRAM),
     KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                            KC_NO,    KC_NO,      KC_NO,        KC_NO,        KC_NO,
     KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,                            KC_NO,    KC_NO,      KC_NO,        KC_NO,        KC_NO,
-    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,  TO(QWERTY), TO(COLEMAK),  TO(GAMING),KC_NO,     DF(QWERTY),   DF(COLEMAK),  KC_NO
+    KC_NO,        KC_NO,      KC_NO,      KC_NO,      KC_NO,  TO(QWERTY), TO(COLEMAK),  KC_NO,    KC_NO,     DF(QWERTY),   DF(COLEMAK),  KC_NO
   ),
 
 
