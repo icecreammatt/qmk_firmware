@@ -70,9 +70,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Special
   [NUM_SPECIAL] = LAYOUT(
     RESET,          KC_1,      KC_2,      KC_3,      TO(QWERTY),                      KC_PSLS,    KC_AMPR,    KC_ASTR,     KC_BSLS,           KC_PMNS,
-    TO(STDG),       KC_4,      KC_5,      KC_6,      TO(COLEMAK),                     KC_PAST,    KC_DLR,     KC_PERC,     KC_CIRC,           KC_PIPE,
+    TO(STDG),       KC_4,      KC_5,      KC_6,      TO(COLEMAK),                     KC_PAST,    KC_DLR,     KC_PERC,     KC_CIRC,           KC_PPLS,
     KC_LSFT,        KC_7,      KC_8,      KC_9,      TO(STANDARD),                    KC_NO,      KC_EXLM,    KC_AT,       KC_HASH,           KC_EQL,
-    KC_TRNS,        KC_TRNS,   KC_0,      KC_TRNS,   KC_TRNS,      KC_TRNS, KC_TRNS,  KC_BSPC,    KC_NO,      KC_NO,       ALL_T(KC_PDOT),    KC_ENT
+    KC_TRNS,        KC_TRNS,   KC_0,      KC_TRNS,   KC_TRNS,      KC_TRNS, KC_TRNS,  KC_BSPC,    KC_NO,      KC_PIPE,     ALL_T(KC_PDOT),    KC_ENT
   ),
 
   // Pok3r - nav / media keys
