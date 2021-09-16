@@ -77,10 +77,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // Pok3r - nav / media keys
   [POK3R] = LAYOUT(
-    KC_MPRV,        KC_MNXT,    KC_LBRC,    KC_RBRC,    KC_MPLY,                     KC_INS,    KC_PGUP,    KC_HOME,  KC_PGDN,  KC_DEL,
-    KC_GRV,         KC_MRWD,    KC_LCBR,    KC_RCBR,    KC_VOLU,                     KC_LEFT,   KC_DOWN,    KC_UP,    KC_RIGHT, KC_ENT,
-    KC_LSFT,        KC_MFFD,    KC_LPRN,    KC_RPRN,    KC_VOLD,                     CG_SWAP,   KC_DEL,     KC_END,   KC_PAUS,  KC_RSFT,
-    KC_TRNS,        KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_MUTE,  KC_TRNS, KC_TRNS,  CG_NORM,   KC_TRNS,    KC_NO,    EEP_RST,    KC_NO
+    KC_VOLD,        KC_VOLU,    KC_LBRC,    KC_RBRC,    KC_MPLY,                     KC_INS,    KC_PGUP,    KC_HOME,  KC_PGDN,  KC_DEL,
+    KC_GRV,         KC_WH_D,    KC_LCBR,    KC_RCBR,    KC_VOLU,                     KC_LEFT,   KC_DOWN,    KC_UP,    KC_RIGHT, KC_ENT,
+    KC_LSFT,        KC_WH_U,    KC_LPRN,    KC_RPRN,    KC_VOLD,                     CG_SWAP,   KC_DEL,     KC_END,   KC_PAUS,  KC_RSFT,
+    KC_GRV,         KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_MUTE,  KC_TRNS, KC_TRNS,  CG_NORM,   KC_TRNS,    KC_WH_U,  KC_WH_D,  KC_NO
   ),
 
 };
