@@ -61,26 +61,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // Numeric
   [NUMERIC] = LAYOUT(
-    KC_PSCR,    KC_F7,    KC_F8,    KC_F9,    KC_F10,                      KC_PSLS,    KC_7,    KC_8,     KC_9,    KC_PMNS,
-    KC_SLCK,    KC_F4,    KC_F5,    KC_F6,    KC_F11,                      KC_PAST,    KC_4,    KC_5,     KC_6,    KC_PPLS,
-    KC_LSFT,    KC_F1,    KC_F2,    KC_F3,    KC_F12,                      KC_NO,      KC_1,    KC_2,     KC_3,    KC_EQL,
-    KC_CAPS,    KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS,  KC_BSPC,    KC_0,    KC_0,     ALL_T(KC_PDOT), KC_ENT
+    KC_PSCR,    KC_F7,    KC_F8,    KC_F9,    KC_F10,                                     KC_INS,     KC_PGUP,    KC_HOME,   KC_PGDN,      KC_DEL,
+    KC_SLCK,    KC_F4,    KC_F5,    KC_F6,    KC_F11,                                     KC_LEFT,    KC_DOWN,    KC_UP,     KC_RIGHT,     KC_MUTE,
+    KC_LSFT,    KC_F1,    KC_F2,    KC_F3,    KC_F12,                                     KC_MPLY,    KC_VOLD,    KC_END,    KC_VOLU,      LSFT_T(KC_EQL),
+    KC_CAPS,    KC_PAUS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  LCTL_T(KC_SPC),  LALT_T(KC_ESC),  CG_SWAP,    CG_NORM,    KC_NO,     KC_WH_U,      KC_WH_D
   ),
 
   // Special
   [NUM_SPECIAL] = LAYOUT(
-    RESET,          KC_1,      KC_2,      KC_3,      TO(QWERTY),                      KC_PSLS,    KC_AMPR,    KC_ASTR,     KC_BSLS,           KC_PMNS,
-    TO(STDG),       KC_4,      KC_5,      KC_6,      TO(COLEMAK),                     KC_PAST,    KC_DLR,     KC_PERC,     KC_CIRC,           KC_PPLS,
-    KC_LSFT,        KC_7,      KC_8,      KC_9,      TO(STANDARD),                    KC_NO,      KC_EXLM,    KC_AT,       KC_HASH,           KC_EQL,
-    KC_TRNS,        KC_TRNS,   KC_0,      KC_TRNS,   KC_TRNS,      KC_TRNS, KC_TRNS,  KC_BSPC,    KC_NO,      KC_PIPE,     ALL_T(KC_PDOT),    KC_ENT
+    RESET,          KC_1,      KC_2,      KC_3,      TO(QWERTY),                                     KC_PSLS,    KC_AMPR,    KC_ASTR,     KC_BSLS,           KC_PMNS,
+    TO(STDG),       KC_4,      KC_5,      KC_6,      TO(COLEMAK),                                    KC_PAST,    KC_DLR,     KC_PERC,     KC_CIRC,           KC_PPLS,
+    KC_LSFT,        KC_7,      KC_8,      KC_9,      TO(STANDARD),                                   KC_NO,      KC_EXLM,    KC_AT,       KC_HASH,           LSFT_T(KC_EQL),
+    KC_TRNS,        KC_TRNS,   KC_0,      KC_TRNS,   KC_TRNS,      LCTL_T(KC_SPC),  LALT_T(KC_ESC),  KC_BSPC,    KC_NO,      KC_PIPE,     ALL_T(KC_PDOT),    KC_ENT
   ),
 
-  // Pok3r - nav / media keys
+  // Pok3r - special characters and numbers
   [POK3R] = LAYOUT(
-    KC_VOLD,        KC_VOLU,    KC_LBRC,    KC_RBRC,    KC_MPLY,                     KC_INS,    KC_PGUP,    KC_HOME,  KC_PGDN,  KC_DEL,
-    KC_GRV,         KC_WH_D,    KC_LCBR,    KC_RCBR,    KC_VOLU,                     KC_LEFT,   KC_DOWN,    KC_UP,    KC_RIGHT, KC_ENT,
-    KC_LSFT,        KC_WH_U,    KC_LPRN,    KC_RPRN,    KC_VOLD,                     CG_SWAP,   KC_DEL,     KC_END,   KC_PAUS,  KC_RSFT,
-    KC_GRV,         KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_MUTE,  KC_TRNS, KC_TRNS,  CG_NORM,   KC_TRNS,    KC_WH_U,  KC_WH_D,  KC_NO
+    KC_BSLS,        KC_EXLM,    KC_LBRC,    KC_RBRC,    KC_PIPE,                                    KC_PSLS,    KC_7,     KC_8,     KC_9,     KC_PMNS,
+    KC_GRV,         KC_EQL,     KC_LPRN,    KC_RPRN,    KC_DLR,                                     KC_PAST,    KC_4,     KC_5,     KC_6,     KC_PPLS,
+    KC_CIRC,        KC_AMPR,    KC_LCBR,    KC_RCBR,    KC_AT,                                      KC_PERC,    KC_1,     KC_2,     KC_3,     LSFT_T(KC_EQL),
+    KC_DEL,         KC_UNDS,    KC_HASH,    KC_LGUI,    KC_SPC,   LCTL_T(KC_SPC),  LALT_T(KC_ESC),  KC_BSPC,    KC_TRNS,  KC_0,     KC_PDOT,  KC_ENT
   ),
 
 };
