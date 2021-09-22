@@ -63,8 +63,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [NUMERIC] = LAYOUT(
     KC_DEL,     KC_F1,    KC_F2,    KC_F3,    KC_F10,                                     KC_INS,     KC_PGUP,    KC_HOME,            KC_PGDN,      KC_DEL,
     KC_SLCK,    KC_F4,    KC_F5,    KC_F6,    KC_F11,                                     KC_LEFT,    KC_DOWN,    KC_UP,              KC_RIGHT,     KC_MUTE,
-    KC_LSFT,    KC_F7,    KC_F8,    KC_F9,    KC_F12,                                     KC_MPLY,    KC_VOLD,    KC_END,             KC_VOLU,      LSFT_T(KC_EQL),
-    KC_CAPS,    KC_TRNS,  KC_PSCR,  KC_PAUS,  KC_TRNS,  LCTL_T(KC_SPC),  LALT_T(KC_ESC),  CG_SWAP,    KC_WH_U,    LALT_T(KC_ESC),     KC_WH_D,      CG_NORM
+    KC_LSFT,    KC_F7,    KC_F8,    KC_F9,    KC_F12,                                     KC_MPLY,    KC_WH_U,    KC_END,             KC_WH_D,      LSFT_T(KC_EQL),
+    KC_CAPS,    KC_TRNS,  KC_PSCR,  KC_PAUS,  KC_TRNS,  LCTL_T(KC_SPC),  LALT_T(KC_ESC),  CG_SWAP,    KC_VOLD,    LALT_T(KC_ESC),     KC_VOLU,      CG_NORM
   ),
 
   // Special
