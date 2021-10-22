@@ -96,12 +96,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
  * | Q   | W   | E   | R   | T   |                      | Y   | U   | I   | O   | P   |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * | A   | S   | D   | F   | G   |                      | H   | J   | K   | L   | ' " |
+ * | A   | S   | D   | F   | G   |                      | H   | J   | K   | L   | ' " | <-- ' trigger mouse layer
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |SHF/Z| X/AL| C   | V   | B   |                      | N   | M   | <,MO| >.MO|SHF/?|
+ * |SHF/Z| X/AL| C   | V   | B   |                      | N   | M   | <,  | >.MO|SHF/?|
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *                     >. key when held long activates mouse mode L4
- *                     <, key when held long activates mouse mode L2
  *               .-------.-------.-------.      .-------.-------.
  *               |CMD/ESC|  SPC  |CTR/TAB|      | ENTER |L1/BSP |
  *               '-------'-------'-------'      '-------'-------'
@@ -110,31 +109,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Layer 1: Symbols
  *
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |  ~  |  !  |  [  |  ]  |  |  |                      |  ^  |  &  |  *  |  $  |  #  |
+ * |  ~  |  !  |  [  |  ]  |  |  |                      |  ^  |  &  |  *  |TO(M)| DEL |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |  `  |=(L11|( L4 |) L3 |  @  |                      |LEFT |DOWN | UP  |RGHT | ;:  |
+ * |L2 ` |L11 =|L4 ( |L3 ) |  @  |                      |LEFT |DOWN | UP  |RGHT | ;:  | <-- ; key should trigger mouse layer when held
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |SHFT | ALT |CMD {|CTR }|  %  |                      |  _  |  -_ |  +  |  :  |SHF\ |
+ * | SHF | ALT |CMD {|CTR }|  %  |                      |  #  |  -_ |  +  |  :  |SHF\ |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *                      ) key when held temp does numpad
+ *                      ` key when held temp does layer2,1 (Fkeys)
+ *                      = key when held temp does layer1,1
  *                      ( key when held temp does layer4(mouse)
- *                      = key when held temp does layer1,1(mouse)
+ *                      ; key when held temp does layer4(mouse)
+ *                      # key when tapped layer moves to layer4(mouse)
+ *                      ) key when held temp does numpad
  * left shift is page down when tapped
  * left alt is page up when tapped
  * home is ctrl up
  * end is ctrl down
  *               .-------.-------.-------.      .-------.-------.
- *               |CMD/ESC|L2/SPC |CTR/TAB|      |       |(hold) |
+ *               |CMD/ESC|L3/SPC |CTR/TAB|      |       |(hold) |
  *               '-------'-------'-------'      '-------'-------'
  */
 
-/* Layer 1: Symbols Shifted - accessed by shift key on layer 1
+/* Layer 1.1: Symbols Shifted - accessed by shift key on layer 1
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
  * |     |     |     |     |     |                      |     |  #  |  *  |  %  |     |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
  * |     |hold |  |  |  @  |     |                      |     |  ^  |  $  |  0  |  :  |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |     |     |     |  _  |     |                      |     |     |     |     |     |
+ * |     |     |     |     |     |                      |     |  _  |     |     |     |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *               .-------.-------.-------.      .-------.-------.
  *               |CMD/ESC|L2/SPC |CTR/TAB|      |       |(hold) |
@@ -143,23 +145,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Layer 2: Function keys
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * | F1  | F2  | F3  | F4  | F5  |                      | F6  | F7  | F8  | F9  | F10 |
+ * |     |     |ALL_T|     |     |                      |     | F7  | F8  | F9  | F10 |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * | F11 | F12 |VOL- | VOL+|MUTE |                      |WH_L | M1  | M2  | M3  |WH_R |
+ * |hold |PLAY |VOL- |VOL+ |     |                      |     | F4  | F5  | F6  | F11 |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |SHFT |ALT  |CMD  |CTRL |     |                      |PLAY |WH_D |WH_U |RESET|SHFT |
+ * | SHF | ALT | CMD |MUTE |     |                      |     | F1  | F2  | F3  | F12 |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *               .-------.-------.-------.      .-------.-------.
- *               |       | (hold)|       |      | T(L3) |  DEL  |
+ *               |       |       |       |      |       |  DEL  |
  *               '-----------------------'      '-------'-------'
- *   j works as left click if mouse was just moved and k as right click and l as middle click
  */
 
 /* Layer 3: Calc/Numpad
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |     |     |     |     |     |                      |  /  |  7  |  8  |  9  |  -  |
+ * |     |     |ALL_T|     |     |                      |  /  |  7  |  8  |  9  |  -  |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |T(L0)|     |ALL_T|hold |     |                      |  *  |  4  |  5  |  6  |  +  |
+ * |T(L0)|     |     |hold |     |                      |  *  |  4  |  5  |  6  |  +  |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
  * | SHF | ALT |     |     |     |                      |  %  |  1  |  2  |  3  |  0  |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
@@ -170,13 +171,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Layer 4: Layer move and mouse mode
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |     |     |     |HOME |PAUSE|                      |M4   |PGDN |PGUP |     |PAUSE|
+ * |     |     |     |HOME |PAUSE|                      |M4   |PGDN |PGUP |     |     |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
  * |QWERT|COLEM| hold|GAME1|GAME2|                      |WH_L | M1  | M2  |WH_R |     |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |     |     |     |END  |     |                      |M5   |WH_U |WH_D |hold | M3  |
+ * |     |     |     |END  |     |                      |M5   |WH_D |WH_U |hold | M3  |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *               .-------.-------.-------.      .-------.-------.
  *               |CMD/ESC|  SPC  |CTR/TAB|      | ENTER |L1/BSP |
+ *               '-----------------------'      '-------'-------'
+ */
+
+/* Layer 4.1: Layer move and mouse mode
+ * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
+ * |     |     |     |HOME |PAUSE|                      | M4  |PGDN |PGUP |HOME |     |
+ * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
+ * |QWERT|COLEM| hold|GAME1|GAME2|                      | SPC | M1  | M2  | M3  |held |< held also as mouse4 or whatever back nav for browser is
+ * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
+ * | SHF | ALT |     |END  |     |                      | M5  |WH_D |WH_U | END | SHF |
+ * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
+ *              double tap WH D/U for left and right scroll
+ *              double tap PGDN PGUP for home and end
+ *               .-------.-------.-------.      .-------.-------.
+ *               |CMD/ESC|  SPC  |CTR/TAB|      | ENTER | TO(0) |
  *               '-----------------------'      '-------'-------'
  */
