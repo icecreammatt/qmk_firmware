@@ -85,35 +85,52 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-// Try use JK as alternate esc?
-// figure out esc key
+// Setup JJ as ESC
+// Setup JK as ESC
 
 // enter key
-// alt/opion key
 
 /* Layer 0: Base keys
  *
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
  * | Q   | W   | E   | R   | T   |                      | Y   | U   | I   | O   | P   |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * | A   | S   | D   | F   | G   |                      | H   | J   | K   | L   | ' " | <-- ' trigger mouse layer
+ * | A   | S   | D   | F   | G   |                      | H   | J   | K   | L   | ' " | <-- hold ' to trigger mouse layer
+ * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
+ * |SHF/Z| X/AL| C   | V   | B   |                      | N   | M   | <,  | >.MO|SHF/?|
+ * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
+ *                     >. key when held long activates mouse mode L4
+ *                     holding SPC triggers 0.1
+ *               .-------.-------.-------.      .-------.-------.
+ *               |CMD/TAB|L01 SPC|CTR    |      |  ESC  |L1/BSP |
+ *               '-------'-------'-------'      '-------'-------'
+*                                               double tap ESC to toggle mouse mode
+ */
+
+/* Layer 0.1: Base keys
+ *
+ * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
+ * | Q   | W   | E   | R   | T   |                      | Y   | U   | I   | O   | P   |
+ * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
+ * |(G) A|(A) S|(C) D|(S) F| G   |                      | H   |(S)J |(C)K |(A)L |(G)'"|
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
  * |SHF/Z| X/AL| C   | V   | B   |                      | N   | M   | <,  | >.MO|SHF/?|
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *                     >. key when held long activates mouse mode L4
  *               .-------.-------.-------.      .-------.-------.
- *               |CMD/ESC|  SPC  |CTR/TAB|      | ENTER |L1/BSP |
+ *               |CMD/TAB|L01 SPC|CTR    |      |  ESC  |L1/BSP |
  *               '-------'-------'-------'      '-------'-------'
+ *                CMD/TAB - replace cmd/tab with mouse layer/tab
  */
 
 /* Layer 1: Symbols
  *
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |  ~  |  !  |  [  |  ]  |  |  |                      |  ^  |  &  |  *  |TO(M)| DEL |
+ * |  ~  |  !  |  [  |  ]  |  |  |                      |  ^  |  &  | ENT |TO(M)| DEL | TO(M) maybe swap with Backspace
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |L2 ` |L11 =|L4 ( |L3 ) |  @  |                      |LEFT |DOWN | UP  |RGHT | ;:  | <-- ; key should trigger mouse layer when held
+ * |L2 ` |L4  =|L11( |L3 ) |  @  |                      |LEFT |DOWN | UP  |RGHT | ;:  | <-- ; key should trigger mouse layer when held
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * | SHF | ALT |CMD {|CTR }|  %  |                      |  #  |  -_ |  +  |  :  |SHF\ |
+ * | SHF | ALT |CMD {|CTR }|  %  |                      |  #  |  -  |  +  |  :  |SHF\ |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *                      ` key when held temp does layer2,1 (Fkeys)
  *                      = key when held temp does layer1,1
@@ -126,20 +143,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * home is ctrl up
  * end is ctrl down
  *               .-------.-------.-------.      .-------.-------.
- *               |CMD/ESC|L3/SPC |CTR/TAB|      |       |(hold) |
+ *               |CMD/TAB|L3/SPC |CTR    |      |  ESC  |(hold) |
  *               '-------'-------'-------'      '-------'-------'
  */
 
 /* Layer 1.1: Symbols Shifted - accessed by shift key on layer 1
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |     |     |     |     |     |                      |     |  #  |  *  |  %  |     |
+ * |     |     |     |  |  |     |                      |     |  #  |  *  |     | DEL |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |     |hold |  |  |  @  |     |                      |     |  ^  |  $  |  0  |  :  |
+ * |     |     |hold |  @  |     |                      |     |  ^  |  $  |  0  |  :  |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |     |     |     |     |     |                      |     |  _  |     |     |     |
+ * |     |     |     |  %  |     |                      |     |  _  |     |     |     |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *               .-------.-------.-------.      .-------.-------.
- *               |CMD/ESC|L2/SPC |CTR/TAB|      |       |(hold) |
+ *               |CMD/ESC|L2/SPC |CTR    |      |  ESC  |(hold) |BSP
  *               '-------'-------'-------'      '-------'-------'
  */
 
@@ -152,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | SHF | ALT | CMD |MUTE |     |                      |     | F1  | F2  | F3  | F12 |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *               .-------.-------.-------.      .-------.-------.
- *               |       |       |       |      |       |  DEL  |
+ *               |       |       |       |      |  ESC  |  DEL  |
  *               '-----------------------'      '-------'-------'
  */
 
@@ -160,12 +177,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
  * |     |     |ALL_T|     |     |                      |  /  |  7  |  8  |  9  |  -  |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |T(L0)|     |     |hold |     |                      |  *  |  4  |  5  |  6  |  +  |
+ * |T(L0)|  0  |  .  |hold |     |                      |  *  |  4  |  5  |  6  |  +  |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
  * | SHF | ALT |     |     |     |                      |  %  |  1  |  2  |  3  |  0  |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *               .-------.-------.-------.      .-------.-------.
- *               |CMD/ESC|  SPC  |CTR/TAB|      | ENTER |L1/BSP |
+ *               |CMD/TAB|  SPC  |CTR    |      |  ESC  |L1/BSP |
  *               '-----------------------'      '-------'-------'
  */
 
@@ -178,7 +195,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |     |     |     |END  |     |                      |M5   |WH_D |WH_U |hold | M3  |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *               .-------.-------.-------.      .-------.-------.
- *               |CMD/ESC|  SPC  |CTR/TAB|      | ENTER |L1/BSP |
+ *               |CMD/TAB|  SPC  |CTR/TAB|      |  ESC  |L1/BSP |
  *               '-----------------------'      '-------'-------'
  */
 
@@ -193,6 +210,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *              double tap WH D/U for left and right scroll
  *              double tap PGDN PGUP for home and end
  *               .-------.-------.-------.      .-------.-------.
- *               |CMD/ESC|  SPC  |CTR/TAB|      | ENTER | TO(0) |
+ *               |CMD/TAB|  SPC  |CTR/TAB|      |  ESC  | TO(0) |
  *               '-----------------------'      '-------'-------'
+ *                                               DOUBLE TAP ESC to leave mouse mode? maybe just single click?
  */
