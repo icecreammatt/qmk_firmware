@@ -44,7 +44,7 @@
 // #define STDG 3
 // #define NUMERIC 4
 // #define NUM_SPECIAL 5
-#define POK3R 6
+#define NUMPAD 6
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -53,61 +53,68 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //     KC_Q,        KC_W,                KC_E,             KC_R,      KC_T,                                                    KC_Y,             KC_U,      KC_I,           KC_O,            KC_P,
 //     KC_A,        KC_S,                KC_D,             KC_F,      KC_G,                                                    KC_H,             KC_J,      KC_K,           KC_L,            KC_QUOT,
 //     LSFT_T(KC_Z),LALT_T(KC_X),        KC_C,             KC_V,      KC_B,                                                    KC_N,             KC_M,      KC_COMM,        KC_DOT,          RSFT_T(KC_SLSH),
-//     KC_TAB,      LALT_T(KC_MINS),     MO(NUM_SPECIAL),  KC_LGUI,   KC_SPC,  LCTL_T(KC_MINS), LT(NUMERIC, KC_ESC),           LSFT_T(KC_BSPC),  MO(POK3R), ALL_T(KC_DEL),  LALT_T(KC_SCLN), KC_ENT
+//     KC_TAB,      LALT_T(KC_MINS),     MO(NUM_SPECIAL),  KC_LGUI,   KC_SPC,  LCTL_T(KC_MINS), LT(NUMERIC, KC_ESC),           LSFT_T(KC_BSPC),  MO(NUMPAD), ALL_T(KC_DEL),  LALT_T(KC_SCLN), KC_ENT
 //   ),
 
-// TODO add mouse layer key
-// add shortcut to numbers layer
-// add shortcut to
+  //TODO add mouse layer key
   [QWERTY] = LAYOUT(
-    KC_Q,                   KC_W,            KC_E,             KC_R,                    KC_T,                                                   KC_Y,                KC_U,      KC_I,          KC_O,       KC_P,
-    KC_A,                   KC_S,            KC_D,             KC_F,                    KC_G,                                                   KC_H,                KC_J,      KC_K,          KC_L,       KC_QUOT,
-    LSFT_T(KC_Z),           LALT_T(KC_X),    KC_C,             KC_V,                    KC_B,                                                   KC_N,                KC_M,      KC_COMM,       KC_DOT,     RSFT_T(KC_SLSH),
-    KC_NO,                  RESET,           KC_NO,            LGUI_T(KC_TAB),          LT(QWERTY_2, KC_SPC),  LCTL_T(KC_NO), LSFT_T(KC_ESC),   LT(SYMBOL, KC_BSPC), KC_NO,     KC_NO,         KC_NO,      KC_NO
+    KC_Q,                   KC_W,            KC_E,             KC_R,                    KC_T,                                                  KC_Y,                KC_U,      KC_I,          KC_O,       KC_P,
+    KC_A,                   KC_S,            KC_D,             KC_F,                    KC_G,                                                  KC_H,                KC_J,      KC_K,          KC_L,       KC_QUOT,
+    LSFT_T(KC_Z),           LALT_T(KC_X),    KC_C,             KC_V,                    KC_B,                                                  KC_N,                KC_M,      KC_COMM,       KC_DOT,     RSFT_T(KC_SLSH),
+    KC_NO,                  RESET,           KC_NO,            LGUI_T(KC_TAB),          LT(QWERTY_2, KC_SPC), LCTL_T(KC_TAB), LSFT_T(KC_ESC),  LT(SYMBOL, KC_BSPC), KC_NO,     KC_NO,         KC_NO,      KC_NO
   ),
 
   [QWERTY_2] = LAYOUT(
-    KC_Q,                   KC_W,            KC_E,                 KC_R,                KC_T,                                                   KC_Y,               KC_U,      KC_I,           KC_O,       KC_P,
-    HOME_A,                 HOME_S,          HOME_D,               HOME_F,              KC_G,                                                   KC_H,               HOME_J,    HOME_K,         HOME_L,     HOME_QUOT,
-    LSFT_T(KC_Z),           LALT_T(KC_X),    KC_C,                 KC_V,                KC_B,                                                   KC_N,               KC_M,      KC_COMM,        KC_DOT,     RSFT_T(KC_SLSH),
-    KC_UNDS,                RESET,           KC_NO,                LGUI_T(KC_TAB),      LT(SYMBOL, KC_SPC),  LCTL_T(KC_NO), LSFT_T(KC_ESC),     LT(POK3R, KC_BSPC), KC_NO,     KC_NO,          KC_NO,      KC_NO
+    KC_Q,                   KC_W,            KC_E,                 KC_R,                KC_T,                                                  KC_Y,               KC_U,      KC_I,           KC_O,       KC_P,
+    HOME_A,                 HOME_S,          HOME_D,               HOME_F,              KC_G,                                                  KC_H,               HOME_J,    HOME_K,         HOME_L,     HOME_QUOT,
+    LSFT_T(KC_Z),           LALT_T(KC_X),    KC_C,                 KC_V,                KC_B,                                                  KC_N,               KC_M,      KC_COMM,        KC_DOT,     RSFT_T(KC_SLSH),
+    KC_UNDS,                RESET,           KC_NO,                LGUI_T(KC_TAB),      LT(SYMBOL, KC_SPC), LCTL_T(KC_TAB), LSFT_T(KC_ESC),    LT(NUMPAD, KC_BSPC), KC_NO,     KC_NO,          KC_NO,      KC_NO
   ),
 
   [SYMBOL] = LAYOUT(
-    KC_TILD,                KC_EXLM,        KC_LBRC,                KC_RBRC,            KC_PIPE,                                                KC_HASH,             KC_PAST,     KC_ENT,      KC_NO,      KC_DEL,
-    LT(POK3R, KC_GRV),      KC_EQL,         KC_LPRN,                KC_RPRN,            KC_AT,                                                  KC_LEFT,             KC_DOWN,     KC_UP,       KC_RIGHT,   KC_SCLN,
-    KC_AMPR,                KC_CIRC,         LGUI_T(KC_LCBR),        LCTL_T(KC_RCBR),   KC_DLR,                                                 KC_UNDS,             KC_PMNS,     KC_PPLS,     KC_COLN,    KC_BSLS,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            LT(POK3R, KC_SPC),  LCTL_T(KC_NO),  LSFT_T(KC_ESC),     LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
+    KC_TILD,                KC_EXLM,        KC_LBRC,                KC_RBRC,            KC_PIPE,                                               KC_HASH,             KC_PAST,     KC_ENT,      KC_NO,      KC_DEL,
+    LT(NUMPAD, KC_GRV),     KC_EQL,         KC_LPRN,                KC_RPRN,            KC_AT,                                                 KC_LEFT,             KC_DOWN,     KC_UP,       KC_RIGHT,   KC_SCLN,
+    KC_AMPR,                KC_CIRC,        LGUI_T(KC_LCBR),        LCTL_T(KC_RCBR),    KC_DLR,                                                KC_UNDS,             KC_PMNS,     KC_PPLS,     KC_COLN,    KC_BSLS,
+    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            LT(NUMPAD, KC_SPC),  LCTL_T(KC_TAB),  LSFT_T(KC_ESC),  LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
   ),
-  // spare keys on left shift and left alt here maybe use for less common keys
 
   [SYMBOL_2] = LAYOUT(
-    KC_NO,                  KC_NO,          KC_NO,                  KC_PIPE,             KC_NO,                                                 KC_NO,               KC_HASH,     KC_PAST,     KC_NO,      KC_DEL,
-    KC_NO,                  KC_NO,          KC_LPRN,                KC_AT,               KC_NO,                                                 KC_NO,               KC_CIRC,     KC_DLR,      KC_0,       KC_SCLN,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_NO,               KC_PERC,                                               KC_NO,               KC_UNDS,     KC_NO,       KC_NO,      KC_NO,
-    KC_NO,                  KC_NO,          KC_NO,                  LGUI_T(KC_TAB),      LT(QWERTY_2, KC_SPC),  LCTL_T(KC_NO), LSFT_T(KC_ESC),  LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
+    KC_NO,                  KC_NO,          KC_NO,                  KC_PIPE,            KC_NO,                                                 KC_NO,               KC_HASH,     KC_PAST,     KC_NO,      KC_DEL,
+    KC_NO,                  KC_NO,          KC_LPRN,                KC_AT,              KC_NO,                                                 KC_NO,               KC_CIRC,     KC_DLR,      KC_0,       KC_SCLN,
+    KC_NO,                  KC_NO,          KC_NO,                  KC_NO,              KC_PERC,                                               KC_NO,               KC_UNDS,     KC_NO,       KC_NO,      KC_NO,
+    KC_NO,                  KC_NO,          KC_NO,                  LGUI_T(KC_TAB),     LT(QWERTY_2, KC_SPC),  LCTL_T(KC_TAB), LSFT_T(KC_ESC), LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
   ),
 
-  [POK3R] = LAYOUT(
-    KC_NO,                  KC_NO,          ALL_T(KC_NO),           KC_NO,               KC_NO,                                                 KC_PSLS,             KC_7,        KC_8,        KC_9,       KC_PMNS,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_NO,               KC_NO,                                                 KC_PAST,             KC_4,        KC_5,        KC_6,       KC_PPLS,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_NO,               KC_NO,                                                 KC_PERC,             KC_1,        KC_2,        KC_3,       KC_0,
-    KC_NO,                  KC_NO,          KC_NO,                  LGUI_T(KC_TAB),      LT(QWERTY_2, KC_SPC),  LCTL_T(KC_NO), LSFT_T(KC_ESC),  LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
+  [NUMPAD] = LAYOUT(
+    KC_NO,                  KC_NO,          ALL_T(KC_NO),           KC_NO,              KC_NO,                                                 KC_PSLS,             KC_7,        KC_8,        KC_9,       KC_PMNS,
+    TT(FUNCTION_KEYS),      KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_PAST,             KC_4,        KC_5,        KC_6,       KC_PPLS,
+    KC_NO,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_PERC,             KC_1,        KC_2,        KC_3,       KC_0,
+    KC_NO,                  KC_NO,          KC_NO,                  LGUI_T(KC_TAB),     KC_SPC,  LCTL_T(KC_TAB), LSFT_T(KC_ESC),               KC_BSPC,             KC_NO,       KC_NO,       KC_NO,      KC_NO
   ),
 
   [FUNCTION_KEYS] = LAYOUT(
-    KC_NO,                  KC_NO,          ALL_T(KC_NO),           KC_NO,               KC_NO,                                                 KC_PSLS,             KC_7,        KC_8,        KC_9,       KC_PMNS,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_NO,               KC_NO,                                                 KC_PAST,             KC_4,        KC_5,        KC_6,       KC_PPLS,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_NO,               KC_NO,                                                 KC_PERC,             KC_1,        KC_2,        KC_3,       KC_0,
-    KC_NO,                  KC_NO,          KC_NO,                  LGUI_T(KC_TAB),      LT(QWERTY_2, KC_SPC),  LCTL_T(KC_NO), LSFT_T(KC_ESC),  LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
+    KC_NO,                  KC_NO,          ALL_T(KC_NO),           KC_NO,              KC_NO,                                                 KC_NO,               KC_F7,        KC_F8,        KC_F9,       KC_F10,
+    TG(FUNCTION_KEYS),      KC_MUTE,        KC_VOLD,                KC_VOLU,            KC_NO,                                                 KC_NO,               KC_F4,        KC_F5,        KC_F6,       KC_F11,
+    KC_LSFT,                KC_NO,          KC_NO,                  KC_MPLY,            KC_NO,                                                 KC_NO,               KC_F1,        KC_F2,        KC_F3,       KC_F12,
+    KC_NO,                  KC_NO,          KC_NO,                  LGUI_T(KC_TAB),     KC_NO,  LCTL_T(KC_TAB), LSFT_T(KC_ESC),                KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO
   ),
+
+  // Numeric
+//   [NUMERIC] = LAYOUT(
+//     KC_GRV,     KC_F1,    KC_F2,    KC_F3,    KC_F10,                                                       KC_INS,     KC_PGDN,            KC_HOME,            KC_PGUP,            KC_DEL,
+//     KC_SLCK,    KC_F4,    KC_F5,    KC_F6,    KC_F11,                                                       KC_LEFT,    KC_DOWN,            KC_UP,              KC_RIGHT,           KC_CAPS,
+//     KC_LSFT,    KC_F7,    KC_F8,    KC_F9,    KC_F12,                                                       KC_MPLY,    KC_WH_D,            KC_END,             KC_WH_U,            LSFT_T(KC_MUTE),
+//     KC_TAB,     KC_TRNS,  KC_PSCR,  KC_PAUS,  KC_TRNS,  LCTL_T(KC_SPC),  LT(NUMERIC, KC_ESC),               CG_NORM,    KC_VOLD,            ALL_T(KC_DEL),      LALT_T(KC_VOLU),    CG_SWAP
+//   ),
+
+
 
   // COLEMAK
 //   [COLEMAK] = LAYOUT(
 //     KC_Q,        KC_W,                KC_F,             KC_P,      KC_B,                                                   KC_J,             KC_L,      KC_U,           KC_Y,            KC_QUOT,
 //     KC_A,        KC_R,                KC_S,             KC_T,      KC_G,                                                   KC_M,             KC_N,      KC_E,           KC_I,            KC_O,
 //     LSFT_T(KC_Z),KC_X,                KC_C,             KC_D,      KC_V,                                                   KC_K,             KC_H,      KC_COMM,        KC_DOT,          RSFT_T(KC_SLSH),
-//     KC_TAB,      LALT_T(KC_MINS),     MO(NUM_SPECIAL),  KC_LGUI,   KC_SPC,  LCTL_T(KC_MINS), LT(NUMERIC, KC_ESC),          LSFT_T(KC_BSPC),  MO(POK3R), ALL_T(KC_DEL),  LALT_T(KC_SCLN), KC_ENT
+//     KC_TAB,      LALT_T(KC_MINS),     MO(NUM_SPECIAL),  KC_LGUI,   KC_SPC,  LCTL_T(KC_MINS), LT(NUMERIC, KC_ESC),          LSFT_T(KC_BSPC),  MO(NUMPAD), ALL_T(KC_DEL),  LALT_T(KC_SCLN), KC_ENT
 //   ),
 
   // Gaming
@@ -144,8 +151,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //     KC_TAB,         LALT_T(KC_MINS),   KC_0,      KC_TRNS,  TO(STANDARD),     LCTL_T(KC_MINS),  LT(NUMERIC, KC_ESC),    LSFT_T(KC_BSPC),   ALL_T(KC_DEL),      ALL_T(KC_PIPE),  LALT_T(KC_PDOT),   KC_ENT
 //   ),
 
-  // Pok3r - special characters and numbers
-//   [POK3R] = LAYOUT(
+  // NUMPAD - special characters and numbers
+//   [NUMPAD] = LAYOUT(
 //     KC_TILD,        KC_EXLM,            KC_LBRC,    KC_RBRC,    KC_PIPE,                                                    KC_PSLS,            KC_7,     KC_8,             KC_9,               KC_PMNS,
 //     KC_GRV,         KC_EQL,             KC_LPRN,    KC_RPRN,    KC_DLR,                                                     KC_PAST,            KC_4,     KC_5,             KC_6,               KC_PPLS,
 //     KC_CIRC,        KC_AMPR,            KC_LCBR,    KC_RCBR,    KC_AT,                                                      KC_PERC,            KC_1,     KC_2,             KC_3,               LSFT_T(KC_EQL),
@@ -173,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                     >. key when held long activates mouse mode L4?
  *                     holding SPC triggers 0.1
  *               .-------.-------.-------.      .-------.-------.
- *               |CMD/TAB|L01 SPC|CTR    |      |  ESC  |L1/BSP |
+ *               |CMD/TAB|L01 SPC|CTR/TAB|      |  ESC  |L1/BSP |
  *               '-------'-------'-------'      '-------'-------'
  *                                               double tap ESC to toggle mouse mode
  *                                               long hold ESC for shift mode
@@ -193,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *                     >. key when held long activates mouse mode L4
  *               .-------.-------.-------.      .-------.-------.
- *               |CMD/TAB|L01 SPC|CTR    |      |  ESC  |L1/BSP |
+ *               |CMD/TAB|L01 SPC|CTR/TAB|      |  ESC  |L1/BSP |
  *               '-------'-------'-------'      '-------'-------'
  *                CMD/TAB - replace cmd/tab with mouse layer/tab
  */
@@ -203,7 +210,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
  * |  ~  |  !  |  [  |  ]  |  |  |                      |  #  |  *  | ENT |TO(M)| DEL | TO(M) maybe swap with Backspace
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |L2 ` |L4  =|L11( |L3 ) |  @  |                      |LEFT |DOWN | UP  |RGHT | ;:  | <-- ; key should trigger mouse layer when held
+ * |L2 ` |L4  =|L11( |L3 ) |  @  |                      |LEFT |DOWN | UP  |RGHT |  ;  | <-- ; key should trigger mouse layer when held
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
  * |  &  |  ^  |  {  |  }  |  $  |                      |  _  |  -  |  +  |  :  |SHF\ |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
