@@ -99,12 +99,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
  * |SHF/Z| X/AL| C   | V   | B   |                      | N   | M   | <,  | >.MO|SHF/?|
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *                     >. key when held long activates mouse mode L4
+ *                     >. key when held long activates mouse mode L4?
  *                     holding SPC triggers 0.1
  *               .-------.-------.-------.      .-------.-------.
  *               |CMD/TAB|L01 SPC|CTR    |      |  ESC  |L1/BSP |
  *               '-------'-------'-------'      '-------'-------'
-*                                               double tap ESC to toggle mouse mode
+ *                                               double tap ESC to toggle mouse mode
+ *                                               long hold ESC for mouse mode
  */
 
 /* Layer 0.1: Base keys
