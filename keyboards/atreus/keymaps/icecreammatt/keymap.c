@@ -17,8 +17,6 @@
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
 // entirely and just use numbers.
 
-
-
 // Left-hand home row mods
 #define HOME_A LGUI_T(KC_A)
 #define HOME_S LALT_T(KC_S)
@@ -31,17 +29,14 @@
 #define HOME_L LALT_T(KC_L)
 #define HOME_QUOT RGUI_T(KC_QUOT)
 
-// #define LT_SPC LT(SYMBOL)
-
-
 #define QWERTY 0
 #define QWERTY_2 1
 #define SYMBOL 2
 #define SYMBOL_2 3
-#define FUNCTION_KEYS 4
 #define MOUSE 5
 #define NUMPAD 6
 #define NAV 7
+
 // #define COLEMAK 1
 // #define STANDARD 2
 // #define STDG 3
@@ -50,74 +45,189 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  // QWERTY
-//   [QWERTY] = LAYOUT(
-//     KC_Q,        KC_W,                KC_E,             KC_R,      KC_T,                                                    KC_Y,             KC_U,      KC_I,           KC_O,            KC_P,
-//     KC_A,        KC_S,                KC_D,             KC_F,      KC_G,                                                    KC_H,             KC_J,      KC_K,           KC_L,            KC_QUOT,
-//     LSFT_T(KC_Z),LALT_T(KC_X),        KC_C,             KC_V,      KC_B,                                                    KC_N,             KC_M,      KC_COMM,        KC_DOT,          RSFT_T(KC_SLSH),
-//     KC_TAB,      LALT_T(KC_MINS),     MO(NUM_SPECIAL),  KC_LGUI,   KC_SPC,  LCTL_T(KC_MINS), LT(NUMERIC, KC_ESC),           LSFT_T(KC_BSPC),  MO(NUMPAD), ALL_T(KC_DEL),  LALT_T(KC_SCLN), KC_ENT
-//   ),
-
-  //TODO add mouse layer key
   [QWERTY] = LAYOUT(
     KC_Q,                   KC_W,            KC_E,             KC_R,                    KC_T,                                                  KC_Y,                KC_U,      KC_I,          KC_O,       KC_P,
     KC_A,                   KC_S,            KC_D,             KC_F,                    KC_G,                                                  KC_H,                KC_J,      KC_K,          KC_L,       KC_QUOT,
-    LSFT_T(KC_Z),           LALT_T(KC_X),    KC_C,             KC_V,                    KC_B,                                                  KC_N,                KC_M,      KC_COMM,       KC_DOT,     RSFT_T(KC_SLSH),
-    KC_NO,                  RESET,           KC_NO,            LGUI_T(KC_TAB),          LT(QWERTY_2,KC_SPC), LCTL_T(KC_TAB), LT(MOUSE,KC_ESC), LT(SYMBOL, KC_BSPC), KC_NO,     KC_NO,         KC_NO,      KC_NO
+    LSFT_T(KC_Z),           KC_X,            KC_C,             KC_V,                    KC_B,                                                  KC_N,                KC_M,      KC_COMM,       KC_DOT,     RSFT_T(KC_SLSH),
+    KC_NO,                  RESET,           KC_NO,            KC_LGUI,                 LT(QWERTY_2,KC_SPC), LCTL_T(KC_TAB), LT(MOUSE,KC_ESC), LT(SYMBOL, KC_BSPC), KC_NO,     KC_NO,         KC_NO,      KC_NO
   ),
 
+  // Same as QWERTY but with GUI, ALT/OPT, CTRL, SHFT in home rows
   [QWERTY_2] = LAYOUT(
     KC_Q,                   KC_W,            KC_E,                 KC_R,                KC_T,                                                  KC_Y,                KC_U,      KC_I,           KC_O,       KC_P,
     HOME_A,                 HOME_S,          HOME_D,               HOME_F,              KC_G,                                                  KC_H,                HOME_J,    HOME_K,         HOME_L,     HOME_QUOT,
-    LSFT_T(KC_Z),           LALT_T(KC_X),    KC_C,                 KC_V,                KC_B,                                                  KC_N,                KC_M,      KC_COMM,        KC_DOT,     RSFT_T(KC_SLSH),
-    KC_UNDS,                RESET,           KC_NO,                LGUI_T(KC_TAB),      LT(SYMBOL, KC_SPC), LCTL_T(KC_TAB), LT(NAV, KC_ESC),   LT(NUMPAD, KC_BSPC), KC_NO,     KC_NO,          KC_NO,      KC_NO
+    LSFT_T(KC_Z),           KC_X,            KC_C,                 KC_V,                KC_B,                                                  KC_N,                KC_M,      KC_COMM,        KC_DOT,     RSFT_T(KC_SLSH),
+    KC_UNDS,                RESET,           KC_NO,                KC_LGUI,             LT(SYMBOL, KC_SPC), LCTL_T(KC_TAB), LT(NAV, KC_ESC),   LT(NUMPAD, KC_BSPC), KC_NO,     KC_NO,          KC_NO,      KC_NO
   ),
 
   [SYMBOL] = LAYOUT(
     KC_TILD,                KC_EXLM,        KC_LBRC,                KC_RBRC,            KC_PIPE,                                               KC_HASH,             KC_PAST,     KC_ENT,      KC_NO,      KC_DEL,
     LT(NUMPAD, KC_GRV),     KC_EQL,         KC_LPRN,                KC_RPRN,            KC_AT,                                                 KC_LEFT,             KC_DOWN,     KC_UP,       KC_RIGHT,   KC_SCLN,
     KC_AMPR,                KC_CIRC,        KC_LCBR,                KC_RCBR,            KC_DLR,                                                KC_UNDS,             KC_PMNS,     KC_PPLS,     KC_COLN,    KC_BSLS,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            LT(NUMPAD, KC_SPC),  LCTL_T(KC_TAB),  LSFT_T(KC_ESC),  LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
-  ),
-
-  [SYMBOL_2] = LAYOUT(
-    KC_NO,                  KC_NO,          KC_NO,                  KC_PIPE,            KC_NO,                                                 KC_NO,               KC_HASH,     KC_PAST,     KC_NO,      KC_DEL,
-    KC_NO,                  KC_NO,          KC_LPRN,                KC_AT,              KC_NO,                                                 KC_NO,               KC_CIRC,     KC_DLR,      KC_0,       KC_SCLN,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_NO,              KC_PERC,                                               KC_NO,               KC_UNDS,     KC_NO,       KC_NO,      KC_NO,
-    KC_NO,                  KC_NO,          KC_NO,                  LGUI_T(KC_TAB),     LT(QWERTY_2, KC_SPC),  LCTL_T(KC_TAB), LSFT_T(KC_ESC), LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
-  ),
-
-  [NUMPAD] = LAYOUT(
-    TT(FUNCTION_KEYS),      KC_NO,          ALL_T(KC_NO),           KC_NO,              KC_NO,                                                 KC_PSLS,             KC_7,        KC_8,        KC_9,       KC_PMNS,
-    KC_TAB,                 KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_PAST,             KC_4,        KC_5,        KC_6,       KC_PPLS,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_PERC,             KC_1,        KC_2,        KC_3,       KC_0,
-    KC_NO,                  KC_NO,          KC_NO,                  LGUI_T(KC_TAB),     KC_SPC,  LCTL_T(KC_TAB), LSFT_T(KC_ESC),               KC_BSPC,             KC_NO,       KC_NO,       KC_NO,      KC_NO
-  ),
-
-  [FUNCTION_KEYS] = LAYOUT(
-    TG(FUNCTION_KEYS),      KC_NO,          ALL_T(KC_NO),           KC_NO,              KC_NO,                                                 KC_NO,               KC_F7,        KC_F8,        KC_F9,       KC_F10,
-    KC_TAB,                 KC_MUTE,        KC_VOLD,                KC_VOLU,            KC_NO,                                                 KC_NO,               KC_F4,        KC_F5,        KC_F6,       KC_F11,
-    KC_LSFT,                KC_NO,          KC_NO,                  KC_MPLY,            KC_NO,                                                 KC_NO,               KC_F1,        KC_F2,        KC_F3,       KC_F12,
-    KC_NO,                  KC_NO,          KC_NO,                  LGUI_T(KC_TAB),     KC_NO,  LCTL_T(KC_TAB), LSFT_T(KC_ESC),                KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO
-  ),
-
-  [MOUSE] = LAYOUT(
-    RESET,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_NO,               KC_PGDN,      KC_PGUP,      KC_NO,       KC_NO,
-    KC_TAB,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                KC_NO,               KC_WH_D,      KC_WH_U,      TO(MOUSE),   TO(QWERTY),
-    KC_NO,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_RSFT,
-    KC_NO,                  KC_NO,          KC_NO,                  LGUI_T(KC_TAB),     LT(NAV, KC_NO),  LCTL_T(KC_TAB), LSFT_T(KC_ESC),       KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO
+    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            LT(NUMPAD, KC_SPC),  LCTL_T(KC_TAB),  KC_NO,           LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
   ),
 
  // switch keyboard between colmak and qwerty and gaming layer / possibly emacs nav
   [NAV] = LAYOUT(
     KC_NO,                  KC_NO,          KC_NO,                  KC_PIPE,            KC_NO,                                                 KC_NO,               KC_HASH,      KC_PAST,      KC_NO,       KC_NO,
-    KC_TAB,                 KC_NO,          KC_NO,                  KC_AT,              KC_NO,                                                 KC_NO,               KC_CIRC,      KC_DLR,       KC_0,        KC_COLN,
+    KC_NO,                  KC_NO,          KC_NO,                  KC_AT,              KC_NO,                                                 KC_NO,               KC_CIRC,      KC_DLR,       KC_0,        KC_COLN,
     KC_NO,                  KC_NO,          KC_NO,                  KC_PERC,            KC_NO,                                                 KC_NO,               KC_UNDS,      KC_NO,        KC_NO,       KC_RSFT,
-    KC_NO,                  KC_NO,          KC_NO,                  LGUI_T(KC_TAB),     KC_NO,  LCTL_T(KC_TAB), LSFT_T(KC_NO),                 KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO
+    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            KC_NO,  LCTL_T(KC_TAB), LSFT_T(KC_NO),                 KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO
   ),
 
-//   [MOUSE] = LAYOUT(
-//     RESET,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO,
+  [NUMPAD] = LAYOUT(
+    KC_NO,                  KC_F7,          ALL_T(KC_F8),           KC_F9,              KC_F10,                                                 KC_PSLS,             KC_7,        KC_8,        KC_9,       KC_PMNS,
+    KC_NO,                  KC_F4,          KC_F5,                  KC_F6,              KC_F11,                                                 KC_PAST,             KC_4,        KC_5,        KC_6,       KC_PPLS,
+    KC_NO,                  KC_F1,          KC_F2,                  KC_F3,              KC_F12,                                                 KC_PERC,             KC_1,        KC_2,        KC_3,       KC_0,
+    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            KC_NO,   LCTL_T(KC_TAB), LSFT_T(KC_ESC),                KC_NO,               KC_NO,       KC_NO,       KC_NO,      KC_NO
+  ),
+
+  [MOUSE] = LAYOUT(
+    RESET,                  KC_NO,          KC_NO,                  KC_NO,              KC_PAUS,                                               KC_WH_L,             KC_BTN4,      KC_BTN5,      KC_WH_R,     KC_NO,
+    KC_TAB,                 KC_MUTE,        KC_VOLD,                KC_VOLU,            KC_NO,                                                 KC_HOME,             KC_WH_D,      KC_WH_U,      KC_END,      KC_PGUP,
+    KC_NO,                  KC_INS,         KC_NO,                  KC_MPLY,            KC_NO,                                                 KC_NO,               KC_BTN1,      KC_BTN2,      KC_BTN3,     RSFT_T(KC_PGDN),
+    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            LT(NAV, KC_SPC),  LCTL_T(KC_TAB), LSFT_T(KC_ESC),      KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO
+  ),
+
+};
+
+// Setup JJ as ESC
+// Setup JK as ESC
+// SETUP CG NORM/SWAP
+// figure out how to do cmd 1 or ctrl 1 with numbers doesn't seem to be working
+// figure out how to do keys like option 8 to get degrees symbol might be working on mac already but needs confirm
+// figure out | symbol on / key with shift on layer
+// reduce taps to toggle F layer
+// add double tap ESC to toggle mouse mode
+
+// enter key
+
+/* QWERTY: Base keys
+ *
+ * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
+ * | Q   | W   | E   | R   | T   |                      | Y   | U   | I   | O   | P   |
+ * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
+ * | A   | S   | D   | F   | G   |                      | H   | J   | K   | L   | ' " | <-- hold ' to trigger mouse layer
+ * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
+ * |SHF/Z| X/AL| C   | V   | B   |                      | N   | M   | <,  | >.MO|SHF/?|
+ * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
+ *                     >. key when held long activates mouse mode L4?
+ *                     holding SPC triggers 0.1
+ *               .-------.-------.-------.      .-------.-------.
+ *               | LGUI  |L01 SPC|CTR/TAB|      |  ESC  |L1/BSP |
+ *               '-------'-------'-------'      '-------'-------'
+ *                                               double tap ESC to toggle mouse mode
+ *                                               long hold ESC for shift mode
+ *
+ *  single tap ctr sets num mode for one press?
+ *
+ */
+
+/* QWERTY_2: Base keys
+ *
+ * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
+ * | Q   | W   | E   | R   | T   |                      | Y   | U   | I   | O   | P   |
+ * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
+ * |(G) A|(A) S|(C) D|(S) F| G   |                      | H   |(S)J |(C)K |(A)L |(G)'"|
+ * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
+ * |SHF/Z| X/AL| C   | V   | B   |                      | N   | M   | <,  | >.MO|SHF/?|
+ * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
+ *                     >. key when held long activates mouse mode L4
+ *               .-------.-------.-------.      .-------.-------.
+ *               | LGUI  |L01 SPC|CTR/TAB|      |  ESC  |L1/BSP |
+ *               '-------'-------'-------'      '-------'-------'
+ *                CMD/TAB - replace cmd/tab with mouse layer/tab
+ */
+
+/* SYMBOL: Symbols
+ *
+ * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
+ * |  ~  |  !  |  [  |  ]  |  |  |                      |  #  |  *  | ENT |TO(M)| DEL | TO(M) maybe swap with Backspace
+ * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
+ * |L2 ` |L4  =|L11( |L3 ) |  @  |                      |LEFT |DOWN | UP  |RGHT |  ;  | <-- ; key should trigger mouse layer when held
+ * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
+ * |  &  |  ^  |  {  |  }  |  $  |                      |  _  |  -  |  +  |  :  |SHF\ |
+ * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
+ *                      ` key when held temp does layer2,1 (Fkeys)
+ *                      = key when held temp does layer1,1
+ *                      ( key when held temp does layer4(mouse)
+ *                      ; key when held temp does layer4(mouse)
+ *                      # key when tapped layer moves to layer4(mouse)
+ *                      ) key when held temp does numpad
+ * left shift is page down when tapped
+ * left alt is page up when tapped
+ * home is ctrl up
+ * end is ctrl down
+ *               .-------.-------.-------.      .-------.-------.
+ *               | LGUI  |L3/SPC |CTR    |      |  ESC  |(hold) |
+ *               '-------'-------'-------'      '-------'-------'
+ */
+
+/* NAV: Symbols Shifted
+ * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
+ * |     |     |     |  |  |     |                      |     |  #  |  *  |     | DEL |
+ * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
+ * |     |     |     |  @  |     |                      |     |  ^  |  $  |  0  |  :  |
+ * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
+ * |     |     |     |  %  |     |                      |     |  _  |     |     |     |
+ * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
+ *               .-------.-------.-------.      .-------.-------.
+ *               |       | hold  |       |      | hold  |       |
+ *               '-------'-------'-------'      '-------'-------'
+ */
+
+/* NUMPAD: Numpad/FKeys
+ * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
+ * |     | F7  | F8  | F9  | F10 |                      |  /  |  7  |  8  |  9  |  -  |
+ * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
+ * |     | F4  | F5  | F6  | F11 |                      |  *  |  4  |  5  |  6  |  +  |
+ * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
+ * |     | F1  | F2  | F3  | F12 |                      |  %  |  1  |  2  |  3  |  0  |
+ * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
+ *               F8 bound to long press for ALL_T
+ *               .-------.-------.-------.      .-------.-------.
+ *               | LGUI  |  SPC  |CTR    |      |  ESC  |L1/BSP |
+ *               '-----------------------'      '-------'-------'
+ */
+
+/* MOUSE: Layer move and mouse mode
+ * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
+ * |RESET|     |     |     |PAUSE|                      |WH_L | M4  | M5  |WH_R |     |
+ * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
+ * | TAB |MUTE |VOL+ |VOL- |     |                      |HOME |WH_D |WH_U | END |PGUP |
+ * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
+ * |     | INS |     |PLAY |     |                      |     | M1  | M2  | M3  |PGDN |
+ * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
+ *              double tap WH D/U for left and right scroll
+ *              double tap PGDN PGUP for home and end
+ *               .-------.-------.-------.      .-------.-------.
+ *               | LGUI  |  SPC  |CTR/TAB|      |  ESC  |       |
+ *               '-----------------------'      '-------'-------'
+ *                                               DOUBLE TAP ESC to leave mouse mode? maybe just single click?
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   [BLANK] = LAYOUT(
+//     KC_NO,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO,
 //     KC_NO,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO,
 //     KC_NO,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO,
 //     KC_NO,                  KC_NO,          KC_NO,                  LGUI_T(KC_TAB),     KC_NO,  LCTL_T(KC_TAB), LSFT_T(KC_ESC),                KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO
@@ -130,8 +240,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //     KC_LSFT,    KC_F7,    KC_F8,    KC_F9,    KC_F12,                                                       KC_MPLY,    KC_WH_D,            KC_END,             KC_WH_U,            LSFT_T(KC_MUTE),
 //     KC_TAB,     KC_TRNS,  KC_PSCR,  KC_PAUS,  KC_TRNS,  LCTL_T(KC_SPC),  LT(NUMERIC, KC_ESC),               CG_NORM,    KC_VOLD,            ALL_T(KC_DEL),      LALT_T(KC_VOLU),    CG_SWAP
 //   ),
-
-
 
   // COLEMAK
 //   [COLEMAK] = LAYOUT(
@@ -182,141 +290,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //     KC_CIRC,        KC_AMPR,            KC_LCBR,    KC_RCBR,    KC_AT,                                                      KC_PERC,            KC_1,     KC_2,             KC_3,               LSFT_T(KC_EQL),
 //     KC_TAB,         LALT_T(KC_UNDS),    KC_HASH,    KC_LGUI,    KC_SPC,   LCTL_T(KC_MINS),  LT(NUMERIC, KC_ESC),            LSFT_T(KC_BSPC),    KC_TRNS,  ALL_T(KC_0),      LALT_T(KC_PDOT),    KC_ENT
 //   ),
-
-
-};
-
-// Setup JJ as ESC
-// Setup JK as ESC
-// SETUP CG NORM/SWAP
-
-// enter key
-
-/* Layer 0: Base keys
- *
- * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * | Q   | W   | E   | R   | T   |                      | Y   | U   | I   | O   | P   |
- * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * | A   | S   | D   | F   | G   |                      | H   | J   | K   | L   | ' " | <-- hold ' to trigger mouse layer
- * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |SHF/Z| X/AL| C   | V   | B   |                      | N   | M   | <,  | >.MO|SHF/?|
- * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *                     >. key when held long activates mouse mode L4?
- *                     holding SPC triggers 0.1
- *               .-------.-------.-------.      .-------.-------.
- *               |CMD/TAB|L01 SPC|CTR/TAB|      |  ESC  |L1/BSP |
- *               '-------'-------'-------'      '-------'-------'
- *                                               double tap ESC to toggle mouse mode
- *                                               long hold ESC for shift mode
- *
- *  single tap ctr sets num mode for one press?
- *
- */
-
-/* Layer 0.1: QWERTY_2 Base keys
- *
- * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * | Q   | W   | E   | R   | T   |                      | Y   | U   | I   | O   | P   |
- * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |(G) A|(A) S|(C) D|(S) F| G   |                      | H   |(S)J |(C)K |(A)L |(G)'"|
- * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |SHF/Z| X/AL| C   | V   | B   |                      | N   | M   | <,  | >.MO|SHF/?|
- * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *                     >. key when held long activates mouse mode L4
- *               .-------.-------.-------.      .-------.-------.
- *               |CMD/TAB|L01 SPC|CTR/TAB|      |  ESC  |L1/BSP |
- *               '-------'-------'-------'      '-------'-------'
- *                CMD/TAB - replace cmd/tab with mouse layer/tab
- */
-
-/* Layer 1: Symbols
- *
- * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |  ~  |  !  |  [  |  ]  |  |  |                      |  #  |  *  | ENT |TO(M)| DEL | TO(M) maybe swap with Backspace
- * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |L2 ` |L4  =|L11( |L3 ) |  @  |                      |LEFT |DOWN | UP  |RGHT |  ;  | <-- ; key should trigger mouse layer when held
- * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |  &  |  ^  |  {  |  }  |  $  |                      |  _  |  -  |  +  |  :  |SHF\ |
- * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *                      ` key when held temp does layer2,1 (Fkeys)
- *                      = key when held temp does layer1,1
- *                      ( key when held temp does layer4(mouse)
- *                      ; key when held temp does layer4(mouse)
- *                      # key when tapped layer moves to layer4(mouse)
- *                      ) key when held temp does numpad
- * left shift is page down when tapped
- * left alt is page up when tapped
- * home is ctrl up
- * end is ctrl down
- *               .-------.-------.-------.      .-------.-------.
- *               |CMD/TAB|L3/SPC |CTR    |      |  ESC  |(hold) |
- *               '-------'-------'-------'      '-------'-------'
- */
-
-/* Layer 1.1: Symbols Shifted - accessed by shift key on layer 1
- * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |     |     |     |  |  |     |                      |     |  #  |  *  |     | DEL |
- * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |     |     |hold |  @  |     |                      |     |  ^  |  $  |  0  |  :  |
- * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |     |     |     |  %  |     |                      |     |  _  |     |     |     |
- * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *               .-------.-------.-------.      .-------.-------.
- *               |CMD/ESC|L2/SPC |CTR    |      |  ESC  |(hold) |BSP
- *               '-------'-------'-------'      '-------'-------'
- */
-
-/* Layer 2: Function keys
- * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |     |     |ALL_T|     |     |                      |     | F7  | F8  | F9  | F10 |
- * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |hold |PLAY |VOL- |VOL+ |     |                      |     | F4  | F5  | F6  | F11 |
- * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * | SHF | ALT | CMD |MUTE |     |                      |     | F1  | F2  | F3  | F12 |
- * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *               .-------.-------.-------.      .-------.-------.
- *               |       |       |       |      |  ESC  |  DEL  |
- *               '-----------------------'      '-------'-------'
- */
-
-/* Layer 3: Calc/Numpad
- * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |     |     |ALL_T|     |     |                      |  /  |  7  |  8  |  9  |  -  |
- * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |T(L0)|  0  |  .  |hold |     |                      |  *  |  4  |  5  |  6  |  +  |
- * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * | SHF | ALT |     |     |     |                      |  %  |  1  |  2  |  3  |  0  |
- * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *               .-------.-------.-------.      .-------.-------.
- *               |CMD/TAB|  SPC  |CTR    |      |  ESC  |L1/BSP |
- *               '-----------------------'      '-------'-------'
- */
-
-/* Layer 4: Layer move and mouse mode
- * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |     |     |     |HOME |PAUSE|                      |M4   |PGDN |PGUP |     |     |
- * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |QWERT|COLEM| hold|GAME1|GAME2|                      |WH_L | M1  | M2  |WH_R |     |
- * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |     |     |     |END  |     |                      |M5   |WH_D |WH_U |hold | M3  |
- * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *               .-------.-------.-------.      .-------.-------.
- *               |CMD/TAB|  SPC  |CTR/TAB|      |  ESC  |L1/BSP |
- *               '-----------------------'      '-------'-------'
- */
-
-/* Layer 4.1: Layer move and mouse mode
- * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |RESET|     |     |HOME |PAUSE|                      | M4  |PGDN |PGUP |HOME |     |
- * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |QWERT|COLEM| hold|GAME1|GAME2|                      | SPC | M1  | M2  | M3  |held |< held also as mouse4 or whatever back nav for browser is
- * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * | SHF | ALT |     |END  |     |                      | M5  |WH_D |WH_U | END | SHF |
- * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *              double tap WH D/U for left and right scroll
- *              double tap PGDN PGUP for home and end
- *               .-------.-------.-------.      .-------.-------.
- *               |CMD/TAB|  SPC  |CTR/TAB|      |  ESC  | TO(0) |
- *               '-----------------------'      '-------'-------'
- *                                               DOUBLE TAP ESC to leave mouse mode? maybe just single click?
- */
