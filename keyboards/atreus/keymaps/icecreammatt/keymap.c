@@ -57,7 +57,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Q,                   KC_W,            KC_E,                 KC_R,                KC_T,                                                  KC_Y,                KC_U,      KC_I,           KC_O,       KC_P,
     HOME_A,                 HOME_S,          HOME_D,               HOME_F,              KC_G,                                                  KC_H,                HOME_J,    HOME_K,         HOME_L,     HOME_QUOT,
     LSFT_T(KC_Z),           KC_X,            KC_C,                 KC_V,                KC_B,                                                  KC_N,                KC_M,      KC_COMM,        KC_DOT,     RSFT_T(KC_SLSH),
-    KC_UNDS,                RESET,           KC_NO,                KC_LGUI,             LT(SYMBOL, KC_SPC), LCTL_T(KC_TAB),   LT(NAV, KC_ESC), LT(NUMPAD, KC_BSPC), KC_NO,     KC_NO,          KC_NO,      KC_NO
+    KC_NO,                  RESET,           KC_NO,                KC_LGUI,             LT(SYMBOL, KC_SPC), LCTL_T(KC_TAB),   LT(NAV, KC_ESC), LT(NUMPAD, KC_BSPC), KC_NO,     KC_NO,          KC_NO,      KC_NO
+  ),
+
+  [NUMPAD] = LAYOUT(
+    KC_NO,                  KC_F7,          ALL_T(KC_F8),           KC_F9,              KC_F10,                                                 KC_PSLS,             KC_7,        KC_8,        KC_9,       KC_PMNS,
+    KC_NO,                  KC_F4,          KC_F5,                  KC_F6,              KC_F11,                                                 KC_PAST,             KC_4,        KC_5,        KC_6,       KC_PPLS,
+    KC_NO,                  KC_F1,          KC_F2,                  KC_F3,              KC_F12,                                                 KC_PERC,             KC_1,        KC_2,        KC_3,       KC_0,
+    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            KC_NO,   LCTL_T(KC_TAB),               LSFT_T(KC_ESC),  KC_NO,               KC_NO,       KC_NO,       KC_NO,      KC_NO
   ),
 
   [SYMBOL] = LAYOUT(
@@ -67,19 +74,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            LT(NUMPAD, KC_SPC),  LCTL_T(KC_TAB),   KC_NO,          LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
   ),
 
- // switch keyboard between colmak and qwerty and gaming layer / possibly emacs nav
+  // switch keyboard between colmak and qwerty and gaming layer / possibly emacs nav
   [NAV] = LAYOUT(
     KC_NO,                  KC_NO,          KC_NO,                  KC_PIPE,            KC_NO,                                                 KC_NO,               KC_HASH,      KC_PAST,      KC_NO,       KC_NO,
     KC_NO,                  KC_NO,          KC_NO,                  KC_AT,              KC_NO,                                                 KC_NO,               KC_CIRC,      KC_DLR,       KC_0,        KC_COLN,
     KC_NO,                  KC_NO,          KC_NO,                  KC_PERC,            KC_NO,                                                 KC_NO,               KC_UNDS,      KC_NO,        KC_NO,       KC_RSFT,
     KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            KC_NO,  LCTL_T(KC_TAB),                LSFT_T(KC_NO),  KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO
-  ),
-
-  [NUMPAD] = LAYOUT(
-    KC_NO,                  KC_F7,          ALL_T(KC_F8),           KC_F9,              KC_F10,                                                 KC_PSLS,             KC_7,        KC_8,        KC_9,       KC_PMNS,
-    KC_NO,                  KC_F4,          KC_F5,                  KC_F6,              KC_F11,                                                 KC_PAST,             KC_4,        KC_5,        KC_6,       KC_PPLS,
-    KC_NO,                  KC_F1,          KC_F2,                  KC_F3,              KC_F12,                                                 KC_PERC,             KC_1,        KC_2,        KC_3,       KC_0,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            KC_NO,   LCTL_T(KC_TAB),               LSFT_T(KC_ESC),  KC_NO,               KC_NO,       KC_NO,       KC_NO,      KC_NO
   ),
 
   [MOUSE] = LAYOUT(
@@ -94,7 +94,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Setup JJ as ESC
 // Setup JK as ESC
 // SETUP CG NORM/SWAP
-// figure out how to do cmd 1 or ctrl 1 with numbers doesn't seem to be working
 // figure out how to do keys like option 8 to get degrees symbol might be working on mac already but needs confirm
 // figure out | symbol on / key with shift on layer
 // reduce taps to toggle F layer
@@ -139,6 +138,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                CMD/TAB - replace cmd/tab with mouse layer/tab
  */
 
+/* NUMPAD: Numpad/FKeys
+ * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
+ * |     | F7  | F8  | F9  | F10 |                      |  /  |  7  |  8  |  9  |  -  |
+ * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
+ * |     | F4  | F5  | F6  | F11 |                      |  *  |  4  |  5  |  6  |  +  |
+ * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
+ * |     | F1  | F2  | F3  | F12 |                      |  %  |  1  |  2  |  3  |  0  |
+ * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
+ *               F8 bound to long press for ALL_T
+ *               .-------.-------.-------.      .-------.-------.
+ *               | LGUI  |  SPC  |CTR    |      |  ESC  |L1/BSP |
+ *               '-----------------------'      '-------'-------'
+ */
+
 /* SYMBOL: Symbols
  *
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
@@ -169,25 +182,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
  * |     |     |     |  @  |     |                      |     |  ^  |  $  |  0  |  :  |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |     |     |     |  %  |     |                      |     |  _  |     |     |     |
+ * |     |     |     |  %  |     |                      |     |  _  |  &  |     |     |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *               .-------.-------.-------.      .-------.-------.
  *               |       | hold  |       |      | hold  |       |
  *               '-------'-------'-------'      '-------'-------'
- */
-
-/* NUMPAD: Numpad/FKeys
- * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |     | F7  | F8  | F9  | F10 |                      |  /  |  7  |  8  |  9  |  -  |
- * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |     | F4  | F5  | F6  | F11 |                      |  *  |  4  |  5  |  6  |  +  |
- * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |     | F1  | F2  | F3  | F12 |                      |  %  |  1  |  2  |  3  |  0  |
- * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *               F8 bound to long press for ALL_T
- *               .-------.-------.-------.      .-------.-------.
- *               | LGUI  |  SPC  |CTR    |      |  ESC  |L1/BSP |
- *               '-----------------------'      '-------'-------'
  */
 
 /* MOUSE: Layer move and mouse mode
