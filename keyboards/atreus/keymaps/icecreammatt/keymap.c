@@ -112,8 +112,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [SYMBOL] = LAYOUT(
     KC_TILD,                KC_EXLM,        KC_LBRC,                KC_RBRC,            KC_PIPE,                                               KC_HASH,             KC_PAST,     KC_ENT,      KC_NO,      KC_DEL,
     KC_GRV,                 KC_EQL,         KC_LPRN,                KC_RPRN,            KC_AT,                                                 KC_LEFT,             KC_DOWN,     KC_UP,       KC_RIGHT,   TD(CT_CLN),
-    KC_AMPR,                KC_CIRC,        KC_LCBR,                KC_RCBR,            KC_DLR,                                                KC_UNDS,             KC_PMNS,     KC_PPLS,     KC_SCLN,    KC_BSLS,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            LT(NUMPAD, KC_SPC),  LCTL_T(KC_TAB),   KC_NO,          LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
+    KC_AMPR,                KC_CIRC,        KC_LCBR,                KC_RCBR,            KC_DLR,                                                KC_UNDS,             KC_MINS,     KC_PPLS,     KC_SCLN,    KC_BSLS,
+    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            LT(NUMPAD, KC_SPC),  LCTL_T(KC_TAB),LT(NUMPAD, KC_NO), LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
   ),
 
   // switch keyboard between colmak and qwerty and gaming layer / possibly emacs nav
