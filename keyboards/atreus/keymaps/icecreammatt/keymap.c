@@ -119,16 +119,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // switch keyboard between colmak and qwerty and gaming layer / possibly emacs nav
   [NAV] = LAYOUT(
     KC_NO,                  KC_NO,          KC_NO,                  KC_PIPE,            KC_NO,                                                 KC_NO,               KC_HASH,      KC_PAST,      KC_NO,       KC_NO,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_AT,              KC_NO,                                                 KC_NO,               KC_CIRC,      KC_DLR,       KC_0,        KC_COLN,
+    KC_NO,                  KC_NO,          KC_NO,                  KC_AT,              KC_NO,                                                 KC_NO,               KC_CIRC,      KC_DLR,       KC_0,        KC_SCLN,
     KC_NO,                  KC_NO,          KC_NO,                  KC_PERC,            KC_NO,                                                 KC_NO,               KC_UNDS,      KC_NO,        KC_NO,       KC_RSFT,
     KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            KC_NO,  LCTL_T(KC_TAB),                LSFT_T(KC_NO),  KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO
   ),
 
   [MOUSE] = LAYOUT(
-    RESET,                  KC_NO,          KC_NO,                  KC_NO,              KC_PAUS,                                               KC_WH_L,             KC_BTN4,      KC_BTN5,      KC_WH_R,     KC_NO,
-    KC_TAB,                 KC_MUTE,        KC_VOLD,                KC_VOLU,            KC_NO,                                                 KC_HOME,             KC_WH_D,      KC_WH_U,      KC_END,      KC_PGUP,
-    KC_NO,                  KC_INS,         KC_NO,                  KC_MPLY,            KC_NO,                                                 KC_NO,               KC_BTN1,      KC_BTN2,      KC_BTN3,     RSFT_T(KC_PGDN),
-    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            LT(NAV, KC_SPC),  LCTL_T(KC_TAB),      LSFT_T(KC_ESC), LT(SYMBOL, KC_BSPC), KC_NO,        KC_NO,        KC_NO,       KC_NO
+    RESET,                  KC_MUTE,        KC_VOLD,                KC_VOLU,            KC_MPLY,                                               KC_NO,               KC_BTN4,      KC_BTN5,      KC_NO,       KC_NO,
+    KC_GRV,                 S(KC_GRV),      S(KC_TAB),              KC_TAB,             KC_NO,                                                 KC_HOME,             KC_WH_D,      KC_WH_U,      KC_END,      KC_PGDN,
+    KC_LSFT,                KC_PAUSE,       KC_PGDN,                KC_PGUP,            KC_INS,                                                KC_NO,               KC_BTN1,      KC_BTN2,      KC_BTN3,     RSFT_T(KC_PGUP),
+    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            LT(NAV, KC_SPC),  LCTL_T(KC_TAB),      TD(ESC_MOUSE),  LT(NUMPAD, KC_BSPC), KC_NO,        KC_NO,        KC_NO,       KC_NO
   ),
 
 };
