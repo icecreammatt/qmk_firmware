@@ -73,17 +73,13 @@ td_state_t cur_dance(qk_tap_dance_state_t *state);
 
 #define QWERTY 0
 #define QWERTY_2 1
-#define SYMBOL 2
-#define SYMBOL_2 3
+#define COLEMAK 2
+#define SYMBOL 3
+#define SYMBOL_2 4
 #define MOUSE 5
 #define NUMPAD 6
 #define NAV 7
 
-// #define COLEMAK 1
-// #define STANDARD 2
-// #define STDG 3
-// #define NUMERIC 4
-// #define NUM_SPECIAL 5
 // https://docs.qmk.fm/#/feature_tap_dance?id=simple-example
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -92,6 +88,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_A,                   KC_S,            KC_D,             KC_F,                    KC_G,                                                  KC_H,                KC_J,      KC_K,          KC_L,       KC_QUOT,
     LSFT_T(KC_Z),           KC_X,            KC_C,             KC_V,                    KC_B,                                                  KC_N,                KC_M,      KC_COMM,       KC_DOT,     RSFT_T(KC_SLSH),
     KC_NO,                  RESET,           KC_NO,            TD(LGUI_ALT),            LT(QWERTY_2,KC_SPC), TD(LCTL_NAV), TD(ESC_MOUSE),      LT(SYMBOL, KC_BSPC), KC_NO,     KC_NO,         KC_NO,      KC_NO
+  ),
+
+  // COLEMAK
+  [COLEMAK] = LAYOUT(
+    KC_Q,               KC_W,                KC_F,             KC_P,                    KC_B,                                                   KC_J,               KC_L,      KC_U,           KC_Y,            KC_QUOT,
+    KC_A,               KC_R,                KC_S,             KC_T,                    KC_G,                                                   KC_M,               KC_N,      KC_E,           KC_I,            KC_O,
+    LSFT_T(KC_Z),       KC_X,                KC_C,             KC_D,                    KC_V,                                                   KC_K,               KC_H,      KC_COMM,        KC_DOT,          RSFT_T(KC_SLSH),
+    KC_NO,              RESET,               KC_NO,            TD(LGUI_ALT),            LT(QWERTY_2,KC_SPC), TD(LCTL_NAV), TD(ESC_MOUSE),      LT(SYMBOL, KC_BSPC), KC_NO,     KC_NO,          KC_NO,           KC_NO
   ),
 
   // Same as QWERTY but with GUI, ALT/OPT, CTRL, SHFT in home rows
@@ -116,10 +120,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            LT(NUMPAD, KC_SPC),  LCTL_T(KC_TAB),LT(NUMPAD, KC_NO), LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
   ),
 
-  // switch keyboard between colmak and qwerty and gaming layer / possibly emacs nav
   [NAV] = LAYOUT(
     KC_NO,                  KC_NO,          KC_NO,                  KC_PIPE,            KC_NO,                                                 KC_NO,               KC_HASH,      KC_PAST,      KC_NO,       KC_NO,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_AT,              KC_NO,                                                 KC_NO,               KC_CIRC,      KC_DLR,       KC_0,        KC_SCLN,
+    KC_NO,                  TO(COLEMAK),    TO(QWERTY),             KC_AT,              KC_NO,                                                 KC_NO,               KC_CIRC,      KC_DLR,       KC_0,        KC_SCLN,
     KC_NO,                  KC_NO,          KC_NO,                  KC_PERC,            KC_NO,                                                 KC_NO,               KC_UNDS,      KC_NO,        KC_NO,       KC_RSFT,
     KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            KC_NO,  LCTL_T(KC_TAB),                LSFT_T(KC_NO),  KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO
   ),
@@ -133,16 +136,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-// Setup JJ as ESC
-// Setup JK as ESC
-// Add back Colemak
 // Add back gaming modes
 // Alt F4
-// figure out how to do keys like option 8 to get degrees symbol might be working on mac already but needs confirm
-// add double tap ESC to toggle mouse mode
-// add double tap to backspace to work as enter/return
-
-// enter key
 
 /* QWERTY: Base keys
  *
@@ -278,44 +273,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //   [BLANK] = LAYOUT(
 //     KC_NO,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO,
 //     KC_NO,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO,
 //     KC_NO,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO,
 //     KC_NO,                  KC_NO,          KC_NO,                  LGUI_T(KC_TAB),     KC_NO,  LCTL_T(KC_TAB), LSFT_T(KC_ESC),                KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO
-//   ),
-
-  // Numeric
-//   [NUMERIC] = LAYOUT(
-//     KC_GRV,     KC_F1,    KC_F2,    KC_F3,    KC_F10,                                                       KC_INS,     KC_PGDN,            KC_HOME,            KC_PGUP,            KC_DEL,
-//     KC_SLCK,    KC_F4,    KC_F5,    KC_F6,    KC_F11,                                                       KC_LEFT,    KC_DOWN,            KC_UP,              KC_RIGHT,           KC_CAPS,
-//     KC_LSFT,    KC_F7,    KC_F8,    KC_F9,    KC_F12,                                                       KC_MPLY,    KC_WH_D,            KC_END,             KC_WH_U,            LSFT_T(KC_MUTE),
-//     KC_TAB,     KC_TRNS,  KC_PSCR,  KC_PAUS,  KC_TRNS,  LCTL_T(KC_SPC),  LT(NUMERIC, KC_ESC),               CG_NORM,    KC_VOLD,            ALL_T(KC_DEL),      LALT_T(KC_VOLU),    CG_SWAP
-//   ),
-
-  // COLEMAK
-//   [COLEMAK] = LAYOUT(
-//     KC_Q,        KC_W,                KC_F,             KC_P,      KC_B,                                                   KC_J,             KC_L,      KC_U,           KC_Y,            KC_QUOT,
-//     KC_A,        KC_R,                KC_S,             KC_T,      KC_G,                                                   KC_M,             KC_N,      KC_E,           KC_I,            KC_O,
-//     LSFT_T(KC_Z),KC_X,                KC_C,             KC_D,      KC_V,                                                   KC_K,             KC_H,      KC_COMM,        KC_DOT,          RSFT_T(KC_SLSH),
-//     KC_TAB,      LALT_T(KC_MINS),     MO(NUM_SPECIAL),  KC_LGUI,   KC_SPC,  LCTL_T(KC_MINS), LT(NUMERIC, KC_ESC),          LSFT_T(KC_BSPC),  MO(NUMPAD), ALL_T(KC_DEL),  LALT_T(KC_SCLN), KC_ENT
 //   ),
 
   // Gaming
