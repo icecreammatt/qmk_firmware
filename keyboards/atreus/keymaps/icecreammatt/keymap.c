@@ -259,6 +259,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                               DOUBLE TAP ESC to leave mouse mode? maybe just single click?
  */
 
+/* BLANK:
+ * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
+ * |     |     |     |     |     |                      |     |     |     |     |     |
+ * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
+ * |     |     |     |     |     |                      |     |     |     |     |     |
+ * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
+ * |     |     |     |     |     |                      |     |     |     |     |     |
+ * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
+ *              double tap WH D/U for left and right scroll
+ *              double tap PGDN PGUP for home and end
+ *              S-TAB is for tabbing in reverse (window switching, tab, switching)
+ *               .-------.-------.-------.      .-------.-------.
+ *               | LGUI  |  SPC  | hold  |      | hold  |       |
+ *               '-----------------------'      '-------'-------'
+ *                                               DOUBLE TAP ESC to leave mouse mode? maybe just single click?
+ */
 
 
 
