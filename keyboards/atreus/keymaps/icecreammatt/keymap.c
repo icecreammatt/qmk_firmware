@@ -34,10 +34,15 @@ typedef struct {
 } td_tap_t;
 
 // Tap dance enums
-enum {
     // X_CTL,
-    LGUI_ALT,
+enum {
+    LGUI_ALT = 0,
     LCTL_NAV,
+    LBRC_AT,
+    CIRC_HASH,
+    DLR_UNDS,
+    EXLM_AMP,
+    RBRC_PIPE,
     ESC_MOUSE,
     CT_CLN,
     SOME_OTHER_DANCE
@@ -87,30 +92,38 @@ td_state_t cur_dance(qk_tap_dance_state_t *state);
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* QWERTY: Base keys
- *
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
  * | Q   | W   | E   | R   | T   |                      | Y   | U   | I   | O   | P   |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * | A   | S   | D   | F   | G   |                      | H   | J   | K   | L   | ' " | <-- hold ' to trigger mouse layer
+ * | A   | S   | D   | F   | G   |                      | H   | J   | K   | L   | ' " |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |SHF/Z| X/AL| C   | V   | B   |                      | N   | M   | <,  | >.MO|SHF/?|
+ * |SHF/Z| X   | C   | V   | B   |                      | N   | M   | <,  | >.  |SHF/?|
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *                     >. key when held long activates mouse mode L4?
- *                     holding SPC triggers 0.1
  *               .-------.-------.-------.      .-------.-------.
- *               | LGUI  |L01 SPC|CTR/TAB|      |  ESC  |L1/BSP |
+ *               | LGUI  |  SPC  |CTR/TAB|      |  ESC  |L1/BSP |
  *               '-------'-------'-------'      '-------'-------'
+ *                ST   GUI
+ *                STH  GUI
+ *                DT   ENT
+ *                DTH  ALT
+ *
+ *                         ST  SPC
+ *                         STH QWERTY2
+ *                         DT  SPC
+ *                         DTH SPC
+ *
+ *                                ST  NONE
+ *                                STH CTRL
+ *                                DT  NONE
+ *                                DTH NAV  (layer change)
+ *
  *                                               single tap      - esc
  *                                               single tap hold - mouse
  *                                               double tap - mouse lock on
  *                                               double tap hold - numpad
  *
  *                                                       single tap      - backspace
- *                                                       single tap hold - shift
- *                                                       double tap      - enter
- *                                                       double tap hold - symbol
- *
- *  single tap ctr sets num mode for one press?
+ *                                                       single tap hold - symbol
  *
  */
   [QWERTY] = LAYOUT(
@@ -121,6 +134,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   // COLEMAK
+  // TODO update this so it goes to COLEMAK2 for system keys
   [COLEMAK] = LAYOUT(
     KC_Q,               KC_W,                KC_F,             KC_P,                    KC_B,                                                   KC_J,               KC_L,      KC_U,           KC_Y,            KC_QUOT,
     KC_A,               KC_R,                KC_S,             KC_T,                    KC_G,                                                   KC_M,               KC_N,      KC_E,           KC_I,            KC_O,
@@ -129,92 +143,83 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
 /* QWERTY_2: Base keys
- *
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
  * | Q   | W   | E   | R   | T   |                      | Y   | U   | I   | O   | P   |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
  * |(G) A|(A) S|(C) D|(S) F| G   |                      | H   |(S)J |(C)K |(A)L |(G)'"|
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |SHF/Z| X/AL| C   | V   | B   |                      | N   | M   | <,  | >.MO|SHF/?|
+ * |SHF/Z|  X  | C   | V   | B   |                      | N   | M   | <,  | >.  |SHF/?|
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *                     >. key when held long activates mouse mode L4
  *               .-------.-------.-------.      .-------.-------.
- *               | LGUI  |L01 SPC|CTR/TAB|      |  ESC  |L1/BSP |
+ *               | LGUI  |L01 SPC|CTR/TAB|      |  ESC  | #/BSP |
  *               '-------'-------'-------'      '-------'-------'
- *                CMD/TAB - replace cmd/tab with mouse layer/tab
  */
+
   // Same as QWERTY but with GUI, ALT/OPT, CTRL, SHFT in home rows
   [QWERTY_2] = LAYOUT(
     KC_Q,                   KC_W,            KC_E,                 KC_R,                KC_T,                                                  KC_Y,                KC_U,      KC_I,           KC_O,       KC_P,
     HOME_A,                 HOME_S,          HOME_D,               HOME_F,              KC_G,                                                  KC_H,                HOME_J,    HOME_K,         HOME_L,     HOME_QUOT,
     LSFT_T(KC_Z),           KC_X,            KC_C,                 KC_V,                KC_B,                                                  KC_N,                KC_M,      KC_COMM,        KC_DOT,     RSFT_T(KC_SLSH),
-    KC_NO,                  RESET,           KC_NO,                KC_LGUI,             LT(SYMBOL, KC_SPC), LCTL_T(KC_TAB),   LT(NAV, KC_ESC), LT(NUMPAD, KC_BSPC), KC_NO,     KC_NO,          KC_NO,      KC_NO
+    KC_NO,                  RESET,           KC_NO,                TD(LGUI_ALT),        LT(SYMBOL, KC_SPC), LCTL_T(KC_TAB),   LT(NAV, KC_ESC), LT(NUMPAD, KC_BSPC), KC_NO,     KC_NO,          KC_NO,      KC_NO
   ),
 
 /* NUMPAD: Numpad/FKeys
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
  * |     | F7  | F8  | F9  | F10 |                      |  /  |  7  |  8  |  9  |  -  |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |     | F4  | F5  | F6  | F11 |                      |  *  |  4  |  5  |  6  |  +  |
+ * |  -  | F4  | F5  | F6  | F11 |                      |  *  |  4  |  5  |  6  |  +  |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
  * |     | F1  | F2  | F3  | F12 |                      |  %  |  1  |  2  |  3  |  0  |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *               F8 bound to long press for ALL_T
  *               .-------.-------.-------.      .-------.-------.
- *               | LGUI  |  SPC  |CTR    |      |  ESC  |L1/BSP |
+ *               |GUI_ALT| ALL_T |CTR    |      |  ESC  |       |
  *               '-----------------------'      '-------'-------'
  */
   [NUMPAD] = LAYOUT(
-    KC_NO,                  KC_F7,          ALL_T(KC_F8),           KC_F9,              KC_F10,                                                KC_PSLS,             KC_7,        KC_8,        KC_9,       KC_PMNS,
+    KC_NO,                  KC_F7,          KC_F8,                  KC_F9,              KC_F10,                                                KC_PSLS,             KC_7,        KC_8,        KC_9,       KC_PMNS,
     KC_PMNS,                KC_F4,          KC_F5,                  KC_F6,              KC_F11,                                                KC_PAST,             KC_4,        KC_5,        KC_6,       KC_PPLS,
     KC_NO,                  KC_F1,          KC_F2,                  KC_F3,              KC_F12,                                                KC_PERC,             KC_1,        KC_2,        KC_3,       KC_0,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            KC_NO,   LCTL_T(KC_TAB),              LSFT_T(KC_ESC),  KC_NO,               KC_NO,       KC_NO,       KC_NO,      KC_NO
+    KC_NO,                  KC_NO,          KC_NO,                  TD(LGUI_ALT),       ALL_T(KC_NO),  LCTL_T(KC_TAB),        LSFT_T(KC_ESC),  KC_NO,               KC_NO,       KC_NO,       KC_NO,      KC_NO
   ),
 
 /* SYMBOL: Symbols
  * TODO:
- * switch ] ) } to | @ $ with double tap
- * switch [ ( { to ! = ^ with double tap
- * switch * to # when double tapping
- * switch - to _ when double tapping
- * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |  ~  |  !  |  [  |  ]  |  |  |                      |     |  #  |  *  | ENT | DEL |
- * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |  `  |  =  |  (  |  )  |  @  |                      |LEFT |DOWN | UP  |RGHT |  :  | <-- ; key should trigger mouse layer when held
- * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |  &  |  ^  |  {  |  }  |  $  |                      |  _  |  -  |  +  |  ;  |SHF\ |
- * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *                      ` key when held temp does layer2,1 (Fkeys)
- *                      = key when held temp does layer1,1
- *                      ( key when held temp does layer4(mouse)
- *                      ; key when held temp does layer4(mouse)
- *                      # key when tapped layer moves to layer4(mouse)
- *                      ) key when held temp does numpad
- * left shift is page down when tapped
- * left alt is page up when tapped
+ * double tap [ for @ and ] for |
+ * double tap ^ for #
+ * double tap $ for _
  * home is ctrl up
  * end is ctrl down
+ *
+ *          &     @    |                                         #           _
+ * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
+ * |  ~  |  !  |  [  |  ]  |     | |                  # |     |  ^  |  *  |  $  | DEL |
+ * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
+ * |  `  |  =  |  (  |  )  |     | @                    |LEFT |DOWN | UP  |RGHT |  :  |
+ * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
+ * |SHFT |  &  |  {  |  }  |     |                      |  _  |  -  |  +  |  ;  |SHF\ |
+ * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *               .-------.-------.-------.      .-------.-------.
- *               | LGUI  |L3/SPC |CTR    |      |MO(NUM)|(hold) |
+ *               |GUI_ALT|       |CTR    |      |MO(NUM)|(hold) |
  *               '-------'-------'-------'      '-------'-------'
  */
   [SYMBOL] = LAYOUT(
-    KC_TILD,                KC_EXLM,        KC_LBRC,                KC_RBRC,            KC_PIPE,                                               KC_NO,               KC_HASH,     KC_PAST,     KC_ENT,     KC_DEL,
-    KC_GRV,                 KC_EQL,         KC_LPRN,                KC_RPRN,            KC_AT,                                                 KC_LEFT,             KC_DOWN,     KC_UP,       KC_RIGHT,   TD(CT_CLN),
-    KC_AMPR,                KC_CIRC,        KC_LCBR,                KC_RCBR,            KC_DLR,                                                KC_UNDS,             KC_MINS,     KC_PPLS,     KC_SCLN,    KC_BSLS,
-    KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            LT(NUMPAD, KC_SPC),  LCTL_T(KC_TAB),LT(NUMPAD, KC_NO), LT(SYMBOL, KC_BSPC), KC_NO,       KC_NO,       KC_NO,      KC_NO
+    KC_TILD,                TD(EXLM_AMP),        TD(LBRC_AT),            TD(RBRC_PIPE),      KC_PIPE,                                               KC_HASH,             TD(CIRC_HASH),KC_PAST,     TD(DLR_UNDS),  KC_DEL,
+    KC_GRV,                 KC_EQL,         KC_LPRN,                KC_RPRN,            KC_AT,                                                 KC_LEFT,             KC_DOWN,      KC_UP,       KC_RIGHT,      TD(CT_CLN),
+    KC_LSFT,                KC_AMPR,        KC_LCBR,                KC_RCBR,            KC_NO,                                                 KC_UNDS,             KC_MINS,      KC_PPLS,     KC_SCLN,       KC_BSLS,
+    KC_NO,                  KC_NO,          KC_NO,                  TD(LGUI_ALT),       LT(NUMPAD, KC_SPC),  LCTL_T(KC_TAB),LT(NUMPAD, KC_NO), LT(SYMBOL, KC_BSPC), KC_NO,        KC_NO,       KC_NO,         KC_NO
   ),
 
 /* NAV: Symbols Shifted
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
  * |     |     |     |  |  |     |                      |     |  #  |  *  |     | DEL |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |     |     |     |  @  |     |                      |     |  ^  |  $  |  0  |  ;  |
+ * |     |COLEM|QWERT|  @  |     |                      |     |  ^  |  $  |  0  |  ;  |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |     |     |     |  %  |     |                      |     |  _  |  &  |     |     |
+ * |     |     |     |  %  |     |                      |     |  _  |  &  |     |SHIFT|
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
+ *                                double tap and hold to access
  *               .-------.-------.-------.      .-------.-------.
- *               |       | hold  |       |      | hold  |       |
+ *               |  GUI  |       | hold  |      | SHIFT |       |
  *               '-------'-------'-------'      '-------'-------'
  */
   [NAV] = LAYOUT(
@@ -226,16 +231,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* MOUSE: Layer move and mouse mode
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |RESET|MUTE |VOL- |VOL+ |PLAY |                      |WH_L | M4  | M5  |WH_R |     |
+ * |RESET|MUTE |VOL- |VOL+ |PLAY |                      |     | M4  | M5  |     |     |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * | GRV |S(GRV|S(TAB| TAB |     |                      |HOME |WH_D |WH_U | END |PGUP |
+ * | GRV |S(GRV|S(TAB| TAB |     |                      |HOME |WH_D |WH_U | END |PGDN |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |SHIFT|PAUSE|PGDN |PGUP | INS |                      |     | M1  | M2  | M3  |PGDN |
+ * |SHIFT|PAUSE|PGDN |PGUP | INS |                      |     | M1  | M2  | M3  |PGUP |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *              double tap WH D/U for left and right scroll
  *              double tap PGDN PGUP for home and end
  *               .-------.-------.-------.      .-------.-------.
- *               | LGUI  |  SPC  |CTR/TAB|      |  ESC  |       |
+ *               | LGUI  |  SPC  |CTR/NAV|      |  ESC  |       |
  *               '-----------------------'      '-------'-------'
  *                                               DOUBLE TAP ESC to leave mouse mode? maybe just single click?
  */
@@ -557,6 +562,12 @@ void dance_cln_reset(qk_tap_dance_state_t *state, void *user_data) {
 qk_tap_dance_action_t tap_dance_actions[] = {
     // [X_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, x_finished, x_reset),
     [CT_CLN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_cln_finished, dance_cln_reset),
+    [LBRC_AT] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_AT),
+    [RBRC_PIPE] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_PIPE),
+    [CIRC_HASH] = ACTION_TAP_DANCE_DOUBLE(KC_CIRC, KC_HASH),
+    [DLR_UNDS] = ACTION_TAP_DANCE_DOUBLE(KC_DLR, KC_UNDS),
+    [EXLM_AMP] = ACTION_TAP_DANCE_DOUBLE(KC_EXLM, KC_AMPR),
+    [LGUI_ALT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, gui_finished, gui_reset),
     [LGUI_ALT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, gui_finished, gui_reset),
     [LCTL_NAV] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctrl_finished, ctrl_reset),
     [ESC_MOUSE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset)
