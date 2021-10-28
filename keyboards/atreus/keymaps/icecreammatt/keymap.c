@@ -209,7 +209,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * switch * to # when double tapping
  * switch - to _ when double tapping
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |  ~  |  !  |  [  |  ]  |  |  |                      |  #  |  *  | ENT |TO(M)| DEL | TO(M) maybe swap with Backspace
+ * |  ~  |  !  |  [  |  ]  |  |  |                      |     |  #  |  *  | ENT | DEL |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
  * |  `  |  =  |  (  |  )  |  @  |                      |LEFT |DOWN | UP  |RGHT |  :  | <-- ; key should trigger mouse layer when held
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
@@ -226,7 +226,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * home is ctrl up
  * end is ctrl down
  *               .-------.-------.-------.      .-------.-------.
- *               | LGUI  |L3/SPC |CTR    |      |  ESC  |(hold) |
+ *               | LGUI  |L3/SPC |CTR    |      |MO(NUM)|(hold) |
  *               '-------'-------'-------'      '-------'-------'
  */
 
@@ -234,7 +234,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
  * |     |     |     |  |  |     |                      |     |  #  |  *  |     | DEL |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * |     |     |     |  @  |     |                      |     |  ^  |  $  |  0  |  :  |
+ * |     |     |     |  @  |     |                      |     |  ^  |  $  |  0  |  ;  |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
  * |     |     |     |  %  |     |                      |     |  _  |  &  |     |     |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
@@ -245,11 +245,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* MOUSE: Layer move and mouse mode
  * ,-----.-----.-----.-----.-----.                      ,-----.-----.-----.-----.-----.
- * |RESET|     |     |     |PAUSE|                      |WH_L | M4  | M5  |WH_R |     |
+ * |RESET|MUTE |VOL- |VOL+ |PLAY |                      |WH_L | M4  | M5  |WH_R |     |
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
- * | TAB |MUTE |VOL+ |VOL- |     |                      |HOME |WH_D |WH_U | END |PGUP |
+ * | GRV |S(GRV|S(TAB| TAB |     |                      |HOME |WH_D |WH_U | END |PGUP |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |     | INS |     |PLAY |     |                      |     | M1  | M2  | M3  |PGDN |
+ * |SHIFT|PAUSE|PGDN |PGUP | INS |                      |     | M1  | M2  | M3  |PGDN |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *              double tap WH D/U for left and right scroll
  *              double tap PGDN PGUP for home and end
