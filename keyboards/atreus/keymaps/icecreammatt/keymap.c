@@ -45,6 +45,7 @@ enum {
     RBRC_PIPE,
     ESC_MOUSE,
     CT_CLN,
+    SCLN_DOT,
     SOME_OTHER_DANCE
 };
 
@@ -205,7 +206,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [SYMBOL] = LAYOUT(
     KC_TILD,                TD(EXLM_AMP),   TD(LBRC_AT),            TD(RBRC_PIPE),      KC_PIPE,                                               KC_HASH,             TD(CIRC_HASH),KC_PAST,     TD(DLR_UNDS),  KC_DEL,
     KC_GRV,                 KC_EQL,         KC_LPRN,                KC_RPRN,            KC_AT,                                                 KC_LEFT,             KC_DOWN,      KC_UP,       KC_RIGHT,      TD(CT_CLN),
-    KC_LSFT,                KC_PERC,        KC_LCBR,                KC_RCBR,            KC_AMPR                                                KC_UNDS,             KC_MINS,      KC_PPLS,     KC_SCLN,       KC_BSLS,
+    KC_LSFT,                KC_PERC,        KC_LCBR,                KC_RCBR,            KC_AMPR,                                               KC_UNDS,             KC_MINS,      KC_PPLS,     TD(SCLN_DOT),  KC_BSLS,
     KC_NO,                  KC_NO,          KC_NO,                  TD(LGUI_ALT),       LT(NUMPAD, KC_SPC),  LCTL_T(KC_TAB),LT(NUMPAD, KC_NO), LT(SYMBOL, KC_BSPC), KC_NO,        KC_NO,       KC_NO,         KC_NO
   ),
 
@@ -563,6 +564,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [RBRC_PIPE] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_PIPE),
     [CIRC_HASH] = ACTION_TAP_DANCE_DOUBLE(KC_CIRC, KC_HASH),
     [DLR_UNDS] = ACTION_TAP_DANCE_DOUBLE(KC_DLR, KC_UNDS),
+    [SCLN_DOT] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, A(KC_8)),
     [EXLM_AMP] = ACTION_TAP_DANCE_DOUBLE(KC_EXLM, KC_AMPR),
     [LGUI_ALT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, gui_finished, gui_reset),
     [LGUI_ALT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, gui_finished, gui_reset),
