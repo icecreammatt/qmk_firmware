@@ -196,16 +196,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----+-----+-----+-----+-----|                      |-----+-----+-----+-----+-----|
  * |  `  |  =  |  (  |  )  |     | @                    |LEFT |DOWN | UP  |RGHT |  :  |
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
- * |SHFT |  &  |  {  |  }  |     |                      |  _  |  -  |  +  |  ;  |SHF\ |
+ * |SHFT |  %  |  {  |  }  |     | &                  _ |  _  |  -  |  +  |  ;  |SHF\ |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
  *               .-------.-------.-------.      .-------.-------.
  *               |GUI_ALT|       |CTR    |      |MO(NUM)|(hold) |
  *               '-------'-------'-------'      '-------'-------'
  */
   [SYMBOL] = LAYOUT(
-    KC_TILD,                TD(EXLM_AMP),        TD(LBRC_AT),            TD(RBRC_PIPE),      KC_PIPE,                                               KC_HASH,             TD(CIRC_HASH),KC_PAST,     TD(DLR_UNDS),  KC_DEL,
+    KC_TILD,                TD(EXLM_AMP),   TD(LBRC_AT),            TD(RBRC_PIPE),      KC_PIPE,                                               KC_HASH,             TD(CIRC_HASH),KC_PAST,     TD(DLR_UNDS),  KC_DEL,
     KC_GRV,                 KC_EQL,         KC_LPRN,                KC_RPRN,            KC_AT,                                                 KC_LEFT,             KC_DOWN,      KC_UP,       KC_RIGHT,      TD(CT_CLN),
-    KC_LSFT,                KC_AMPR,        KC_LCBR,                KC_RCBR,            KC_NO,                                                 KC_UNDS,             KC_MINS,      KC_PPLS,     KC_SCLN,       KC_BSLS,
+    KC_LSFT,                KC_PERC,        KC_LCBR,                KC_RCBR,            KC_AMPR                                                KC_UNDS,             KC_MINS,      KC_PPLS,     KC_SCLN,       KC_BSLS,
     KC_NO,                  KC_NO,          KC_NO,                  TD(LGUI_ALT),       LT(NUMPAD, KC_SPC),  LCTL_T(KC_TAB),LT(NUMPAD, KC_NO), LT(SYMBOL, KC_BSPC), KC_NO,        KC_NO,       KC_NO,         KC_NO
   ),
 
@@ -266,14 +266,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----+-----+-----+-----+-----+                      |-----+-----+-----+-----+-----|
  * |     |     |     |     |     |                      |     |     |     |     |     |
  * `-----'-----'-----'-----'-----'                      `-----'-----'-----'-----'-----'
- *              double tap WH D/U for left and right scroll
- *              double tap PGDN PGUP for home and end
- *              S-TAB is for tabbing in reverse (window switching, tab, switching)
  *               .-------.-------.-------.      .-------.-------.
  *               | LGUI  |  SPC  | hold  |      | hold  |       |
  *               '-----------------------'      '-------'-------'
- *                                               DOUBLE TAP ESC to leave mouse mode? maybe just single click?
  */
+
 //   [BLANK] = LAYOUT(
 //     KC_NO,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO,
 //     KC_NO,                  KC_NO,          KC_NO,                  KC_NO,              KC_NO,                                                 KC_NO,               KC_NO,        KC_NO,        KC_NO,       KC_NO,
