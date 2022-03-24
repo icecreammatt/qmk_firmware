@@ -17,6 +17,8 @@
 #include QMK_KEYBOARD_H
 #include "g/keymap_combo.h" // might not need this
 
+//  qmk compile -kb bastardkb/charybdis/3x5 -km icecreammatt
+
 #undef TAPPING_TERM
 #define TAPPING_TERM 200
 
@@ -172,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [MOUSE] = LAYOUT_charybdis_3x5(
     RESET,                  KC_MUTE,        KC_VOLD,                KC_VOLU,            KC_MPLY,                                               KC_BTN4,             KC_WH_D,      KC_WH_U,      KC_BTN5,         KC_DEL,
     KC_PGUP,                KC_GRV,         S(KC_TAB),              KC_TAB,             KC_PAUSE,                                              KC_LEFT,             KC_DOWN,      KC_UP,        KC_RIGHT,        TD(PGDN_PGUP),
-    LSFT_T(KC_HOME),        KC_NO,          KC_WH_U,                KC_WH_D,            KC_INS,                                                KC_HOME,             KC_BTN1,      KC_BTN2,      LALT_T(KC_BTN3), RSFT_T(KC_END),
+    LSFT_T(KC_HOME),        RESET,          KC_WH_U,                KC_WH_D,            KC_INS,                                                KC_HOME,             KC_BTN1,      KC_BTN2,      LALT_T(KC_BTN3), RSFT_T(KC_END),
                                             KC_LGUI,                KC_SPC,             LCTL_T(KC_TAB),                                        TD(ESC_MOUSE),       KC_BSPC
 
 
