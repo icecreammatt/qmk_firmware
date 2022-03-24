@@ -4,6 +4,9 @@ MCU = atmega32u4
 # Bootloader selection
 BOOTLOADER = atmel-dfu
 
+COMBO_ENABLE=yes
+TAP_DANCE_ENABLE = yes
+VPATH += keyboards/gboards
 # Build Options
 #   change yes to no to disable
 #
