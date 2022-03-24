@@ -139,7 +139,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TILD,                TD(EXLM_UNDS),  TD(LBRC_AMPR),          TD(RBRC_PIPE),      KC_HASH,                                              TD(SLSH_BSLS),       KC_7,         KC_8,        KC_9,          KC_DEL,
     LT(FNAV,KC_GRV),        KC_EQL,         KC_LPRN,                KC_RPRN,            KC_DLR,                                               KC_PAST,             KC_4,         KC_5,        KC_6,          TD(CT_CLN),
     KC_LSFT,                TD(AT_DOT),     KC_MINS,                KC_PPLS,            KC_CIRC,                                              KC_PERC,             KC_1,         KC_2,        LALT_T(KC_3),  ALL_T(KC_0),
-                                            KC_NO,                  TD(LGUI_ALT),       LT(QWERTY_2, KC_SPC),  LCTL_T(KC_TAB),                LALT_T(KC_TAB),      LT(KC_NO, KC_BSPC)
+                                                        TD(LGUI_ALT),       LT(QWERTY_2, KC_SPC),  LCTL_T(KC_TAB),                LALT_T(KC_TAB),      LT(KC_NO, KC_BSPC)
 
   // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
     //    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, KC_VOLU, KC_MUTE, KC_VOLD, XXXXXXX,
