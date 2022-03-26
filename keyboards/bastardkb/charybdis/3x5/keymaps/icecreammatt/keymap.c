@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [QWERTY] = LAYOUT_charybdis_3x5(
     TD(Q_ENT),              KC_W,            KC_E,             KC_R,                    KC_T,                                                  KC_Y,                KC_U,      KC_I,          KC_O,           KC_P,
     KC_A,                   KC_S,            KC_D,             KC_F,                    KC_G,                                                  KC_H,                KC_J,      KC_K,          KC_L,           KC_QUOT,
-    LSFT_T(KC_Z),           LT(MOUSE, KC_X), KC_C,             LT(MOUSE, KC_V),         KC_B,                                                  KC_N,                KC_M,      KC_COMM,       LALT_T(KC_DOT), RSFT_T(KC_SLSH),
+    LSFT_T(KC_Z),           LALT_T(KC_X),    KC_C,             KC_V,                    KC_B,                                                  KC_N,                KC_M,      KC_COMM,       LT(MOUSE, KC_DOT), RSFT_T(KC_SLSH),
                                              TD(LGUI_ALT),     LT(SYMBOL,KC_SPC),       KC_LCTL,                                               LT(MOUSE, KC_ESC),   LT(SYMBOL, KC_BSPC)
 
   // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
@@ -113,7 +113,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [COLEMAK] = LAYOUT_charybdis_3x5(
     KC_Q,               KC_W,                KC_F,             KC_P,                    KC_B,                                                  KC_J,                KC_L,                   KC_U,           KC_Y,           KC_QUOT,
     KC_A,               KC_R,                KC_S,             KC_T,                    KC_G,                                                  KC_M,                KC_N,                   KC_E,           KC_I,           KC_O,
-    LSFT_T(KC_Z),       KC_X,                KC_C,             KC_D,                    KC_V,                                                  KC_K,                KC_H,                   KC_COMM,        LALT_T(KC_DOT), RSFT_T(KC_SLSH),
+    LSFT_T(KC_Z),       LALT_T(KC_X),        KC_C,             KC_D,                    KC_V,                                                  KC_K,                KC_H,                   KC_COMM,        LT(MOUSE, KC_DOT), RSFT_T(KC_SLSH),
                                             TD(LGUI_ALT),     LT(SYMBOL,KC_SPC),      KC_LCTL,                                                LT(MOUSE, KC_ESC),   LT(SYMBOL, KC_BSPC)
 
   // ╭─────────────────────────────────────────────╮ ╭─────────────────────────────────────────────╮
