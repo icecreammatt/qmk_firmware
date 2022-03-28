@@ -260,7 +260,7 @@ void gui_finished(qk_tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_SINGLE_TAP: tap_code(KC_LGUI); register_code(KC_LGUI);
         case TD_UNKNOWN: break;
         case TD_NONE: break;
-        case TD_TRIPLE_TAP: break;
+        case TD_TRIPLE_TAP: register_code(KC_LGUI); register_code(KC_SPC); break;
         case TD_TRIPLE_HOLD: break;
     }
 }
@@ -274,7 +274,7 @@ void gui_reset(qk_tap_dance_state_t *state, void *user_data) {
         case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_LGUI);
         case TD_UNKNOWN: break;
         case TD_NONE: break;
-        case TD_TRIPLE_TAP: break;
+        case TD_TRIPLE_TAP: unregister_code(KC_LGUI); unregister_code(KC_SPC); break;
         case TD_TRIPLE_HOLD: break;
     }
     guitap_state.state = TD_NONE;
