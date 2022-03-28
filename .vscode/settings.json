@@ -28,8 +28,8 @@
         "editor.formatOnSave": false
     },
     "workbench.colorCustomizations": {
-        "activityBar.background": "#07342A",
-        "titleBar.activeBackground": "#0A493A",
+        "activityBar.background": "#000000",
+        "titleBar.activeBackground": "#000000",
         "titleBar.activeForeground": "#EEFDFA"
     }
 }
