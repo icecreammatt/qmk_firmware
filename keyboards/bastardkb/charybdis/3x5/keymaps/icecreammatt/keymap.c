@@ -88,6 +88,25 @@ td_state_t cur_dance(qk_tap_dance_state_t *state);
 #define MOUSE 4
 #define QWERTY_2 5
 
+#define SYM_SPC LT(SYMBOL, KC_SPC)
+
+/*
+enum charybdis_keymap_layers {
+    LAYER_BASE = 0,
+    LAYER_LOWER,
+    LAYER_RAISE,
+};
+
+#define LOWER MO(LAYER_LOWER)
+#define RAISE MO(LAYER_RAISE)
+
+#define CTL_BSP CTL_T(KC_BSPC)
+#define SFT_SPC SFT_T(KC_SPC)
+#define GUI_ENT GUI_T(KC_ENT)
+
+*/
+
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -99,19 +118,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
        LSFT_T(KC_Z),     LALT_T(KC_X),     KC_C,        KC_V,        KC_B,          KC_N,    KC_M,      KC_COMM,   LT(MOUSE, KC_DOT), RSFT_T(KC_SLSH),
   // ╰────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────╯
-                         TD(LGUI_ALT),     LT(SYMBOL,KC_SPC),        KC_LCTL,       LT(MOUSE, KC_ESC),  LT(SYMBOL, KC_BSPC)
+                                      TD(LGUI_ALT),     SYM_SPC,     KC_LCTL,       LT(MOUSE, KC_ESC),  LT(SYMBOL, KC_BSPC)
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 
   [COLEMAK] = LAYOUT_charybdis_3x5(
   // ╭────────────────────────────────────────────────────────────────────────╮ ╭────────────────────────────────────────────────────────────────────────╮
-       KC_Q,               KC_W,             KC_F,       KC_P,           KC_B,     KC_J,      KC_L,      KC_U,      KC_Y,              KC_QUOT,
+       KC_Q,               KC_W,           KC_F,       KC_P,           KC_B,        KC_J,      KC_L,      KC_U,      KC_Y,              KC_QUOT,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       KC_A,               KC_R,             KC_S,       KC_T,           KC_G,     KC_M,      KC_N,      KC_E,      KC_I,              KC_O,
+       KC_A,               KC_R,           KC_S,       KC_T,           KC_G,        KC_M,      KC_N,      KC_E,      KC_I,              KC_O,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       LSFT_T(KC_Z),       LALT_T(KC_X),     KC_C,       KC_D,           KC_V,     KC_K,      KC_H,      KC_COMM,   LT(MOUSE, KC_DOT), RSFT_T(KC_SLSH),
+       LSFT_T(KC_Z),       LALT_T(KC_X),   KC_C,       KC_D,           KC_V,        KC_K,      KC_H,      KC_COMM,   LT(MOUSE, KC_DOT), RSFT_T(KC_SLSH),
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-                           TD(LGUI_ALT),     LT(SYMBOL,KC_SPC),  KC_LCTL,          LT(MOUSE,  KC_ESC),   LT(SYMBOL, KC_BSPC)
+                                       TD(LGUI_ALT),   SYM_SPC,     KC_LCTL,        LT(MOUSE,  KC_ESC),   LT(SYMBOL, KC_BSPC)
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 
@@ -135,7 +154,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
        KC_LSFT,            TD(AT_DOT),   KC_MINS,     KC_PPLS,        KC_CIRC,     KC_PERC,        KC_1,         KC_2,        LALT_T(KC_3),  ALL_T(KC_0),
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-                           TD(LGUI_ALT), LT(QWERTY_2, KC_SPC),  LCTL_T(KC_ESC),    LALT_T(KC_TAB), LT(KC_NO, KC_BSPC)
+                           TD(LGUI_ALT), LT(QWERTY_2, KC_SPC),  LCTL_T(KC_ESC),    LALT_T(KC_TAB), KC_BSPC
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 
@@ -147,7 +166,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
        KC_LSFT,            A(KC_8),      KC_HASH,    KC_PAST,          KC_NO,        KC_NO,          KC_F1,    KC_F2,    LALT_T(KC_F3), ALL_T(KC_F12),
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-                           TD(LGUI_ALT), LT(QWERTY_2, KC_SPC), LCTL_T(KC_TAB),       LALT_T(KC_TAB), LT(KC_NO, KC_BSPC)
+                           TD(LGUI_ALT), LT(QWERTY_2, KC_SPC), LCTL_T(KC_TAB),       LALT_T(KC_TAB), KC_BSPC
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 
@@ -346,21 +365,3 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [LGUI_ALT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, gui_finished, gui_reset),
     [ESC_MOUSE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset)
 };
-
-
-/*
-enum charybdis_keymap_layers {
-    LAYER_BASE = 0,
-    LAYER_LOWER,
-    LAYER_RAISE,
-};
-
-#define LOWER MO(LAYER_LOWER)
-#define RAISE MO(LAYER_RAISE)
-
-#define CTL_BSP CTL_T(KC_BSPC)
-#define SFT_SPC SFT_T(KC_SPC)
-#define GUI_ENT GUI_T(KC_ENT)
-
-*/
-
