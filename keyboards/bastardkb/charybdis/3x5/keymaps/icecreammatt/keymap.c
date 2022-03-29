@@ -17,6 +17,27 @@
 #include QMK_KEYBOARD_H
 #include "g/keymap_combo.h" // might not need this
 
+// #define CHARYBDIS_POINTER_ACCELERATION_ENABLE
+
+#define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+//#define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 1000
+
+// #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+#    include "timer.h"
+// #endif  // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+
+#ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+static uint16_t auto_pointer_layer_timer = 0;
+
+// #    ifndef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS
+#        define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 1000
+// #    endif  // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS
+
+// #    ifndef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
+#        define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD 1
+// #    endif  // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
+#endif      // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+
 //  qmk compile -kb bastardkb/charybdis/3x5 -km icecreammatt
 
 #undef TAPPING_TERM
@@ -85,8 +106,9 @@ td_state_t cur_dance(qk_tap_dance_state_t *state);
 #define COLEMAK 1
 #define SYMBOL 2
 #define FNAV 3
-#define MOUSE 4
-#define QWERTY_2 5
+#define NAV 4
+#define MOUSE 5
+#define QWERTY_2 6
 
 #define SYM_SPC LT(SYMBOL, KC_SPC)
 
@@ -116,9 +138,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
        KC_A,             KC_S,             KC_D,        KC_F,        KC_G,          KC_H,    KC_J,      KC_K,      KC_L,              KC_QUOT,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       LSFT_T(KC_Z),     LALT_T(KC_X),     KC_C,        KC_V,        KC_B,          KC_N,    KC_M,      KC_COMM,   LT(MOUSE, KC_DOT), RSFT_T(KC_SLSH),
+       LSFT_T(KC_Z),     LALT_T(KC_X),     KC_C,        KC_V,        KC_B,          KC_N,    KC_M,      KC_COMM,   LT(NAV, KC_DOT), RSFT_T(KC_SLSH),
   // ╰────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────╯
-                                      TD(LGUI_ALT),     SYM_SPC,     KC_LCTL,       LT(MOUSE, KC_ESC),  LT(SYMBOL, KC_BSPC)
+                                      TD(LGUI_ALT),     SYM_SPC,     KC_LCTL,       LT(NAV, KC_ESC),  LT(SYMBOL, KC_BSPC)
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 
@@ -128,9 +150,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
        KC_A,               KC_R,           KC_S,       KC_T,           KC_G,        KC_M,      KC_N,      KC_E,      KC_I,              KC_O,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       LSFT_T(KC_Z),       LALT_T(KC_X),   KC_C,       KC_D,           KC_V,        KC_K,      KC_H,      KC_COMM,   LT(MOUSE, KC_DOT), RSFT_T(KC_SLSH),
+       LSFT_T(KC_Z),       LALT_T(KC_X),   KC_C,       KC_D,           KC_V,        KC_K,      KC_H,      KC_COMM,   LT(NAV, KC_DOT), RSFT_T(KC_SLSH),
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-                                       TD(LGUI_ALT),   SYM_SPC,     KC_LCTL,        LT(MOUSE,  KC_ESC),   LT(SYMBOL, KC_BSPC)
+                                       TD(LGUI_ALT),   SYM_SPC,     KC_LCTL,        LT(NAV,  KC_ESC),   LT(SYMBOL, KC_BSPC)
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 
@@ -170,18 +192,63 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 
-  [MOUSE] = LAYOUT_charybdis_3x5(
+  [NAV] = LAYOUT_charybdis_3x5(
   // ╭────────────────────────────────────────────────────────────────────────╮ ╭────────────────────────────────────────────────────────────────────────╮
        RESET,            KC_MUTE,    KC_VOLD,       KC_VOLU,        KC_MPLY,      KC_BTN4,       KC_WH_D,      KC_WH_U,      KC_BTN5,    KC_DEL,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
        KC_PGUP,          KC_GRV,     S(KC_TAB),     KC_TAB,         KC_PAUSE,     KC_LEFT,       KC_DOWN,      KC_UP,        KC_RIGHT,   TD(PGDN_PGUP),
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       LSFT_T(KC_HOME),  LALT_T(KC_END), DRAGSCROLL_MODE,SNIPING_MODE, KC_INS,    KC_BTN3,       KC_BTN1,      KC_BTN2,      KC_BTN3,    DRAGSCROLL_MODE,
+       LSFT_T(KC_HOME),  LALT_T(KC_NO), KC_NO,      KC_NO,          KC_INS,       KC_BTN3,       KC_BTN1,      KC_BTN2,      KC_BTN3,    KC_END,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-                         KC_LGUI,    KC_SPC,        LCTL_T(KC_TAB),               TD(ESC_MOUSE), KC_BSPC
+                           KC_LGUI,    KC_SPC,      LCTL_T(KC_TAB),               TD(ESC_MOUSE), DRAGSCROLL_MODE_TOGGLE
+  //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
+  ),
+
+  [MOUSE] = LAYOUT_charybdis_3x5(
+  // ╭────────────────────────────────────────────────────────────────────────╮ ╭────────────────────────────────────────────────────────────────────────╮
+       KC_NO,          KC_NO,       KC_NO,            KC_NO,          KC_NO,      KC_BTN4,       KC_WH_D,      KC_WH_U,      KC_BTN5,    DRAGSCROLL_MODE_TOGGLE,
+  // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
+       KC_NO,          KC_NO,       DRAGSCROLL_MODE,  DRAGSCROLL_MODE,KC_NO,      KC_BTN4,       KC_BTN1,      KC_BTN2,      KC_BTN3,    KC_BTN5,
+  // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
+       LSFT_T(KC_NO),  LALT_T(KC_NO),KC_NO,           KC_NO,          KC_NO,      KC_BTN4,       KC_BTN1,      KC_BTN2,      KC_BTN3,    DRAGSCROLL_MODE,
+  // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
+                          KC_LGUI,   SNIPING_MODE,    LCTL_T(KC_NO),              KC_ESC, KC_BSPC
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 };
+
+// #ifdef POINTING_DEVICE_ENABLE
+// #    ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+report_mouse_t pointing_device_task_user(report_mouse_t mouse_report) {
+    if (abs(mouse_report.x) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD ||
+        abs(mouse_report.y) > CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD) {
+        if (auto_pointer_layer_timer == 0) {
+            layer_on(MOUSE);
+// #        ifdef RGB_MATRIX_ENABLE
+//             rgb_matrix_mode_noeeprom(RGB_MATRIX_NONE);
+//             rgb_matrix_sethsv_noeeprom(HSV_GREEN);
+// #        endif  // RGB_MATRIX_ENABLE
+        }
+        auto_pointer_layer_timer = timer_read();
+    }
+    return mouse_report;
+}
+
+void matrix_scan_kb(void) {
+    if (auto_pointer_layer_timer != 0 && TIMER_DIFF_16(timer_read(),
+        auto_pointer_layer_timer) >= CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS) {
+        auto_pointer_layer_timer = 0;
+        layer_off(MOUSE);
+// #        ifdef RGB_MATRIX_ENABLE
+//         rgb_matrix_mode_noeeprom(RGB_MATRIX_STARTUP_MODE);
+// #        endif  // RGB_MATRIX_ENABLE
+    }
+    matrix_scan_user();
+}
+// #    endif  // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
+// #endif      // POINTING_DEVICE_ENABLE
+
+
 
 // clang-format on
 
@@ -285,12 +352,12 @@ void esc_finished(qk_tap_dance_state_t *state, void *user_data) {
     esctap_state.state = cur_dance(state);
     switch (esctap_state.state) {
         case TD_SINGLE_TAP: register_code(KC_ESC); break;
-        case TD_SINGLE_HOLD: layer_on(MOUSE); break;
+        case TD_SINGLE_HOLD: layer_on(NAV); break;
         case TD_DOUBLE_TAP: {
-            if (layer_state_is(MOUSE)) {
-                layer_off(MOUSE);
+            if (layer_state_is(NAV)) {
+                layer_off(NAV);
             } else {
-                layer_on(MOUSE);
+                layer_on(NAV);
             }
             break;
         }
@@ -311,7 +378,7 @@ void esc_reset(qk_tap_dance_state_t *state, void *user_data) {
         case TD_SINGLE_TAP: unregister_code(KC_ESC); break;
         case TD_SINGLE_HOLD: {
             if(esctap_state.state == TD_SINGLE_HOLD) {
-                layer_off(MOUSE);
+                layer_off(NAV);
             }
             esctap_state.state = TD_NONE;
             break;
