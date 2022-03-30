@@ -81,7 +81,7 @@ enum {
     SLSH_BSLS,
     Q_ENT,
     PGDN_PGUP,
-    ESC_MOUSE,
+    ESC_NAV,
     HASH_DOT,
     // CIRC_HASH,
 
@@ -200,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
        LSFT_T(KC_HOME),  LALT_T(KC_NO), KC_NO,      KC_NO,          KC_INS,       KC_BTN3,       KC_BTN1,      KC_BTN2,      KC_BTN3,    KC_END,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-                           KC_LGUI,    KC_SPC,      LCTL_T(KC_TAB),               TD(ESC_MOUSE), DRAGSCROLL_MODE_TOGGLE
+                           KC_LGUI,    KC_SPC,      LCTL_T(KC_TAB),               TD(ESC_NAV), DRAGSCROLL_MODE_TOGGLE
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 
@@ -212,7 +212,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
        LSFT_T(KC_NO),  LALT_T(KC_NO),KC_NO,           KC_NO,          KC_NO,      KC_BTN4,       KC_BTN1,      KC_BTN2,      KC_BTN3,    DRAGSCROLL_MODE,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-                          KC_LGUI,   SNIPING_MODE,    LCTL_T(KC_NO),              KC_ESC, KC_BSPC
+                          KC_LGUI,   SNIPING_MODE,    LCTL_T(KC_NO),              TD(ESC_NAV), KC_BSPC
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 };
@@ -430,5 +430,5 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [PGDN_PGUP] =    ACTION_TAP_DANCE_DOUBLE(KC_PGDN, KC_PGUP),
     [LGUI_ALT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, gui_finished, gui_reset),
     [LGUI_ALT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, gui_finished, gui_reset),
-    [ESC_MOUSE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset)
+    [ESC_NAV] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset)
 };
