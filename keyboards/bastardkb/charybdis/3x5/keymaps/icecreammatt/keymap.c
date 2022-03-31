@@ -206,13 +206,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MOUSE] = LAYOUT_charybdis_3x5(
   // ╭────────────────────────────────────────────────────────────────────────╮ ╭────────────────────────────────────────────────────────────────────────╮
-       KC_NO,          KC_NO,       KC_NO,            KC_NO,          KC_NO,      KC_BTN4,       KC_WH_D,      KC_WH_U,      KC_BTN5,    DRAGSCROLL_MODE_TOGGLE,
+       KC_TRNS,          KC_TRNS,       KC_TRNS,           KC_TRNS, KC_TRNS,      KC_BTN4,     KC_WH_D,      KC_WH_U,      KC_BTN5,    KC_DEL,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       KC_NO,          KC_NO,       DRAGSCROLL_MODE,  DRAGSCROLL_MODE,KC_NO,      KC_BTN4,       KC_BTN1,      KC_BTN3,      KC_BTN2,    KC_BTN5,
+       KC_TRNS,          KC_TRNS,       KC_TRNS,           KC_TRNS, KC_TRNS,      KC_NO,       KC_BTN1,      KC_BTN3,      KC_BTN2,    KC_NO,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       LSFT_T(KC_NO),  LALT_T(KC_NO),KC_NO,           KC_NO,          KC_NO,      KC_NO,         KC_BTN1,      KC_BTN3,      KC_BTN2,    DRAGSCROLL_MODE,
+       KC_TRNS,          KC_TRNS ,      KC_TRNS,           KC_TRNS, KC_TRNS,      KC_NO,       KC_BTN1,      KC_BTN3,      KC_BTN2,    DRAGSCROLL_MODE,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-                          KC_LGUI,   SNIPING_MODE,    LCTL_T(KC_NO),              TD(ESC_NAV), KC_BSPC
+                          KC_TRNS,      SNIPING_MODE,      KC_TRNS,               LT(NAV, KC_ESC),  LT(SYMBOL, KC_BSPC)
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 };
