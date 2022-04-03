@@ -101,7 +101,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, KC_ENT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT, LSFT_T(KC_Z),KC_X,KC_C,    KC_V,    KC_B,    KC_HOME,          KC_END,  KC_N,    KC_M,    KC_COMM, LT(NAV,KC_DOT),  RSFT_T(KC_SLSH), _______,
+     KC_LSFT, LSFT_T(KC_Z),LALT_T(KC_X),KC_C,    KC_V,    KC_B,    KC_HOME,          KC_END,  KC_N,    KC_M,    KC_COMM, LT(NAV,KC_DOT),  RSFT_T(KC_SLSH), _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     TD(LGUI_ALT),  LT(SYMBOL, KC_SPC),  KC_LCTL,     LT(NAV,KC_ESC),LT(SYMBOL,KC_BSPC), KC_RALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
