@@ -1,6 +1,8 @@
 #include QMK_KEYBOARD_H
 #include "g/keymap_combo.h" // might not need this
 
+//qmk flash -kb keebio/iris/rev5 -km icecreammatt -bl dfu
+
 // ===================
 #undef TAPPING_TERM
 #define TAPPING_TERM 200
