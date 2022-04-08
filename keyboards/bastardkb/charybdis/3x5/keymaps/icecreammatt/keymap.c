@@ -92,15 +92,23 @@ td_state_t cur_dance(qk_tap_dance_state_t *state);
 
 // Left-hand home row mods
 #define HOME_A LGUI_T(KC_A)
-#define HOME_S LALT_T(KC_S)
-#define HOME_D LCTL_T(KC_D)
-#define HOME_F LSFT_T(KC_F)
+// #define HOME_S LALT_T(KC_S)
+// #define HOME_D LCTL_T(KC_D)
+// #define HOME_F LSFT_T(KC_F)
+#define HOME_A OSM(MOD_LGUI)
+#define HOME_S OSM(MOD_LALT)
+#define HOME_D OSM(MOD_LCTL)
+#define HOME_F OSM(MOD_LSFT)
 
 // Right-hand home row mods
-#define HOME_J RSFT_T(KC_J)
-#define HOME_K RCTL_T(KC_K)
-#define HOME_L LALT_T(KC_L)
-#define HOME_QUOT RGUI_T(KC_QUOT)
+// #define HOME_J RSFT_T(KC_J)
+// #define HOME_K RCTL_T(KC_K)
+// #define HOME_L LALT_T(KC_L)
+// #define HOME_QUOT RGUI_T(KC_QUOT)
+#define HOME_J OSM(MOD_RSFT)
+#define HOME_K OSM(MOD_RCTL)
+#define HOME_L OSM(MOD_LALT)
+#define HOME_QUOT OSM(MOD_RGUI)
 
 #define QWERTY 0
 #define COLEMAK 1
@@ -134,13 +142,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [QWERTY] = LAYOUT_charybdis_3x5(
   // ╭────────────────────────────────────────────────────────────────────────╮ ╭────────────────────────────────────────────────────────────────────────╮
-       TD(Q_ENT),        KC_W,             KC_E,        KC_R,        KC_T,          KC_Y,    KC_U,      KC_I,      KC_O,            KC_P,
+       TD(Q_ENT),        KC_W,             KC_E,        KC_R,        KC_T,          KC_Y,    KC_U,      TD(ESC_NAV),    KC_O,          KC_P,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       KC_A,             KC_S,             KC_D,        KC_F,        KC_G,          KC_H,    KC_J,      KC_K,      KC_L,            LT(MOUSE, KC_QUOT),
+       KC_A,             KC_S,             KC_D,        KC_F,        KC_G,          KC_H,    KC_J,      KC_K,           KC_L,          LT(MOUSE, KC_QUOT),
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       LSFT_T(KC_Z),     LALT_T(KC_X),     KC_C,        KC_V,        KC_B,          KC_N,    KC_M,      KC_COMM,   LT(NAV, KC_DOT), RSFT_T(KC_SLSH),
+       LSFT_T(KC_Z),     KC_X,             KC_C,        KC_V,        KC_B,          KC_N,    KC_M,      KC_COMM,        KC_DOT,        RSFT_T(KC_SLSH),
   // ╰────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────╯
-                                      TD(LGUI_ALT),     SYM_SPC,     KC_LCTL,       LT(NAV, KC_ESC),  LT(SYMBOL, KC_BSPC)
+                        LT(MOUSE, KC_BTN1), LT(QWERTY_2, KC_SPC),     KC_LCTL,       LT(NAV, KC_ESC),  LT(SYMBOL, KC_BSPC)
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 
@@ -158,13 +166,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [QWERTY_2] = LAYOUT_charybdis_3x5(
   // ╭────────────────────────────────────────────────────────────────────────╮ ╭────────────────────────────────────────────────────────────────────────╮
-       KC_Q,               KC_W,            KC_E,         KC_R,        KC_T,       KC_Y,        KC_U,      KC_I,           KC_O,       KC_P,
+       KC_TRNS,          KC_GRV,       S(KC_TAB),        KC_TAB,       KC_NO,      KC_BTN4,     KC_WH_D,      KC_WH_U,      KC_BTN5,    KC_DEL,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       HOME_A,             HOME_S,          HOME_D,       HOME_F,      KC_G,       KC_H,        HOME_J,    HOME_K,         HOME_L,     HOME_QUOT,
+       HOME_A,           HOME_S,       HOME_D,           HOME_F,       KC_NO,      KC_NO,       HOME_J,       HOME_K,       HOME_L,     HOME_QUOT,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       LSFT_T(KC_Z),       KC_X,            KC_C,         KC_V,        KC_B,       KC_N,        KC_M,      KC_COMM,        KC_DOT,     RSFT_T(KC_SLSH),
+       KC_TRNS,          KC_MUTE,      TD(HOME_VOLD),    TD(END_VOLU), KC_NO,      KC_NO,       KC_BTN1,      KC_BTN3,      KC_BTN2,    DRAGSCROLL_MODE,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-                           TD(LGUI_ALT),    KC_SPC,       KC_LCTL,                 KC_ESC,      KC_BSPC
+                           TD(LGUI_ALT),    KC_SPC,       KC_LCTL,                 LT(NAV, KC_ESC),  LT(SYMBOL, KC_BSPC)
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 
