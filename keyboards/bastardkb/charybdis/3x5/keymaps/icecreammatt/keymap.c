@@ -84,6 +84,8 @@ enum {
     ESC_NAV,
     HASH_DOT,
     // CIRC_HASH,
+    HOME_VOLD,
+    END_VOLU,
 
     SOME_OTHER_DANCE
 };
@@ -91,7 +93,7 @@ enum {
 td_state_t cur_dance(qk_tap_dance_state_t *state);
 
 // Left-hand home row mods
-#define HOME_A LGUI_T(KC_A)
+// #define HOME_A LGUI_T(KC_A)
 // #define HOME_S LALT_T(KC_S)
 // #define HOME_D LCTL_T(KC_D)
 // #define HOME_F LSFT_T(KC_F)
