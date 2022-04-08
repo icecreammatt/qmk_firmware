@@ -360,13 +360,13 @@ void gui_reset(qk_tap_dance_state_t *state, void *user_data) {
 void esc_finished(qk_tap_dance_state_t *state, void *user_data) {
     esctap_state.state = cur_dance(state);
     switch (esctap_state.state) {
-        case TD_SINGLE_TAP: register_code(KC_ESC); break;
-        case TD_SINGLE_HOLD: layer_on(NAV); break;
+        case TD_SINGLE_TAP: register_code(KC_I); break;
+        case TD_SINGLE_HOLD: layer_on(MOUSE); break;
         case TD_DOUBLE_TAP: {
-            if (layer_state_is(NAV)) {
-                layer_off(NAV);
+            if (layer_state_is(MOUSE)) {
+                layer_off(MOUSE);
             } else {
-                layer_on(NAV);
+                layer_on(MOUSE);
             }
             break;
         }
@@ -384,10 +384,10 @@ void esc_finished(qk_tap_dance_state_t *state, void *user_data) {
 
 void esc_reset(qk_tap_dance_state_t *state, void *user_data) {
     switch (esctap_state.state) {
-        case TD_SINGLE_TAP: unregister_code(KC_ESC); break;
+        case TD_SINGLE_TAP: unregister_code(KC_I); break;
         case TD_SINGLE_HOLD: {
             if(esctap_state.state == TD_SINGLE_HOLD) {
-                layer_off(NAV);
+                layer_off(MOUSE);
             }
             esctap_state.state = TD_NONE;
             break;
