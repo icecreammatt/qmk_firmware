@@ -180,11 +180,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [SYMBOL] = LAYOUT_charybdis_3x5(
   // ╭────────────────────────────────────────────────────────────────────────╮ ╭────────────────────────────────────────────────────────────────────────╮
-       KC_TILD,            TD(EXLM_UNDS),TD(LBRC_AMPR),TD(RBRC_PIPE), KC_HASH,     TD(SLSH_BSLS),  KC_7,         KC_8,        KC_9,          KC_DEL,
+       KC_TILD,            TD(EXLM_UNDS),TD(LBRC_AMPR),TD(RBRC_PIPE), KC_NO,       TD(SLSH_BSLS),  KC_7,         KC_8,        KC_9,          KC_DEL,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       LT(FNAV,KC_GRV),    KC_EQL,       KC_LPRN,     KC_RPRN,        KC_DLR,      KC_PAST,        KC_4,         KC_5,        KC_6,          TD(CT_CLN),
+       LT(FNAV,KC_GRV),    KC_EQL,       KC_LPRN,     KC_RPRN,        KC_NO,       KC_PAST,        KC_4,         KC_5,        KC_6,          TD(CT_CLN),
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       KC_LSFT,            TD(AT_DOT),   KC_MINS,     KC_PPLS,        KC_CIRC,     KC_PERC,        KC_1,         KC_2,        LALT_T(KC_3),  ALL_T(KC_0),
+       KC_LSFT,            TD(AT_DOT),   KC_MINS,     KC_PPLS,        KC_NO,       KC_PERC,        KC_1,         KC_2,        LALT_T(KC_3),  ALL_T(KC_0),
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
                            TD(LGUI_ALT), LT(QWERTY_2, KC_SPC),  LCTL_T(KC_ESC),    LALT_T(KC_TAB), LT(QWERTY_2, KC_BSPC)
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
@@ -192,7 +192,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [FNAV] = LAYOUT_charybdis_3x5(
   // ╭────────────────────────────────────────────────────────────────────────╮ ╭────────────────────────────────────────────────────────────────────────╮
-       KC_TILD,            KC_UNDS,      KC_LCBR,    KC_RCBR,          KC_NO,        TO(COLEMAK),    KC_F7,    KC_F8,    KC_F9,         KC_F10,
+       KC_NO,              KC_UNDS,      KC_LCBR,    KC_RCBR,          KC_NO,        TO(COLEMAK),    KC_F7,    KC_F8,    KC_F9,         KC_F10,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
        KC_NO,              KC_SCLN,      KC_CIRC,    KC_DLR,           KC_NO,        TO(QWERTY),     KC_F4,    KC_F5,    KC_F6,         KC_F11,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
