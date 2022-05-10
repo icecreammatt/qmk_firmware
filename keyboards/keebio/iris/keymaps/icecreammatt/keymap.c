@@ -36,6 +36,7 @@ typedef struct {
 // Tap dance enums
 enum {
     LGUI_ALT = 0,
+    LCTL_GUI,
     EXLM_UNDS,
     LBRC_AMPR,
     RBRC_PIPE,
@@ -68,13 +69,14 @@ td_state_t cur_dance(qk_tap_dance_state_t *state);
 #define HOME_L LALT_T(KC_L)
 #define HOME_QUOT RGUI_T(KC_QUOT)
 
-#define QWERTY 0
-#define COLEMAK 1
-#define SYMBOL 2
-#define NAV 3
-#define FNAV 4
-#define MOUSE 5
-#define QWERTY_2 6
+#define QWERTY_MIN 0
+#define QWERTY 1
+#define COLEMAK 2
+#define QWERTY_2 3
+#define SYMBOL 4
+#define NAV 5
+#define FNAV 6
+#define MOUSE 7
 
 #define SYM_SPC LT(SYMBOL, KC_SPC)
 
@@ -97,6 +99,20 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+  [QWERTY_MIN] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     _______,  KC_2,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     KC_TAB,  TD(Q_ENT),KC_W,   KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    _______,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, KC_ENT,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     KC_LSFT, LSFT_T(KC_Z),LALT_T(KC_X),KC_C,    KC_V,    KC_B,    KC_HOME,          KC_END,  KC_N,    KC_M,    KC_COMM, LT(NAV,KC_DOT),  RSFT_T(KC_SLSH), _______,
+  //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
+                                    TD(LGUI_ALT),LT(QWERTY_2, KC_SPC),TD(LCTL_GUI),     LT(NAV,KC_ESC),LT(SYMBOL,KC_BSPC), KC_RALT
+                                // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
+  ),
+
   [QWERTY] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
@@ -107,7 +123,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT, LSFT_T(KC_Z),LALT_T(KC_X),KC_C,    KC_V,    KC_B,    KC_HOME,          KC_END,  KC_N,    KC_M,    KC_COMM, LT(NAV,KC_DOT),  RSFT_T(KC_SLSH), _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    TD(LGUI_ALT),  LT(QWERTY_2, KC_SPC),  KC_LCTL,     LT(NAV,KC_ESC),LT(SYMBOL,KC_BSPC), KC_RALT
+                                    TD(LGUI_ALT),LT(QWERTY_2, KC_SPC),TD(LCTL_GUI),     LT(NAV,KC_ESC),LT(SYMBOL,KC_BSPC), KC_RALT
+                                // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
+  ),
+
+  [COLEMAK] = LAYOUT(
+  //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
+     _______, _______, _______, _______, _______, _______,                             _______, _______, _______, _______, _______, _______,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     _______, TD(Q_ENT),KC_W,    KC_F,     KC_P,    KC_B,                              KC_J,     KC_L,    KC_U,    KC_Y,   KC_QUOT, _______,
+  //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
+     _______, KC_A,     KC_R,    KC_S,     KC_T,    KC_G,                              KC_M,     KC_N,    KC_E,    KC_I,   KC_O,    _______,
+  //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+     _______, LSFT_T(KC_Z), LALT_T(KC_X), KC_C, KC_D, KC_V, _______,          _______, KC_K,     KC_H,  KC_COMM,  LT(NAV, KC_DOT), RSFT_T(KC_SLSH), _______,
+  //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
+                                    TD(LGUI_ALT), LT(QWERTY_2, KC_SPC), KC_LCTL,                   LT(NAV, KC_ESC), LT(SYMBOL, KC_BSPC), KC_RALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
@@ -333,6 +363,40 @@ static td_tap_t esctap_state = {
     .state = TD_NONE
 };
 
+void ctl_finished(qk_tap_dance_state_t *state, void *user_data) {
+    guitap_state.state = cur_dance(state);
+    switch (guitap_state.state) {
+        case TD_SINGLE_TAP: register_code(KC_LCTL); break;
+        case TD_SINGLE_HOLD: register_code(KC_LCTL); break;
+        case TD_DOUBLE_TAP: register_code(KC_ESC); break;
+        case TD_DOUBLE_HOLD: register_code(KC_LGUI); break;
+        // Last case is for fast typing. Assuming your key is `f`:
+        // For example, when typing the word `buffer`, and you wat to make sure that you send `ff` and not `Esc`.
+        // In order to type `ff` when typing fast, the next character will have to be hit within the `TAPPING_TERM`, which by default is 200ms.
+        case TD_DOUBLE_SINGLE_TAP: tap_code(KC_LCTL); register_code(KC_LCTL);
+        case TD_UNKNOWN: break;
+        case TD_NONE: break;
+        case TD_TRIPLE_TAP: register_code(KC_LCTL); register_code(KC_ENT); break;
+        case TD_TRIPLE_HOLD: break;
+    }
+}
+
+void ctl_reset(qk_tap_dance_state_t *state, void *user_data) {
+    switch (guitap_state.state) {
+        case TD_SINGLE_TAP: unregister_code(KC_LCTL); break;
+        case TD_SINGLE_HOLD: unregister_code(KC_LCTL); break;
+        case TD_DOUBLE_TAP: unregister_code(KC_ESC); break;
+        case TD_DOUBLE_HOLD: unregister_code(KC_LGUI);
+        case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_LCTL);
+        case TD_UNKNOWN: break;
+        case TD_NONE: break;
+        case TD_TRIPLE_TAP: unregister_code(KC_LCTL); unregister_code(KC_ENT); break;
+        case TD_TRIPLE_HOLD: break;
+    }
+    guitap_state.state = TD_NONE;
+}
+
+
 void gui_finished(qk_tap_dance_state_t *state, void *user_data) {
     guitap_state.state = cur_dance(state);
     switch (guitap_state.state) {
@@ -449,6 +513,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     // [DLR_UNDS] = ACTION_TAP_DANCE_DOUBLE(KC_DLR, KC_UNDS),
     [Q_ENT] =    ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ENT),
     // [PGDN_PGUP] =    ACTION_TAP_DANCE_DOUBLE(KC_PGDN, KC_PGUP),
+    [LCTL_GUI] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctl_finished, ctl_reset),
     [LGUI_ALT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, gui_finished, gui_reset),
     [ESC_NAV] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset)
 };
