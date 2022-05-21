@@ -51,7 +51,7 @@ enum {
     CT_CLN,
     SLSH_BSLS,
     Q_ENT,
-    // PGDN_PGUP,
+    PGDN_PGUP,
     ESC_NAV,
     HASH_DOT,
     // CIRC_HASH,
@@ -165,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, RESET,   KC_MUTE, KC_VOLD, KC_VOLU, KC_MPLY,                            KC_BTN4, KC_WH_D, KC_WH_U, KC_BTN5, KC_DEL,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, LT(FNAV,KC_PGUP), KC_GRV, S(KC_TAB), KC_TAB, KC_PAUSE,                  KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,KC_PGDN, _______,
+     _______, LT(FNAV,KC_PGUP), KC_GRV, S(KC_TAB), KC_TAB, KC_PAUSE,                  KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT,TD(PGDN_PGUP), _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______,LSFT_T(KC_HOME),LALT_T(_______),_______,_______,_______,        _______, KC_RPRN,KC_BTN3, KC_BTN1, KC_BTN3, KC_BTN2, KC_END, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -520,7 +520,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     // [CIRC_HASH] = ACTION_TAP_DANCE_DOUBLE(KC_CIRC, KC_HASH),
     // [DLR_UNDS] = ACTION_TAP_DANCE_DOUBLE(KC_DLR, KC_UNDS),
     [Q_ENT] =    ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ENT),
-    // [PGDN_PGUP] =    ACTION_TAP_DANCE_DOUBLE(KC_PGDN, KC_PGUP),
+    [PGDN_PGUP] =    ACTION_TAP_DANCE_DOUBLE(KC_PGDN, KC_PGUP),
     [LCTL_GUI] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctl_finished, ctl_reset),
     [LGUI_ALT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, gui_finished, gui_reset),
     [ESC_NAV] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset)
