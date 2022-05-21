@@ -42,6 +42,10 @@ enum {
     RBRC_PIPE,
     C_BTN4,
     C_BTN5,
+    E_STAB,
+    R_TAB,
+    W_TILD,
+    T_ST,
     // PAST_HASH,
     AT_DOT,
     CT_CLN,
@@ -173,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______, _______, _______,
+     _______, _______,TD(W_TILD),TD(E_STAB),TD(R_TAB),TD(T_ST),                            _______, _______, _______, _______, _______, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      _______, HOME_A,  HOME_S,  HOME_D,  HOME_F,  _______,                            _______, HOME_J,  HOME_K,  HOME_L, HOME_QUOT,_______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -506,6 +510,10 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [RBRC_PIPE] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_PIPE),
     [C_BTN4] = ACTION_TAP_DANCE_DOUBLE(KC_C, KC_BTN4),
     [C_BTN5] = ACTION_TAP_DANCE_DOUBLE(KC_V, KC_BTN5),
+    [E_STAB] = ACTION_TAP_DANCE_DOUBLE(KC_E, S(KC_TAB)),
+    [R_TAB] = ACTION_TAP_DANCE_DOUBLE(KC_R, KC_TAB),
+    [W_TILD] = ACTION_TAP_DANCE_DOUBLE(KC_W, KC_GRV),
+    [T_ST] = ACTION_TAP_DANCE_DOUBLE(KC_T, S(KC_T)),
     // [PAST_HASH] = ACTION_TAP_DANCE_DOUBLE(KC_PAST, KC_HASH),
     [AT_DOT] = ACTION_TAP_DANCE_DOUBLE(KC_AT, A(KC_8)),
     [SLSH_BSLS] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_BSLS),
