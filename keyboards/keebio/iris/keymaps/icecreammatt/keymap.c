@@ -40,6 +40,8 @@ enum {
     EXLM_UNDS,
     LBRC_AMPR,
     RBRC_PIPE,
+    DLR_END,
+    CIRC_HOME,
     C_BTN4,
     C_BTN5,
     E_STAB,
@@ -219,9 +221,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      RGB_TOG, RGB_MOD, RGB_HUI, RGB_HUD, RGB_SAI, RGB_SAD,                            RGB_VAI, RGB_VAD, RGB_M_P, RGB_M_B, RGB_M_G, _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, KC_UNDS, KC_LCBR, KC_RCBR, _______,                            TO(COLEMAK), KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
+     LCG_SWP, _______, KC_UNDS, KC_LCBR, KC_RCBR, _______,                            TO(COLEMAK), KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     _______, _______, KC_SCLN, KC_CIRC, KC_DLR,  _______,                            TO(QWERTY_MIN), KC_F4,   KC_F5,   KC_F6,   KC_F11,  _______,
+     EEP_RST, _______, KC_SCLN, TD(CIRC_HOME), TD(DLR_END),  _______,                            TO(QWERTY_MIN), KC_F4,   KC_F5,   KC_F6,   KC_F11,  _______,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT, _______, A(KC_8), KC_HASH, KC_PAST, _______, _______,          _______, _______, KC_F1,   KC_F2, LALT_T(KC_F3),ALL_T(KC_F12), _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -517,6 +519,9 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     // [PAST_HASH] = ACTION_TAP_DANCE_DOUBLE(KC_PAST, KC_HASH),
     [AT_DOT] = ACTION_TAP_DANCE_DOUBLE(KC_AT, A(KC_8)),
     [SLSH_BSLS] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_BSLS),
+
+    [CIRC_HOME] = ACTION_TAP_DANCE_DOUBLE(KC_CIRC, KC_HOME),
+    [DLR_END] = ACTION_TAP_DANCE_DOUBLE(KC_DLR, KC_END),
     // [CIRC_HASH] = ACTION_TAP_DANCE_DOUBLE(KC_CIRC, KC_HASH),
     // [DLR_UNDS] = ACTION_TAP_DANCE_DOUBLE(KC_DLR, KC_UNDS),
     [Q_ENT] =    ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ENT),
