@@ -2,6 +2,7 @@
 #include "g/keymap_combo.h" // might not need this
 
 //qmk flash -kb keebio/iris/rev5 -km icecreammatt -bl dfu
+// make keebio/iris/rev5:icecreammatt
 
 // ===================
 #undef TAPPING_TERM
