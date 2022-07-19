@@ -124,13 +124,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_TAB,  TD(Q_ENT),KC_W,   KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    _______,
+     KC_TAB,  TD(Q_ENT),KC_W,   KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT, KC_ENT,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT, LSFT_T(KC_Z),LALT_T(KC_X),KC_C,KC_V,KC_B,    KC_HOME,           KC_END,  KC_N,    KC_M,    KC_COMM, LT(NAV,KC_DOT),  RSFT_T(KC_SLSH), _______,
+     KC_LSFT, LSFT_T(KC_Z),LALT_T(KC_X),KC_C,KC_V,KC_B,    _______,          _______, KC_N,    KC_M,    KC_COMM, LT(NAV,KC_DOT),RSFT_T(KC_SLSH), _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    TD(LGUI_ALT),LT(QWERTY_2, KC_SPC),TD(LCTL_GUI),     LT(NAV,KC_ESC),LT(SYMBOL,KC_BSPC), KC_RALT
+                                    TD(LGUI_ALT),KC_SPC,KC_LSFT,                 LT(NAV,KC_ESC),LT(SYMBOL,KC_BSPC), KC_RALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
