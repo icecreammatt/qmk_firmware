@@ -16,42 +16,7 @@
  */
 #include QMK_KEYBOARD_H
 #include "g/keymap_combo.h" // might not need this
-
-// #define CHARYBDIS_POINTER_ACCELERATION_ENABLE
-#define PREVENT_STUCK_MODIFIERS
-
-#define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-//#define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 1000
-
-// #ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-#    include "timer.h"
-// #endif  // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-
-#ifdef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-// static uint16_t auto_pointer_layer_timer = 0;
-
-// #    ifndef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS
-#        define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS 1000
-// #    endif  // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_TIMEOUT_MS
-
-// #    ifndef CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
-#        define CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD 1
-// #    endif  // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_THRESHOLD
-#endif      // CHARYBDIS_AUTO_POINTER_LAYER_TRIGGER_ENABLE
-
-//  qmk compile -kb bastardkb/charybdis/3x5 -km icecreammatt
-
-#undef TAPPING_TERM
-#define TAPPING_TERM 50
-
-// Prevent normal rollover on alphas from accidentally triggering mods.
-#define IGNORE_MOD_TAP_INTERRUPT
-
-// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
-#define TAPPING_FORCE_HOLD
-
-// Apply the modifier on keys that are tapped during a short hold of a modtap
-#define PERMISSIVE_HOLD
+#include "defines.h"
 
 typedef enum {
     TD_NONE,
@@ -103,30 +68,16 @@ enum {
 td_state_t cur_dance(qk_tap_dance_state_t *state);
 
 // Left-hand home row mods
-#define HOME_A LGUI_T(KC_A)
+#define HOME_A LSFT_T(KC_A)
 #define HOME_S LALT_T(KC_S)
 #define HOME_D LCTL_T(KC_D)
-#define HOME_F LSFT_T(KC_F)
-
-// #define HOME_A OSM(KC_A)
-// #define HOME_S OSM(KC_S)
-// #define HOME_D OSM(KC_D)
-// #define HOME_F OSM(KC_F)
+#define HOME_F LGUI_T(KC_F)
 
 // Right-hand home row mods
-// #define HOME_J RSFT_T(KC_J)
-// #define HOME_K RCTL_T(KC_K)
-// #define HOME_L LALT_T(KC_L)
-// #define HOME_QUOT RGUI_T(KC_QUOT)
-#define HOME_J RSFT_T(KC_J)
+#define HOME_J LGUI_T(KC_J)
 #define HOME_K RCTL_T(KC_K)
 #define HOME_L LALT_T(KC_L)
-#define HOME_QUOT RGUI_T(KC_QUOT)
-
-//#define HOME_J OSM(KC_J)
-//#define HOME_K OSM(KC_K)
-//#define HOME_L OSM(KC_L)
-//#define HOME_QUOT OSM(KC_QUOT)
+#define HOME_QUOT RSFT_T(KC_QUOT)
 
 #define QWERTY 0
 #define COLEMAK 1
@@ -182,9 +133,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 
-  [QWERTY_2] = LAYOUT_charybdis_3x5(
+[QWERTY_2] = LAYOUT_charybdis_3x5(
   // ╭────────────────────────────────────────────────────────────────────────╮ ╭────────────────────────────────────────────────────────────────────────╮
-       TD(Q_ENT),        TD(W_TILD),   TD(E_STAB),  TD(R_TAB),    TD(T_ST),          KC_Y,    KC_U,      KC_I,      KC_O,          KC_P,
+       TD(Q_ENT),        KC_W,         KC_E,        KC_R,         KC_T,              KC_Y,    KC_U,      KC_I,      KC_O,          KC_P,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
        HOME_A,           HOME_S,       HOME_D,      HOME_F,       KC_G,              KC_H,    HOME_J,    HOME_K,    HOME_L,        HOME_QUOT,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
