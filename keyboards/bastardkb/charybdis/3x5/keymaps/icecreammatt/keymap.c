@@ -184,13 +184,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [MOUSE] = LAYOUT_charybdis_3x5(
   // ╭────────────────────────────────────────────────────────────────────────╮ ╭────────────────────────────────────────────────────────────────────────╮
-       KC_TRNS,          KC_TRNS,       KC_TRNS,           KC_TRNS, KC_TRNS,      KC_BTN4,       KC_WH_D,      KC_WH_U,      KC_BTN5,    KC_DEL,
+       KC_TRNS,          KC_TRNS,      KC_TRNS,           KC_TRNS,   KC_TRNS,      KC_BTN4,       KC_WH_D,      KC_WH_U,      KC_BTN5,    KC_DEL,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       KC_TRNS,          KC_TRNS,       DRAGSCROLL_MODE,   KC_TRNS, KC_TRNS,      _______,       KC_BTN1,      KC_BTN3,      KC_BTN2,    _______,
+       KC_TRNS,          KC_BTN2,      DRAGSCROLL_MODE,   KC_BTN1,   KC_TRNS,      _______,       KC_BTN1,      KC_BTN3,      KC_BTN2,    _______,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       KC_TRNS,          KC_TRNS ,      KC_TRNS,           KC_TRNS, KC_TRNS,      _______,       KC_BTN1,      KC_BTN3,      KC_BTN2,    DRAGSCROLL_MODE,
+       KC_TRNS,          KC_BTN4,      KC_BTN3,           KC_BTN5,   KC_TRNS,      _______,       KC_BTN1,      KC_BTN3,      KC_BTN2,    DRAGSCROLL_MODE,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-                          _______,      SNIPING_MODE,      _______,               _______, _______
+                          _______,      SNIPING_MODE,      _______,               KC_BTN2,       KC_BTN1
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 };
