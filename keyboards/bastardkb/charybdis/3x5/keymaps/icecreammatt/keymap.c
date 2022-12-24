@@ -80,9 +80,9 @@ td_state_t cur_dance(qk_tap_dance_state_t *state);
 #define HOME_QUOT RSFT_T(KC_QUOT)
 
 // Left-hand home row mods colemak
-#define HOME_A LSFT_T(KC_A)
+#define HOME_AC LSFT_T(KC_A)
 #define HOME_R LALT_T(KC_R)
-#define HOME_S LCTL_T(KC_S)
+#define HOME_SC LCTL_T(KC_S)
 #define HOME_T LGUI_T(KC_T)
 
 // Right-hand home row mods colemak
@@ -154,7 +154,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭────────────────────────────────────────────────────────────────────────╮ ╭────────────────────────────────────────────────────────────────────────╮
        KC_Q,               KC_W,           KC_F,       KC_P,           KC_B,        KC_J,      KC_L,      KC_U,      KC_Y,              KC_QUOT,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-       HOME_A,             HOME_R,           HOME_S,       HOME_T,     KC_G,        KC_M,      HOME_N,    HOME_E,    HOME_I,            HOME_O,
+       HOME_AC,            HOME_R,         HOME_SC,    HOME_T,         KC_G,        KC_M,      HOME_N,    HOME_E,    HOME_I,            HOME_O,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
        LSFT_T(KC_Z),       LALT_T(KC_X),   KC_C,       KC_D,           KC_V,        KC_K,      KC_H,      KC_COMM,   LT(NAV, KC_DOT),   RSFT_T(KC_SLSH),
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
