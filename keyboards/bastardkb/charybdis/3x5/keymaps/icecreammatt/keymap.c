@@ -58,7 +58,6 @@ enum {
     T_ESC,
     B_TAB,
     PGDN_PGUP,
-    ESC_NAV,
     HASH_DOT,
     // CIRC_HASH,
     HOME_VOLD,
@@ -93,10 +92,7 @@ td_state_t cur_dance(qk_tap_dance_state_t *state);
 #define HOME_I LALT_T(KC_I)
 #define HOME_O RSFT_T(KC_O)
 
-// Reference
-//HOME_A,           KC_R,         KC_S,        KC_T,         KC_G,             KC_M,    KC_N,      KC_E,      KC_I,          LT(MOUSE, KC_O),
-//HOME_A,           HOME_S,       HOME_D,      HOME_F,       KC_G,             KC_H,    HOME_J,    HOME_K,    HOME_L,        HOME_QUOT,
-
+// Layer Defines
 #define QWERTY 0
 #define QWERTY_2 1
 #define COLEMAK 2
@@ -109,23 +105,6 @@ td_state_t cur_dance(qk_tap_dance_state_t *state);
 #define MOUSE 9
 
 #define SYM_SPC LT(SYMBOL, KC_SPC)
-
-/*
-enum charybdis_keymap_layers {
-    LAYER_BASE = 0,
-    LAYER_LOWER,
-    LAYER_RAISE,
-}
-
-#define LOWER MO(LAYER_LOWER)
-#define RAISE MO(LAYER_RAISE)
-
-#define CTL_BSP CTL_T(KC_BSPC)
-#define SFT_SPC SFT_T(KC_SPC)
-#define GUI_ENT GUI_T(KC_ENT)
-
-*/
-
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -246,7 +225,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
        KC_TRNS,          KC_BTN4,      KC_BTN3,           KC_BTN5,   KC_TRNS,      _______,       KC_BTN4,      KC_BTN3,      KC_BTN5,    DRAGSCROLL_MODE,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-                          _______,      SNIPING_MODE,      _______,               KC_BTN2,       KC_BTN1
+                          _______,    SNIPING_MODE,       _______,                 KC_BTN2,       KC_BTN1
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 };
@@ -341,12 +320,6 @@ static td_tap_t guitap_state = {
     .state = TD_NONE
 };
 
-// td_tap_t for ESC key
-static td_tap_t esctap_state = {
-    .is_press_action = true,
-    .state = TD_NONE
-};
-
 void ctl_finished(qk_tap_dance_state_t *state, void *user_data) {
     guitap_state.state = cur_dance(state);
     switch (guitap_state.state) {
@@ -380,94 +353,6 @@ void ctl_reset(qk_tap_dance_state_t *state, void *user_data) {
     guitap_state.state = TD_NONE;
 }
 
-
-
-void gui_finished(qk_tap_dance_state_t *state, void *user_data) {
-    guitap_state.state = cur_dance(state);
-    switch (guitap_state.state) {
-        case TD_SINGLE_TAP: register_code(KC_LGUI); break;
-        case TD_SINGLE_HOLD: register_code(KC_LGUI); break;
-        case TD_DOUBLE_TAP: register_code(KC_ENT); break;
-        case TD_DOUBLE_HOLD: register_code(KC_LALT); break;
-        // Last case is for fast typing. Assuming your key is `f`:
-        // For example, when typing the word `buffer`, and you wat to make sure that you send `ff` and not `Esc`.
-        // In order to type `ff` when typing fast, the next character will have to be hit within the `TAPPING_TERM`, which by default is 200ms.
-        case TD_DOUBLE_SINGLE_TAP: tap_code(KC_LGUI); register_code(KC_LGUI);
-        case TD_UNKNOWN: break;
-        case TD_NONE: break;
-        case TD_TRIPLE_TAP: register_code(KC_LGUI); register_code(KC_SPC); break;
-        case TD_TRIPLE_HOLD: break;
-    }
-}
-
-void gui_reset(qk_tap_dance_state_t *state, void *user_data) {
-    switch (guitap_state.state) {
-        case TD_SINGLE_TAP: unregister_code(KC_LGUI); break;
-        case TD_SINGLE_HOLD: unregister_code(KC_LGUI); break;
-        case TD_DOUBLE_TAP: unregister_code(KC_ENT); break;
-        case TD_DOUBLE_HOLD: unregister_code(KC_LALT);
-        case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_LGUI);
-        case TD_UNKNOWN: break;
-        case TD_NONE: break;
-        case TD_TRIPLE_TAP: unregister_code(KC_LGUI); unregister_code(KC_SPC); break;
-        case TD_TRIPLE_HOLD: break;
-    }
-    guitap_state.state = TD_NONE;
-}
-
-//// mouse lock
-void esc_finished(qk_tap_dance_state_t *state, void *user_data) {
-    esctap_state.state = cur_dance(state);
-    switch (esctap_state.state) {
-        case TD_SINGLE_TAP: register_code(KC_I); break;
-        case TD_SINGLE_HOLD: layer_on(MOUSE); break;
-        case TD_DOUBLE_TAP: {
-            if (layer_state_is(MOUSE)) {
-                layer_off(MOUSE);
-            } else {
-                layer_on(MOUSE);
-            }
-            break;
-        }
-        case TD_DOUBLE_HOLD: break; //layer_on(NUMPAD); break;
-        // Last case is for fast typing. Assuming your key is `f`:
-        // For example, when typing the word `buffer`, and you want to make sure that you send `ff` and not `Esc`.
-        // In order to type `ff` when typing fast, the next character will have to be hit within the `TAPPING_TERM`, which by default is 200ms.
-        case TD_DOUBLE_SINGLE_TAP: break;
-        case TD_UNKNOWN: break;
-        case TD_NONE: break;
-        case TD_TRIPLE_TAP: break;
-        case TD_TRIPLE_HOLD: break;
-    }
-}
-
-void esc_reset(qk_tap_dance_state_t *state, void *user_data) {
-    switch (esctap_state.state) {
-        case TD_SINGLE_TAP: unregister_code(KC_I); break;
-        case TD_SINGLE_HOLD: {
-            if(esctap_state.state == TD_SINGLE_HOLD) {
-                layer_off(MOUSE);
-            }
-            esctap_state.state = TD_NONE;
-            break;
-        }
-        case TD_DOUBLE_TAP: break;
-        case TD_DOUBLE_HOLD: break; //{
-        //     if(esctap_state.state == TD_DOUBLE_HOLD) {
-        //         layer_off(NUMPAD);
-        //     }
-        //     esctap_state.state = TD_NONE;
-        //     break;
-        // }
-        case TD_DOUBLE_SINGLE_TAP: break;
-        case TD_UNKNOWN: break;
-        case TD_NONE: break;
-        case TD_TRIPLE_TAP: break;
-        case TD_TRIPLE_HOLD: break;
-    }
-    esctap_state.state = TD_NONE;
-}
-
 qk_tap_dance_action_t tap_dance_actions[] = {
     [CT_CLN] = ACTION_TAP_DANCE_DOUBLE(KC_COLN, KC_ENT),
     [EXLM_UNDS] = ACTION_TAP_DANCE_DOUBLE(KC_EXLM, KC_UNDS),
@@ -492,10 +377,8 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [Q_ENT] = ACTION_TAP_DANCE_DOUBLE(KC_Q, KC_ENT),
     [PGDN_PGUP] = ACTION_TAP_DANCE_DOUBLE(KC_PGDN, KC_PGUP),
     [LCTL_GUI] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctl_finished, ctl_reset),
-    [LGUI_ALT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, gui_finished, gui_reset),
     [HOME_VOLD] = ACTION_TAP_DANCE_DOUBLE(KC_HOME, KC_VOLD),
     [END_VOLU] = ACTION_TAP_DANCE_DOUBLE(KC_END, KC_VOLU),
-    [ESC_NAV] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, esc_finished, esc_reset)
     // [CIRC_HASH] = ACTION_TAP_DANCE_DOUBLE(KC_CIRC, KC_HASH),
     // [DLR_UNDS] = ACTION_TAP_DANCE_DOUBLE(KC_DLR, KC_UNDS)
 };
