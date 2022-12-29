@@ -123,14 +123,7 @@ void ctl_finished(qk_tap_dance_state_t *state, void *user_data) {
            break;
         };
         case TD_SINGLE_HOLD: register_code(KC_LCTL); break;
-        case TD_DOUBLE_TAP: {
-           if(layer_state_is(QWERTY_2)) {
-                layer_off(QWERTY_2);
-           } else if (layer_state_is(COLEMAK_2)) {
-                layer_off(COLEMAK_2);               
-           }
-           break;
-        };
+        case TD_DOUBLE_TAP: break;
         case TD_DOUBLE_HOLD: register_code(KC_LGUI); break;
         // Last case is for fast typing. Assuming your key is `f`:
         // For example, when typing the word `buffer`, and you wat to make sure that you send `ff` and not `Esc`.
