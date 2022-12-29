@@ -19,18 +19,7 @@
 #include "defines.h"
 #include "tapdance.h"
 #include "homerow.h"
-
-// Layer Defines
-#define QWERTY 0
-#define QWERTY_2 1
-#define COLEMAK 2
-#define COLEMAK_2 3
-#define GAMING 4
-#define GAMING_2 5
-#define SYMBOL 6
-#define NAV 7
-#define FNAV 8
-#define MOUSE 9
+#include "layers.h"
 
 // Aliases
 #define CTRL_GUI   TD(LCTL_GUI)

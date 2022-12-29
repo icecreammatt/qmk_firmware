@@ -1,3 +1,5 @@
+#include "layers.h"
+
 typedef enum {
     TD_NONE,
     TD_UNKNOWN,
