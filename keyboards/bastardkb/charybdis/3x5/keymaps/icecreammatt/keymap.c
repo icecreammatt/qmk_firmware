@@ -32,10 +32,15 @@
 
 //#define RSFT_SLSH  RSFT_T(KC_SLSH)
 #define RSFT_SLSH  KC_SLSH
+
+#define HOMEROW_QW LT(QWERTY_2, KC_SPC)
+#define HOMEROW_QW2 LT(QWERTY_2, KC_ESC)
+
+#define HOMEROW_CO LT(COLEMAK_2, KC_ESC)
+#define HOMEROW_CO2 LT(COLEMAK_2, KC_ESC)
+
 #define SYM_BSPC   LT(SYMBOL, KC_BSPC)
 #define NAV_ESC    LT(NAV, KC_ESC)
-#define HOMEROW_QW LT(QWERTY_2, KC_SPC)
-#define HOMEROW_CO LT(COLEMAK_2, KC_SPC)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -48,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
         LSFT_Z,         KC_X,           KC_C,        KC_V,         KC_B,           KC_N,    KC_M,      KC_COMM,        KC_DOT,        RSFT_SLSH,
   // ╰────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────╯
-                        MOUSE_MOD,      HOMEROW_QW,  CTRL_GUI,                     NAV_ESC, SYM_BSPC
+                        MOUSE_ENT,      LSFT_SPC,    CTRL_GUI,                     NAV_ESC, SYM_BSPC
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 
@@ -72,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
         LSFT_Z,         KC_X,           KC_C,       KC_D,          KC_V,           KC_K,      KC_H,      KC_COMM,   KC_DOT,           RSFT_SLSH,
   // ├────────────────────────────────────────────────────────────────────────┤ ├────────────────────────────────────────────────────────────────────────┤
-                        _______,        HOMEROW_CO, _______,                       _______,  _______
+                        _______,        HOMEROW_CO2, _______,                      _______,  _______
   //                   ╰──────────────────────────────────────────────────────╯ ╰────────────────────────────────────────────╯
   ),
 
