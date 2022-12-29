@@ -22,7 +22,6 @@
 #include "layers.h"
 
 // Aliases
-#define CTRL_GUI   TD(LCTL_GUI)
 #define MOUSE_ENT  LT(MOUSE, KC_ENT)
 
 //#define LSFT_Z     LSFT_T(KC_Z)
@@ -39,8 +38,10 @@
 #define HOMEROW_CO LT(COLEMAK_2, KC_ESC)
 #define HOMEROW_CO2 LT(COLEMAK_2, KC_ESC)
 
-#define SYM_BSPC   LT(SYMBOL, KC_BSPC)
+#define CTRL_GUI   TD(LCTL_GUI)
+
 #define NAV_ESC    LT(NAV, KC_ESC)
+#define SYM_BSPC   LT(SYMBOL, KC_BSPC)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
