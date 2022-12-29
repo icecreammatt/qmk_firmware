@@ -28,6 +28,8 @@
 //#define LSFT_Z     LSFT_T(KC_Z)
 #define LSFT_Z     KC_Z
 
+#define LSFT_SPC   LSFT_T(KC_SPC)
+
 //#define RSFT_SLSH  RSFT_T(KC_SLSH)
 #define RSFT_SLSH  KC_SLSH
 #define SYM_BSPC   LT(SYMBOL, KC_BSPC)
