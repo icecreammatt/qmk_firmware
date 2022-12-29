@@ -23,6 +23,8 @@
 
 // Aliases
 #define CTRL_GUI   TD(LCTL_GUI)
+#define MOUSE_ENT  LT(MOUSE, KC_ENT)
+
 //#define LSFT_Z     LSFT_T(KC_Z)
 #define LSFT_Z     KC_Z
 
@@ -30,7 +32,6 @@
 #define RSFT_SLSH  KC_SLSH
 #define SYM_BSPC   LT(SYMBOL, KC_BSPC)
 #define NAV_ESC    LT(NAV, KC_ESC)
-#define MOUSE_MOD  LT(MOUSE, _______)
 #define HOMEROW_QW LT(QWERTY_2, KC_SPC)
 #define HOMEROW_CO LT(COLEMAK_2, KC_SPC)
 
