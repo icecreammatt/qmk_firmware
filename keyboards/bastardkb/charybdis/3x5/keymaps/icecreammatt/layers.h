@@ -6,6 +6,6 @@
 #define GAMING 4
 #define GAMING_2 5
 #define SYMBOL 6
-#define NAV 7
-#define FNAV 8
-#define MOUSE 9
+#define MOUSE 7
+#define NAV 8
+#define FNAV 9
