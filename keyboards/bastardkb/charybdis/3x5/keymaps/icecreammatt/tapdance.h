@@ -28,6 +28,8 @@ enum {
     T_ESC,
     B_TAB,
     PGDN_PGUP,
+    QQ_COL,
+    QQ_QWERTY
 };
 
 td_state_t cur_dance(qk_tap_dance_state_t *state);
@@ -92,46 +94,38 @@ static td_tap_t guitap_state = {
 void ctl_finished(qk_tap_dance_state_t *state, void *user_data) {
     guitap_state.state = cur_dance(state);
     switch (guitap_state.state) {
-        case TD_SINGLE_TAP: {
-           if(layer_state_is(QWERTY)) {
-                layer_on(QWERTY_2);
-                break;
-           } else if (layer_state_is(COLEMAK)) {
-                layer_on(COLEMAK_2);               
-                break;
-           } else if(layer_state_is(QWERTY_2)) {
-                layer_off(QWERTY_2);
-                break;
-           } else if (layer_state_is(COLEMAK_2)) {
-                layer_off(COLEMAK_2);               
-                break;
+        case TD_SINGLE_TAP: register_code(KC_Q); break;
+        case TD_SINGLE_HOLD: register_code(KC_Q); break;
+        case TD_DOUBLE_TAP: {
+           if(layer_state_is(QWERTY) || layer_state_is(QWERTY_2)) {
+                layer_on(COLEMAK);
+           } else if (layer_state_is(COLEMAK) || layer_state_is(COLEMAK_2)) {
+                layer_off(COLEMAK);
            }
            break;
         };
-        case TD_SINGLE_HOLD: register_code(KC_LCTL); break;
-        case TD_DOUBLE_TAP: break;
-        case TD_DOUBLE_HOLD: register_code(KC_LGUI); break;
+        case TD_DOUBLE_HOLD: break;
         // Last case is for fast typing. Assuming your key is `f`:
         // For example, when typing the word `buffer`, and you wat to make sure that you send `ff` and not `Esc`.
         // In order to type `ff` when typing fast, the next character will have to be hit within the `TAPPING_TERM`, which by default is 200ms.
-        case TD_DOUBLE_SINGLE_TAP: tap_code(KC_LCTL); register_code(KC_LCTL);
+        case TD_DOUBLE_SINGLE_TAP: break;
         case TD_UNKNOWN: break;
         case TD_NONE: break;
-        case TD_TRIPLE_TAP: register_code(KC_LCTL); register_code(KC_ENT); break;
+        case TD_TRIPLE_TAP: break;
         case TD_TRIPLE_HOLD: break;
     }
 }
 
 void ctl_reset(qk_tap_dance_state_t *state, void *user_data) {
     switch (guitap_state.state) {
-        case TD_SINGLE_TAP: break;
-        case TD_SINGLE_HOLD: unregister_code(KC_LCTL); break;
-        case TD_DOUBLE_TAP: break;
-        case TD_DOUBLE_HOLD: unregister_code(KC_LGUI); break;
-        case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_LCTL);
+        case TD_SINGLE_TAP: unregister_code(KC_Q); break;
+        case TD_SINGLE_HOLD: unregister_code(KC_Q); break;
+        case TD_DOUBLE_TAP: unregister_code(KC_Q); break;
+        case TD_DOUBLE_HOLD:break;
+        case TD_DOUBLE_SINGLE_TAP: break;
         case TD_UNKNOWN: break;
         case TD_NONE: break;
-        case TD_TRIPLE_TAP: unregister_code(KC_LCTL); unregister_code(KC_ENT); break;
+        case TD_TRIPLE_TAP: break;
         case TD_TRIPLE_HOLD: break;
     }
     guitap_state.state = TD_NONE;
@@ -145,4 +139,5 @@ qk_tap_dance_action_t tap_dance_actions[] = {
     [B_TAB] = ACTION_TAP_DANCE_DOUBLE(KC_B, KC_TAB), // Gaming
     [T_ESC] = ACTION_TAP_DANCE_DOUBLE(KC_T, KC_ESC), // Gaming
     [PGDN_PGUP] = ACTION_TAP_DANCE_DOUBLE(KC_PGDN, KC_PGUP),
+    [QQ_COL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, ctl_finished, ctl_reset) // Colemak QWERTY Toggle
 };
