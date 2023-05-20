@@ -13,6 +13,11 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+Note for flashing on NixOS use sudo or qmk command won't work
+
+sudo qmk flash -c -kb bastardkb/charybdis/3x5 -km icecreammatt -bl dfu
+
  */
 #include QMK_KEYBOARD_H
 #include "g/keymap_combo.h" // might not need this
