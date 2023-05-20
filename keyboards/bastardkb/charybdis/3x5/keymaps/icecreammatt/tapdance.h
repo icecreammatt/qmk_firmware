@@ -94,13 +94,21 @@ static td_tap_t guitap_state = {
 void ctl_finished(qk_tap_dance_state_t *state, void *user_data) {
     guitap_state.state = cur_dance(state);
     switch (guitap_state.state) {
-        case TD_SINGLE_TAP: register_code(KC_Q); break;
+        case TD_SINGLE_TAP: {
+            if(layer_state_is(COLEMAK) || layer_state_is(COLEMAK_2)) {
+                register_code(KC_Q);
+            } else {
+                register_code(KC_ESC);
+            }
+            break;
+        };
         case TD_SINGLE_HOLD: register_code(KC_Q); break;
         case TD_DOUBLE_TAP: {
-           if(layer_state_is(QWERTY) || layer_state_is(QWERTY_2)) {
-                layer_on(COLEMAK);
-           } else if (layer_state_is(COLEMAK) || layer_state_is(COLEMAK_2)) {
-                layer_off(COLEMAK);
+           if(layer_state_is(COLEMAK) || layer_state_is(COLEMAK_2) || layer_state_is(MOUSE)) {
+                layer_on(GAMING);
+           } else if (layer_state_is(GAMING) || layer_state_is(GAMING_2)) {
+                layer_off(GAMING);
+                layer_off(GAMING_2);
            }
            break;
         };
@@ -118,9 +126,16 @@ void ctl_finished(qk_tap_dance_state_t *state, void *user_data) {
 
 void ctl_reset(qk_tap_dance_state_t *state, void *user_data) {
     switch (guitap_state.state) {
-        case TD_SINGLE_TAP: unregister_code(KC_Q); break;
+        case TD_SINGLE_TAP: {
+            if(layer_state_is(COLEMAK) || layer_state_is(COLEMAK_2)) {
+                unregister_code(KC_Q);
+            } else {
+                unregister_code(KC_ESC);
+            }
+             break;
+        };
         case TD_SINGLE_HOLD: unregister_code(KC_Q); break;
-        case TD_DOUBLE_TAP: unregister_code(KC_Q); break;
+        case TD_DOUBLE_TAP: unregister_code(KC_Q); unregister_code(KC_ESC); break;
         case TD_DOUBLE_HOLD:break;
         case TD_DOUBLE_SINGLE_TAP: break;
         case TD_UNKNOWN: break;
