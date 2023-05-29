@@ -102,7 +102,14 @@ void ctl_finished(qk_tap_dance_state_t *state, void *user_data) {
             }
             break;
         };
-        case TD_SINGLE_HOLD: register_code(KC_Q); break;
+        case TD_SINGLE_HOLD: {
+            if(layer_state_is(COLEMAK) || layer_state_is(COLEMAK_2)) {
+                register_code(KC_Q);
+            } else {
+                register_code(KC_ESC);
+            }
+            break;
+        };
         case TD_DOUBLE_TAP: {
            if(layer_state_is(COLEMAK) || layer_state_is(COLEMAK_2) || layer_state_is(MOUSE)) {
                 layer_on(GAMING);
@@ -134,7 +141,7 @@ void ctl_reset(qk_tap_dance_state_t *state, void *user_data) {
             }
              break;
         };
-        case TD_SINGLE_HOLD: unregister_code(KC_Q); break;
+        case TD_SINGLE_HOLD: unregister_code(KC_Q); unregister_code(KC_ESC); break;
         case TD_DOUBLE_TAP: unregister_code(KC_Q); unregister_code(KC_ESC); break;
         case TD_DOUBLE_HOLD:break;
         case TD_DOUBLE_SINGLE_TAP: break;
