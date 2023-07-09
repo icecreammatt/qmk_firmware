@@ -12,3 +12,14 @@
 
 #define SYM_SPC LT(SYMBOL, KC_SPC)
 
+// Left-hand home row mods colemak
+#define HOME_AC LSFT_T(KC_A)
+#define HOME_R LALT_T(KC_R)
+#define HOME_SC LCTL_T(KC_S)
+#define HOME_T LGUI_T(KC_T)
+
+// Right-hand home row mods colemak
+#define HOME_N LGUI_T(KC_N)
+#define HOME_E RCTL_T(KC_E)
+#define HOME_I LALT_T(KC_I)
+#define HOME_O RSFT_T(KC_O)
