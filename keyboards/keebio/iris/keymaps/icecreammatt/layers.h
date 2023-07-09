@@ -1,8 +1,8 @@
-#define QWERTY_MIN 0
-#define QWERTY 1
-#define QWERTY_2 2
-#define COLEMAK 3
-#define COLEMAK_2 4
+#define COLEMAK 0
+#define COLEMAK_2 1
+#define QWERTY_MIN 2
+#define QWERTY 3
+#define QWERTY_2 4
 #define GAMING 5
 #define GAMING2 6
 #define GAMING3 7
