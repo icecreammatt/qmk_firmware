@@ -122,31 +122,60 @@ static td_tap_t esctap_state = {
 void ctl_finished(qk_tap_dance_state_t *state, void *user_data) {
     guitap_state.state = cur_dance(state);
     switch (guitap_state.state) {
-        case TD_SINGLE_TAP: register_code(KC_LCTL); break;
-        case TD_SINGLE_HOLD: register_code(KC_LCTL); break;
-        case TD_DOUBLE_TAP: register_code(KC_ESC); break;
-        case TD_DOUBLE_HOLD: register_code(KC_LGUI); break;
+        case TD_SINGLE_TAP: {
+            if(layer_state_is(COLEMAK) || layer_state_is(COLEMAK_2)) {
+                register_code(KC_Q);
+            } else {
+                register_code(KC_ESC);
+            }
+            break;
+        };
+        case TD_SINGLE_HOLD: {
+            if(layer_state_is(COLEMAK) || layer_state_is(COLEMAK_2)) {
+                register_code(KC_Q);
+            } else {
+                register_code(KC_ESC);
+            }
+            break;
+        };
+        case TD_DOUBLE_TAP: {
+           if(layer_state_is(COLEMAK) || layer_state_is(COLEMAK_2) || layer_state_is(MOUSE)) {
+                layer_on(GAMING);
+           } else if (layer_state_is(GAMING) || layer_state_is(GAMING2)) {
+                layer_off(GAMING);
+                layer_off(GAMING2);
+           }
+           break;
+        };
+        case TD_DOUBLE_HOLD: break;
         // Last case is for fast typing. Assuming your key is `f`:
         // For example, when typing the word `buffer`, and you wat to make sure that you send `ff` and not `Esc`.
         // In order to type `ff` when typing fast, the next character will have to be hit within the `TAPPING_TERM`, which by default is 200ms.
-        case TD_DOUBLE_SINGLE_TAP: tap_code(KC_LCTL); register_code(KC_LCTL);
+        case TD_DOUBLE_SINGLE_TAP: break;
         case TD_UNKNOWN: break;
         case TD_NONE: break;
-        case TD_TRIPLE_TAP: register_code(KC_LCTL); register_code(KC_ENT); break;
+        case TD_TRIPLE_TAP: break;
         case TD_TRIPLE_HOLD: break;
     }
 }
 
 void ctl_reset(qk_tap_dance_state_t *state, void *user_data) {
     switch (guitap_state.state) {
-        case TD_SINGLE_TAP: unregister_code(KC_LCTL); break;
-        case TD_SINGLE_HOLD: unregister_code(KC_LCTL); break;
-        case TD_DOUBLE_TAP: unregister_code(KC_ESC); break;
-        case TD_DOUBLE_HOLD: unregister_code(KC_LGUI);
-        case TD_DOUBLE_SINGLE_TAP: unregister_code(KC_LCTL);
+        case TD_SINGLE_TAP: {
+            if(layer_state_is(COLEMAK) || layer_state_is(COLEMAK_2)) {
+                unregister_code(KC_Q);
+            } else {
+                unregister_code(KC_ESC);
+            }
+             break;
+        };
+        case TD_SINGLE_HOLD: unregister_code(KC_Q); unregister_code(KC_ESC); break;
+        case TD_DOUBLE_TAP: unregister_code(KC_Q); unregister_code(KC_ESC); break;
+        case TD_DOUBLE_HOLD:break;
+        case TD_DOUBLE_SINGLE_TAP: break;
         case TD_UNKNOWN: break;
         case TD_NONE: break;
-        case TD_TRIPLE_TAP: unregister_code(KC_LCTL); unregister_code(KC_ENT); break;
+        case TD_TRIPLE_TAP: break;
         case TD_TRIPLE_HOLD: break;
     }
     guitap_state.state = TD_NONE;
