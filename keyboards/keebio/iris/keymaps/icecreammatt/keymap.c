@@ -5,25 +5,6 @@
 #include "homerow.h"
 #include "layers.h"
 
-// Aliases
-#define MOUSE_ENT  LT(MOUSE, KC_ENT)
-
-// Shift keys
-#define LSFT_Z     LSFT_T(KC_Z)
-#define LSFT_SPC   LSFT_T(KC_SPC)
-#define RSFT_SLSH  RSFT_T(KC_SLSH)
-
-// QWERTY home row
-#define HOMEROW_QW LT(QWERTY_2, KC_SPC)
-#define HOMEROW_QW2 LT(QWERTY_2, KC_ESC)
-
-// Colemak home row
-#define HOMEROW_CO LT(COLEMAK_2, KC_SPC)
-#define HOMEROW_CO2 LT(COLEMAK_2, KC_ESC)
-
-#define NAV_ESC    LT(NAV, KC_ESC)
-#define SYM_BSPC   LT(SYMBOL, KC_BSPC)
-
 //qmk flash -kb keebio/iris/rev5 -km icecreammatt -bl dfu
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
