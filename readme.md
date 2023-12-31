@@ -1,3 +1,6 @@
+# [Bastard Gaming](https://github.com/icecreammatt/qmk_firmware/blob/307f2a0ce08ddb8e0d03d4fb11314711433e2727/keyboards/bastardkb/charybdis/3x5/keymaps/icecreammatt/keymap.c#L102)
+# [Iris Gamging](https://github.com/icecreammatt/qmk_firmware/blob/307f2a0ce08ddb8e0d03d4fb11314711433e2727/keyboards/keebio/iris/keymaps/icecreammatt/keymap.c#L82)
+
 # Quantum Mechanical Keyboard Firmware
 
 [![Current Version](https://img.shields.io/github/tag/qmk/qmk_firmware.svg)](https://github.com/qmk/qmk_firmware/tags)
