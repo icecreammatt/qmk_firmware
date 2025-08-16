@@ -86,8 +86,8 @@ td_state_t cur_dance(qk_tap_dance_state_t *state);
 #define HOME_L LALT_T(KC_L)
 #define HOME_QUOT RGUI_T(KC_QUOT)
 
-#define QWERTY 0
-#define COLEMAK 1
+#define COLEMAK 0
+#define QWERTY 1
 #define SYMBOL 2
 #define FNAV 3
 #define MOUSE 4
@@ -138,10 +138,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // COLEMAK
   // TODO update this so it goes to COLEMAK2 for system keys
   [COLEMAK] = LAYOUT(
-    KC_Q,               KC_W,                KC_F,             KC_P,                    KC_B,                                                  KC_J,                KC_L,      KC_U,           KC_Y,           KC_QUOT,
+    TD(Q_ENT),          KC_W,                KC_F,             KC_P,                    KC_B,                                                  KC_J,                KC_L,      KC_U,           KC_Y,           KC_QUOT,
     KC_A,               KC_R,                KC_S,             KC_T,                    KC_G,                                                  KC_M,                KC_N,      KC_E,           KC_I,           KC_O,
     LSFT_T(KC_Z),       KC_X,                KC_C,             KC_D,                    KC_V,                                                  KC_K,                KC_H,      KC_COMM,        LALT_T(KC_DOT), RSFT_T(KC_SLSH),
-    KC_NO,              RESET,               KC_NO,            TD(LGUI_ALT),            LT(SYMBOL,KC_SPC), KC_LCTL,       LT(MOUSE, KC_ESC),   LT(SYMBOL, KC_BSPC), KC_NO,     KC_NO,          KC_NO,          KC_NO
+    KC_NO,              RESET,               KC_NO,            KC_ENT,                  LT(SYMBOL,KC_SPC), KC_LCTL,        LT(MOUSE, KC_ESC),   LT(SYMBOL, KC_BSPC), KC_NO,     KC_NO,          KC_NO,          KC_NO
   ),
 
 /* QWERTY_2: Base keys
@@ -158,7 +158,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               '-------'-------'-------'      '-------'-------'
  */
   [QWERTY_2] = LAYOUT(
-    KC_Q,                   KC_W,            KC_E,                 KC_R,                KC_T,                                                  KC_Y,                KC_U,      KC_I,           KC_O,       KC_P,
+    TD(Q_ENT),                   KC_W,            KC_E,                 KC_R,                KC_T,                                                  KC_Y,                KC_U,      KC_I,           KC_O,       KC_P,
     HOME_A,                 HOME_S,          HOME_D,               HOME_F,              KC_G,                                                  KC_H,                HOME_J,    HOME_K,         HOME_L,     HOME_QUOT,
     LSFT_T(KC_Z),           KC_X,            KC_C,                 KC_V,                KC_B,                                                  KC_N,                KC_M,      KC_COMM,        KC_DOT,     RSFT_T(KC_SLSH),
     KC_NO,                  RESET,           KC_NO,                TD(LGUI_ALT),        KC_SPC,  KC_LCTL,                             KC_ESC,  KC_BSPC,             KC_NO,     KC_NO,          KC_NO,      KC_NO
@@ -190,7 +190,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               '-------'-------'-------'      '-------'-------'
  */
   [SYMBOL] = LAYOUT(
-    KC_TILD,                TD(EXLM_UNDS),  TD(LBRC_AMPR),          TD(RBRC_PIPE),      KC_HASH,                                              TD(SLSH_BSLS),       KC_7,         KC_8,        KC_9,          KC_DEL,
+    KC_TILD,                TD(EXLM_UNDS),  TD(LBRC_AMPR),          TD(RBRC_PIPE),      KC_HASH,                                              TD(SLSH_BSLS),       KC_7,         KC_8,        KC_9,          KC_SCLN,
     LT(FNAV,KC_GRV),        KC_EQL,         KC_LPRN,                KC_RPRN,            KC_DLR,                                               KC_PAST,             KC_4,         KC_5,        KC_6,          TD(CT_CLN),
     KC_LSFT,                TD(AT_DOT),     KC_MINS,                KC_PPLS,            KC_CIRC,                                              KC_PERC,             KC_1,         KC_2,        LALT_T(KC_3),  ALL_T(KC_0),
     KC_NO,                  KC_NO,          KC_NO,                  TD(LGUI_ALT),       LT(QWERTY_2, KC_SPC),LCTL_T(KC_TAB),  LALT_T(KC_TAB), LT(KC_NO, KC_BSPC),  KC_NO,        KC_NO,       KC_NO,         KC_NO
@@ -217,8 +217,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *               '-----------------------'      '-------'-------'
  */
   [MOUSE] = LAYOUT(
-    RESET,                  KC_MUTE,        KC_VOLD,                KC_VOLU,            KC_MPLY,                                               KC_BTN4,             KC_WH_D,      KC_WH_U,      KC_BTN5,         KC_DEL,
-    KC_PGUP,                KC_GRV,         S(KC_TAB),              KC_TAB,             KC_PAUSE,                                              KC_LEFT,             KC_DOWN,      KC_UP,        KC_RIGHT,        TD(PGDN_PGUP),
+    RESET,                  KC_MUTE,        KC_VOLD,                KC_VOLU,            KC_MPLY,                                               KC_NO,             KC_WH_D,      KC_UP,      KC_WH_U,         KC_DEL,
+    KC_PGUP,                KC_GRV,         S(KC_TAB),              KC_TAB,             KC_PAUSE,                                              KC_NO,             KC_LEFT,      KC_DOWN,        KC_RIGHT,        TD(PGDN_PGUP),
     LSFT_T(KC_HOME),        KC_NO,          KC_WH_U,                KC_WH_D,            KC_INS,                                                KC_HOME,             KC_BTN1,      KC_BTN2,      LALT_T(KC_BTN3), RSFT_T(KC_END),
     KC_NO,                  KC_NO,          KC_NO,                  KC_LGUI,            KC_SPC,  LCTL_T(KC_TAB),               TD(ESC_MOUSE),  KC_BSPC,             KC_NO,        KC_NO,        KC_NO,           KC_NO
   ),
